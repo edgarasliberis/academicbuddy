@@ -49,7 +49,12 @@ The server will be accessible through <http://localhost:8000/app_dev.php>.
 
 3) Configure Bootstrap frontend framework
 --------------
-After installing the required dependencies with Composer add the following to `app/config/config.yml`
+
+1. Update dependecies
+
+        $ php composer.phar update
+        
+3. Add the following to `app/config/config.yml`
 
         # Assetic Configuration
         assetic:
@@ -112,5 +117,4 @@ After installing the required dependencies with Composer add the following to `a
                 variables_file: ~
                 bootstrap_output: %kernel.root_dir%/Resources/less/bootstrap.less
                 bootstrap_template: BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig
-                
-Run `php app/console assetic:dump` to generate assests in `/web` folder (make them accessible to templates).
+4. Run `php app/console assetic:dump` to generate assests in `/web` folder (make them accessible to templates).
