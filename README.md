@@ -1,6 +1,16 @@
 academicbrother2
 ================
 
+0) Prerequisites
+----------------
+
+    >= PHP 5.4.11
+    MySQL
+    php5-mysql
+    php5-intl
+    nodejs (with symlink to /usr/bin/node)
+    LESS (installed through npm)
+
 1) Installation
 ---------------
 
@@ -34,9 +44,7 @@ academicbrother2
 
     5.1. upgraded to PHP 5.5 via <http://dotdeb.org>
     
-    5.2. installed `php5-mysql`, `php5-intl`
-    
-    5.3. set the `date.timezone` setting in `/etc/php5/{apache2,cli}/php.ini`, in my case to `Europe/Vilnius`
+    5.2. set the `date.timezone` setting in `/etc/php5/{apache2,cli}/php.ini`, in my case to `Europe/Vilnius`
 
 2) Try it out!
 --------------
@@ -62,8 +70,4 @@ The server will be accessible through <http://localhost:8000/app_dev.php>.
 4) Configure Bootstrap frontend framework
 --------------
 
-1. Update dependecies
-
-        $ php composer.phar update
-        
-2. Run `php app/console assetic:dump` to generate assests in `/web` folder (make them accessible to templates).
+1. Run `php app/console assetic:dump` to generate assests in `/web` folder (make them accessible to templates).
