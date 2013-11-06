@@ -185,10 +185,10 @@ class Course
     /**
      * Set mentor
      *
-     * @param \AB\StoreBundle\Entity\Mentor $mentor
+     * @param \AB\Bundle\Entity\Mentor $mentor
      * @return Course
      */
-    public function setMentor(\AB\StoreBundle\Entity\Mentor $mentor = null)
+    public function setMentor(\AB\Bundle\Entity\Mentor $mentor = null)
     {
         $this->mentor = $mentor;
     
@@ -198,7 +198,7 @@ class Course
     /**
      * Get mentor
      *
-     * @return \AB\StoreBundle\Entity\Mentor 
+     * @return \AB\Bundle\Entity\Mentor 
      */
     public function getMentor()
     {
@@ -208,10 +208,10 @@ class Course
     /**
      * Set university
      *
-     * @param \AB\StoreBundle\Entity\University $university
+     * @param \AB\Bundle\Entity\University $university
      * @return Course
      */
-    public function setUniversity(\AB\StoreBundle\Entity\University $university = null)
+    public function setUniversity(\AB\Bundle\Entity\University $university = null)
     {
         $this->university = $university;
     
@@ -221,7 +221,7 @@ class Course
     /**
      * Get university
      *
-     * @return \AB\StoreBundle\Entity\University 
+     * @return \AB\Bundle\Entity\University 
      */
     public function getUniversity()
     {

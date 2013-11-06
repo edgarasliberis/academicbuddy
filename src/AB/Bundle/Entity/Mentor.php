@@ -1,5 +1,5 @@
 <?php
-namespace AB\StoreBundle\Entity;
+namespace AB\Bundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -341,10 +341,10 @@ class Mentor
     /**
      * Add courses
      *
-     * @param \AB\StoreBundle\Entity\Course $courses
+     * @param \AB\Bundle\Entity\Course $courses
      * @return Mentor
      */
-    public function addCourse(\AB\StoreBundle\Entity\Course $courses)
+    public function addCourse(\AB\Bundle\Entity\Course $courses)
     {
         $this->courses[] = $courses;
     
@@ -354,9 +354,9 @@ class Mentor
     /**
      * Remove courses
      *
-     * @param \AB\StoreBundle\Entity\Course $courses
+     * @param \AB\Bundle\Entity\Course $courses
      */
-    public function removeCourse(\AB\StoreBundle\Entity\Course $courses)
+    public function removeCourse(\AB\Bundle\Entity\Course $courses)
     {
         $this->courses->removeElement($courses);
     }
