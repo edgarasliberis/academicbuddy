@@ -42,9 +42,9 @@ academicbrother2
 
 6. To get rid of all warnings, on Debian Wheezy, I:
 
-    5.1. upgraded to PHP 5.5 via <http://dotdeb.org>
+    6.1. upgraded to PHP 5.5 via <http://dotdeb.org>
     
-    5.2. set the `date.timezone` setting in `/etc/php5/{apache2,cli}/php.ini`, in my case to `Europe/Vilnius`
+    6.2. set the `date.timezone` setting in `/etc/php5/{apache2,cli}/php.ini`, in my case to `Europe/Vilnius`
 
 2) Try it out!
 --------------
