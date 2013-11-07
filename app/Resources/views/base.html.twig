@@ -9,28 +9,81 @@
 
         <!-- Bootstrap -->
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('css/jumbotron-narrow.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/typeahead_fix.css') }}" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+        <style>
+
+        </style>
     </head>
     <body>
-        <div id="header">
-            {% block header %}{% endblock %}
-        </div>
-        <div id="sidebar">
-            {% block sidebar %}{% endblock %}
-        </div>
-        <div id="content">
-            {% block content %}{% endblock %}
-        </div>
-        <div id="footer">
-            {% block footer %}{% endblock %}
+        <div class="container">
+            <div class="header">
+                {% block header %}
+                    <ul class="nav nav-pills pull-right">
+                      <li class="active"><a href="#">Home</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Contact</a></li>
+                    </ul>
+                    <h3 class="text-muted">Academic Brother</h3>
+                {% endblock %}
+            </div>
+
+            <div id="content">
+                {% block content %}
+                    <div class="jumbotron">
+                        <h1>Jumbotron heading</h1>
+                        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+                    </div>
+
+                    <div class="row marketing">
+                        <div class="col-lg-6">
+                            <h4>Subheading</h4>
+                            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+                            <h4>Subheading</h4>
+                            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+                            <h4>Subheading</h4>
+                            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <h4>Subheading</h4>
+                          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+                          <h4>Subheading</h4>
+                          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+                          <h4>Subheading</h4>
+                          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+
+            
+
+          <div class="footer">
+            {% block footer %}
+                <p>&copy; Company 2013</p>
+            {% endblock %}
+          </div>
+
+
         </div>
         {% block javascripts %}
             <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
             <script src="https://code.jquery.com/jquery.js"></script>
+            <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
             <!-- Include all JavaScripts, compiled by Assetic -->
-            <script src="{{ asset('js/bootstrap.js') }}"></script>    
+            <script src="{{ asset('js/bootstrap.js') }}"></script>
+            <!-- Typeahead plugin -->
+            <script src="//twitter.github.com/typeahead.js/releases/latest/typeahead.min.js"></script>
+                
         {% endblock %}
     </body>
 </html>

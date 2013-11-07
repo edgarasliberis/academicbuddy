@@ -1,3 +1,3 @@
 ab_routes:
-    resource: "@MainBundle/Controller"
+    resource: "@ABBundle/Controller"
     type:     annotation
