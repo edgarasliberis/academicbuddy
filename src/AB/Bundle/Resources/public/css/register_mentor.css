@@ -1,8 +1,16 @@
-ul.courses {
+ul.courses{
 	list-style: none;
 	padding-left: 0px;
 }
 
 ul.courses .add_course_link {
-	
+
 }
+
+ul.help-block {
+	list-style: none;
+	padding-left: 0px;
+	color: red;
+}
+
+ 

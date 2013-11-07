@@ -20,7 +20,6 @@ class RegistrationController extends Controller
     {
         $mentor = new Mentor();
         $mentor->addCourse(new Course());
-
         $registration = new MentorRegistration();
         $registration->setMentor($mentor);
 
@@ -53,6 +52,15 @@ class RegistrationController extends Controller
             //TODO: get phase from global config
             $mentor->setPhase(1);
 
+            foreach($mentor->getCourses() as $course) {
+                // Get university by name
+                $university = $course->getUniversity();
+                $university->addCourse($course);
+                $course->setMentor($mentor);
+
+                $em->persist($university);
+                $em->persist($course);
+            }
             $em->persist($mentor);
             $em->flush();
 

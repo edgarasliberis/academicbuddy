@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 	    new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new AB\Bundle\ABBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

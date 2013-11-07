@@ -10,10 +10,12 @@ class CourseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name');
-        $builder->add('university', 'text');
-        $builder->add('college');
+        $builder->add('university');
+        //$builder->add('college');
         $builder->add('startYear');
         $builder->add('graduationYear');
+        $builder->add('graduationYear');
+        $builder->add('courseSection');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

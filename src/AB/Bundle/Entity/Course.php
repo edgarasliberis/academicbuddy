@@ -21,7 +21,7 @@ class Course
 
     /**
      * @ORM\ManyToOne(targetEntity="Mentor", inversedBy="courses")
-     * @ORM\JoinColumn(name="mentor_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="mentor_id", referencedColumnName="id", nullable=false)
      */
     protected $mentor;
 
@@ -33,12 +33,12 @@ class Course
 
     /**
      * @ORM\ManyToOne(targetEntity="University", inversedBy="courses")
-     * @ORM\JoinColumn(name="university_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="university_id", referencedColumnName="id", nullable=false)
      */
     protected $university;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $college;
 
@@ -213,8 +213,9 @@ class Course
      */
     public function setUniversity(\AB\Bundle\Entity\University $university = null)
     {
+        $university->addCourse($this);
+
         $this->university = $university;
-    
         return $this;
     }
 

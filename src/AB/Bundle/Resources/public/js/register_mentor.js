@@ -7,12 +7,15 @@ var $newLinkLi = $('<li></li>').append($addCourseLink);
 
 jQuery(document).ready(function() {
 
-
+	/*
 	var uniList = ['Uni1', 'Uni2', 'B3', 'University of Cambridge'];
 		$( '#mentor_registration_mentor_courses_0_university' ).typeahead({
 			local: uniList
 		});
-
+	*/
+	$("#mentor_registration_mentor_courses_0_university").chosen(
+		{no_results_text: "Nerasta"}
+	); 
 
     // count the current form inputs we have (e.g. 2), use that as the new
     // index when inserting a new item (e.g. 2)
@@ -49,6 +52,10 @@ function addCourseForm(collectionHolder, $newLinkLi) {
     $newLinkLi.before($newFormLi);
 
     addCourseFormDeleteLink($newFormLi);
+
+    $("#mentor_registration_mentor_courses_" + index + "_university").chosen(
+		{no_results_text: "Nerasta"}
+	); 
 }
 
 function addCourseFormDeleteLink($courseFormLi) {

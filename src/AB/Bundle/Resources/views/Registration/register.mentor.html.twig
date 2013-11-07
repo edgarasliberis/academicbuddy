@@ -1,8 +1,22 @@
+{% form_theme form _self %}
 {% extends "::base.html.twig" %}
+
+{# Redefine form_lable to include an asterisk for required fields #}
+{% use 'BraincraftedBootstrapBundle::Form/form_div_layout.html.twig' with form_label as base_form_label %}
+{% block form_label %}
+    {{ block('base_form_label') }}
+
+    {% if required %}
+        <span class="required" title="This field is required">*</span>
+    {% endif %}
+{% endblock %}
 
 {% block stylesheets %}
 	{% stylesheets '@ABBundle/Resources/public/css/*' filter='cssrewrite' %}
     	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+	{% stylesheets '@ABBundle/Resources/public/chosen/chosen.css' %}
+	<link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
 {% endblock %}
 
@@ -10,7 +24,6 @@
 	<h1>Registracija pagrindinio etapo mentoriams</h1>
 	{{ form_start(form) }}
     {{ form_errors(form) }}
-
 	<fieldset>
 		<legend>Asmeninė informacija</legend>
 		    <div>
@@ -42,7 +55,6 @@
 	        {{ form_widget(form.mentor.homeCity) }}
 	    </div>
 	</fieldset>
-
 	<fieldset>
 		<legend>Universitetas</legend>
 		<ul class="courses" data-prototype="
@@ -53,6 +65,10 @@
 			{{ form_label(form.mentor.courses.vars.prototype.name, "Kursas")|e }}
 			{{ form_errors(form.mentor.courses.vars.prototype.name) }}
 			{{ form_widget(form.mentor.courses.vars.prototype.name)|e }}
+
+			{{ form_label(form.mentor.courses.vars.prototype.courseSection, "Studijų kryptis")|e }}
+			{{ form_errors(form.mentor.courses.vars.prototype.courseSection) }}
+			{{ form_widget(form.mentor.courses.vars.prototype.courseSection)|e }}	
 
 			{{ form_label(form.mentor.courses.vars.prototype.startYear, "Įstojimo metai")|e }}
 			{{ form_errors(form.mentor.courses.vars.prototype.startYear) }}
@@ -74,6 +90,11 @@
 				        {{ form_errors(course.name) }}
 				        {{ form_widget(course.name) }}
 				    </div>
+				  	<div>
+				        {{ form_label(course.courseSection, "Studijų kryptis") }}
+				        {{ form_errors(course.courseSection) }}
+				        {{ form_widget(course.courseSection) }}
+				    </div>
 				    <div>
 				        {{ form_label(course.startYear, "Įstojimo metai") }}
 				        {{ form_errors(course.startYear) }}
@@ -88,9 +109,6 @@
 	        {% endfor %}
     	</ul>
 	</fieldset>
-
-
-
 	<fieldset>
 		<legend>Mokykla</legend>
 		 <div>
@@ -111,20 +129,32 @@
 	        {{ form_widget(form.mentor.schoolGraduationYear) }}
 	    </div>
 	</fieldset>
-
-
-   
-
+	<fieldset>
+		<legend>Papildoma informacija</legend>
+		<div>
+	        {{ form_label(form.mentor.about, "Apie save") }}
+	        {{ form_errors(form.mentor.about) }}
+	        {{ form_widget(form.mentor.about) }}
+	    </div>
+	</fieldset>
     <div>
+    <div>
+	    {{ form_errors(form.terms) }}
+	    {{ form_widget(form.terms) }}
+	    {{ form_label(form.terms, 'Sutinku su taisyklėmis') }}
+	</div>
+    	{{ form_end(form) }}
         {{ form_widget(form.save) }}
     </div>
 {% endblock %}
 
 {% block javascripts %}
-
 	{{ parent() }}
-	
 	{% javascripts '@ABBundle/Resources/public/js/*' %}
     	<script type="text/javascript" src="{{ asset_url }}"></script>
 	{% endjavascripts %}  
+	{% javascripts '@ABBundle/Resources/public/chosen/chosen.jquery.min.js'
+ 				   %}
+     	<script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
 {% endblock %}
