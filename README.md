@@ -66,6 +66,9 @@ The server will be accessible through <http://localhost:8000/app_dev.php>.
 
         $ php app/console doctrine:schema:update --force
 
+3. Populate tables with default data
+
+        $ php app/console ab:dbpopulate db_resources/UK_uni_list.txt
 
 4) Configure Bootstrap frontend framework
 --------------
