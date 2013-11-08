@@ -53,9 +53,10 @@ class Course
     protected $graduationYear;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\ManyToOne(targetEntity="CourseCategory", inversedBy="courses")
+     * @ORM\JoinColumn(name="course_category_id", referencedColumnName="id", nullable=false)
      */
-    protected $courseSection;
+    protected $courseCategory;
 
     /**
      * Get id
@@ -227,5 +228,28 @@ class Course
     public function getUniversity()
     {
         return $this->university;
+    }
+
+    /**
+     * Set courseCategory
+     *
+     * @param \AB\Bundle\Entity\CourseCategory $courseCategory
+     * @return Course
+     */
+    public function setCourseCategory(\AB\Bundle\Entity\CourseCategory $courseCategory)
+    {
+        $this->courseCategory = $courseCategory;
+    
+        return $this;
+    }
+
+    /**
+     * Get courseCategory
+     *
+     * @return \AB\Bundle\Entity\CourseCategory 
+     */
+    public function getCourseCategory()
+    {
+        return $this->courseCategory;
     }
 }

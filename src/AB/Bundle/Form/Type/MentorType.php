@@ -11,8 +11,7 @@ class MentorType extends AbstractType
     {
         $builder->add('firstName');
         $builder->add('lastName');
-        $builder->add('email', 'repeated', array(
-            'type' => 'email',
+        $builder->add('email', 'email', array(
             'required' => 'true'
         ));
         $builder->add('homeCity');
@@ -31,8 +30,6 @@ class MentorType extends AbstractType
                         //'attr'      => array('class' => 'email-box')
                       ),
 		));
-        //TODO
-
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

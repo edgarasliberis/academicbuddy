@@ -10,12 +10,14 @@ class CourseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name');
-        $builder->add('university');
+        $builder->add('university', 'entity', array(
+            'class' => 'ABBundle:University',
+            'attr' => array('data-placeholder' => 'Pasirinkite universitetą')
+        ));
         //$builder->add('college');
         $builder->add('startYear');
         $builder->add('graduationYear');
-        $builder->add('graduationYear');
-        $builder->add('courseSection');
+        $builder->add('courseCategory');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

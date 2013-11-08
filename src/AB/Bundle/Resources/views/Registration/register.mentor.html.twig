@@ -1,153 +1,147 @@
-{% form_theme form _self %}
 {% extends "::base.html.twig" %}
 
-{# Redefine form_lable to include an asterisk for required fields #}
-{% use 'BraincraftedBootstrapBundle::Form/form_div_layout.html.twig' with form_label as base_form_label %}
-{% block form_label %}
-    {{ block('base_form_label') }}
+{# Enable redefining #}
+{% form_theme form _self %}
+{# Import macros #}
+{% import _self as mentor_form %}
 
-    {% if required %}
-        <span class="required" title="This field is required">*</span>
-    {% endif %}
-{% endblock %}
+{# Macro for prining a form field #}
+{% macro print_row(field, label, help) %}
+<div class="form-group">
+    {{ form_label(field, label, { 'label_attr' : {'class': 'col-sm-3'}}) }}
+    <div class="col-sm-9">
+    	{{ form_errors(field) }}
+    	{{ form_widget(field, { 'help_text' : help}) }}
+    </div>
+</div>
+{% endmacro %}
 
+{% macro university_panel(course) %}
+<div class="panel panel-default">
+	<div class="panel-body">
+		{{ form_row(course.university, 
+					{ 'style' : 'horizontal', 'widget_col' : 9, 'label_col' : 3,
+					  'label' : 'Pavadinimas',
+					   'help_text' : null})
+		}}
+		{{ form_row(course.name, 
+					{ 'style' : 'horizontal', 'widget_col' : 9, 'label_col' : 3,
+					  'label' : 'Kursas',
+					   'help_text' : 'Pvz. BA Mathematics'})
+		}}
+		{{ form_row(course.courseCategory, 
+					{ 'style' : 'horizontal', 'widget_col' : 9, 'label_col' : 3,
+					  'label' : 'Studijų kryptis',
+					  })
+		}}
+		{{ form_row(course.startYear, 
+					{ 'style' : 'horizontal', 'widget_col' : 9, 'label_col' : 3,
+					  'label' : 'Įstojimo metai',
+					   'help_text' : 'Pvz. 2013'})
+		}}
+		{{ form_row(course.graduationYear, 
+					{ 'style' : 'horizontal', 'widget_col' : 9, 'label_col' : 3,
+					  'label' : 'Baigimo metai',
+					  'help_text' : 'Pvz. 2010'})
+		}}
+  </div>
+</div>
+{% endmacro %}
+
+{# Include stylesheets #}
 {% block stylesheets %}
-	{% stylesheets '@ABBundle/Resources/public/css/*' filter='cssrewrite' %}
-    	<link rel="stylesheet" href="{{ asset_url }}" />
-	{% endstylesheets %}
 	{% stylesheets '@ABBundle/Resources/public/chosen/chosen.css' %}
 	<link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
+	{% stylesheets '@ABBundle/Resources/public/css/*' filter='cssrewrite' %}
+    	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
 {% endblock %}
 
+{# Page content #}
 {% block content %}
 	<h1>Registracija pagrindinio etapo mentoriams</h1>
-	{{ form_start(form) }}
-    {{ form_errors(form) }}
-	<fieldset>
-		<legend>Asmeninė informacija</legend>
-		    <div>
-	        {{ form_label(form.mentor.firstName, "Vardas") }}
-	        {{ form_errors(form.mentor.firstName) }}
-	        {{ form_widget(form.mentor.firstName) }}
-	    </div>
-
+	<div id="register_form_mentor">
+		{{ form_start(form, { 'attr' : {'class': 'form-horizontal'} }) }}
+	    {{ form_errors(form) }}
+		<fieldset>
+			<legend>Asmeninė informacija</legend>
+			{{ form_row(form.mentor.firstName, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'Vardas'})
+			}}
+			{{ form_row(form.mentor.lastName, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'Pavardė'})
+			}}			
+			{{ form_row(form.mentor.email, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'El. pašto adresas'})
+			}}
+			{{ form_row(form.mentor.homeCity, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'Gyvenamoji vieta Lietuvoje',
+												 'help_text' : 'Miestas/rajonas (galimiems susitikimams su mažuoju broliu)'})
+			}}
+		</fieldset>
+		<fieldset>
+			<legend>Universitetas</legend>
+			<ul class="courses" data-prototype="
+				{{ mentor_form.university_panel(form.mentor.courses.vars.prototype)|e }}
+			">     
+		        {% for course in form.mentor.courses %}
+		            <li>
+		            	{{ mentor_form.university_panel(course) }}
+		            </li>
+		        {% endfor %}
+	    	</ul>
+		</fieldset>
+		<fieldset>
+			<legend>Mokykla</legend>
+			{{ form_row(form.mentor.schoolName, { 'style' : 'horizontal',
+												  'widget_col' : 9,
+												  'label_col' : 3,
+												  'label' : 'Pavadinimas'})
+			}}
+			{{ form_row(form.mentor.schoolCity, { 'style' : 'horizontal',
+												  'widget_col' : 9,
+												  'label_col' : 3,
+												  'label' : 'Miestas'})
+			}}
+			{{ form_row(form.mentor.schoolGraduationYear, { 'style' : 'horizontal',
+												  			'widget_col' : 9,
+												  			'label_col' : 3,
+												  			'label' : 'Baigimo metai'})
+			}}			
+		</fieldset>
+		<fieldset>
+			<legend>Papildoma informacija</legend>
+			{{ form_row(form.mentor.about, { 'style' : 'horizontal',
+											 'widget_col' : 9,'label_col' : 3,
+											 'attr' : { 'rows' : '5' },
+											 'label' : 'Apie save',
+											  'help_text' : 'Čia galite aprašyti savo pomėgius, papildomą veiklą, trumpai papasakoti, kodėl pasirinkote savo studijų kryptį ir pan. Rekomenduojame iki 200 žodžių'})
+			}}
+		</fieldset>
 	    <div>
-	        {{ form_label(form.mentor.lastName, "Pavardė") }}
-	        {{ form_errors(form.mentor.lastName) }}
-	        {{ form_widget(form.mentor.lastName) }}
-	    </div>
-
-	    <div>
-	        {{ form_label(form.mentor.email.first, "El. pašto adresas") }}
-	        {{ form_errors(form.mentor.email.first) }}
-	        {{ form_widget(form.mentor.email.first) }}
-	    </div>
-	   	<div>
-	        {{ form_label(form.mentor.email.second, "Pakartokite el. pašto adresą") }}
-	        {{ form_errors(form.mentor.email.second) }}
-	        {{ form_widget(form.mentor.email.second) }}
-	    </div>
-
-	    <div>
-	        {{ form_label(form.mentor.homeCity, "Gyvenamoji vieta Lietuvoje") }}
-	        {{ form_errors(form.mentor.homeCity) }}
-	        {{ form_widget(form.mentor.homeCity) }}
-	    </div>
-	</fieldset>
-	<fieldset>
-		<legend>Universitetas</legend>
-		<ul class="courses" data-prototype="
-			{{ form_label(form.mentor.courses.vars.prototype.university, "Pavadinimas")|e }}
-			{{ form_errors(form.mentor.courses.vars.prototype.university) }}
-			{{ form_widget(form.mentor.courses.vars.prototype.university)|e }}
-
-			{{ form_label(form.mentor.courses.vars.prototype.name, "Kursas")|e }}
-			{{ form_errors(form.mentor.courses.vars.prototype.name) }}
-			{{ form_widget(form.mentor.courses.vars.prototype.name)|e }}
-
-			{{ form_label(form.mentor.courses.vars.prototype.courseSection, "Studijų kryptis")|e }}
-			{{ form_errors(form.mentor.courses.vars.prototype.courseSection) }}
-			{{ form_widget(form.mentor.courses.vars.prototype.courseSection)|e }}	
-
-			{{ form_label(form.mentor.courses.vars.prototype.startYear, "Įstojimo metai")|e }}
-			{{ form_errors(form.mentor.courses.vars.prototype.startYear) }}
-			{{ form_widget(form.mentor.courses.vars.prototype.startYear)|e }}
-			
-			{{ form_label(form.mentor.courses.vars.prototype.graduationYear, "Baigimo metai")|e }}
-			{{ form_errors(form.mentor.courses.vars.prototype.graduationYear) }}
-			{{ form_widget(form.mentor.courses.vars.prototype.graduationYear)|e }}			
-		 ">     
-	        {% for course in form.mentor.courses %}
-	            <li>
-	            	<div>
-				        {{ form_label(course.university, "Pavadinimas") }}
-				        {{ form_errors(course.university) }}
-				        {{ form_widget(course.university) }}
-				    </div>
-		            <div>
-				        {{ form_label(course.name, "Kursas") }}
-				        {{ form_errors(course.name) }}
-				        {{ form_widget(course.name) }}
-				    </div>
-				  	<div>
-				        {{ form_label(course.courseSection, "Studijų kryptis") }}
-				        {{ form_errors(course.courseSection) }}
-				        {{ form_widget(course.courseSection) }}
-				    </div>
-				    <div>
-				        {{ form_label(course.startYear, "Įstojimo metai") }}
-				        {{ form_errors(course.startYear) }}
-				        {{ form_widget(course.startYear) }}
-				    </div>
-				   	<div>
-				        {{ form_label(course.graduationYear, "Baigimo metai") }}
-				        {{ form_errors(course.graduationYear) }}
-				        {{ form_widget(course.graduationYear) }}
-				    </div>
-	            </li>
-	        {% endfor %}
-    	</ul>
-	</fieldset>
-	<fieldset>
-		<legend>Mokykla</legend>
-		 <div>
-	        {{ form_label(form.mentor.schoolName, "Pavadinimas") }}
-	        {{ form_errors(form.mentor.schoolName) }}
-	        {{ form_widget(form.mentor.schoolName) }}
-	    </div>
-
-	    <div>
-	        {{ form_label(form.mentor.schoolCity, "Miestas") }}
-	        {{ form_errors(form.mentor.schoolCity) }}
-	        {{ form_widget(form.mentor.schoolCity) }}
-	    </div>
-
-	    <div>
-	        {{ form_label(form.mentor.schoolGraduationYear, "Baigimo metai") }}
-	        {{ form_errors(form.mentor.schoolGraduationYear) }}
-	        {{ form_widget(form.mentor.schoolGraduationYear) }}
-	    </div>
-	</fieldset>
-	<fieldset>
-		<legend>Papildoma informacija</legend>
+	    <div id="terms" class="well">
+			{{ include('ABBundle:Registration:register.terms.html.twig')}}
+		</div>
 		<div>
-	        {{ form_label(form.mentor.about, "Apie save") }}
-	        {{ form_errors(form.mentor.about) }}
-	        {{ form_widget(form.mentor.about) }}
+			{{ form_row(form.terms, {'label' : 'Sutinku su taisyklėmis'})
+			}}
+		</div>
+	        {{ form_row(form.save, { 'label' : 'Registruotis' }) }}
+	        {{ form_end(form) }}
 	    </div>
-	</fieldset>
-    <div>
-    <div>
-	    {{ form_errors(form.terms) }}
-	    {{ form_widget(form.terms) }}
-	    {{ form_label(form.terms, 'Sutinku su taisyklėmis') }}
 	</div>
-    	{{ form_end(form) }}
-        {{ form_widget(form.save) }}
-    </div>
 {% endblock %}
 
+{# Include javascript #}
 {% block javascripts %}
 	{{ parent() }}
 	{% javascripts '@ABBundle/Resources/public/js/*' %}

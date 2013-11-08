@@ -4,15 +4,10 @@ var collectionHolder = $('ul.courses');
 // setup an "add a course" link
 var $addCourseLink = $('<a href="#" class="add_course_link">Pridėti universitetą</a>');
 var $newLinkLi = $('<li></li>').append($addCourseLink);
-
+  
 jQuery(document).ready(function() {
-
-	/*
-	var uniList = ['Uni1', 'Uni2', 'B3', 'University of Cambridge'];
-		$( '#mentor_registration_mentor_courses_0_university' ).typeahead({
-			local: uniList
-		});
-	*/
+	
+	addBlankChoice($("#mentor_registration_mentor_courses_0_university"));
 	$("#mentor_registration_mentor_courses_0_university").chosen(
 		{no_results_text: "Nerasta"}
 	); 
@@ -53,7 +48,9 @@ function addCourseForm(collectionHolder, $newLinkLi) {
 
     addCourseFormDeleteLink($newFormLi);
 
-    $("#mentor_registration_mentor_courses_" + index + "_university").chosen(
+    var $selectUniversity = $("#mentor_registration_mentor_courses_" + index + "_university");
+    addBlankChoice($selectUniversity);
+    $selectUniversity.chosen(
 		{no_results_text: "Nerasta"}
 	); 
 }
@@ -69,4 +66,10 @@ function addCourseFormDeleteLink($courseFormLi) {
         // remove the li for the course form
         $courseFormLi.remove();
     });
+}
+
+function addBlankChoice($selectContainer) {
+	$selectContainer.prepend('<option value="">Pasirinkite universiteta:</option>');
+	$selectContainer[0].options[0].selected = true;	
+
 }

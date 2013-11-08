@@ -64,6 +64,21 @@ class RegistrationController extends Controller
             $em->persist($mentor);
             $em->flush();
 
+
+            // Send confirmation email
+            $confirmationMessage = \Swift_Message::newInstance()
+                ->setSubject('Academic Brother: tavo registracija sėkminga!')
+                ->setFrom('academicbrother@gmail.com')
+                ->setTo($mentor->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'ABBundle:Email:register.mentor.confirmation.html.twig'
+                    ),
+                    'text/html'
+                )
+            ;
+            $this->get('mailer')->send($confirmationMessage);
+
             return $this->redirect("/");
         }
 
