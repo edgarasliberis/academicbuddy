@@ -2,7 +2,7 @@
 var collectionHolder = $('ul.courses');
 
 // setup an "add a course" link
-var $addCourseLink = $('<a href="#" class="add_course_link">Pridėti universitetą</a>');
+var $addCourseLink = $('<p><button type="button" class="btn btn-default btn-sm"><span class="add_course_link glyphicon glyphicon-plus"></span> Pridėti universitetą</button></p>');
 var $newLinkLi = $('<li></li>').append($addCourseLink);
   
 jQuery(document).ready(function() {
@@ -56,7 +56,7 @@ function addCourseForm(collectionHolder, $newLinkLi) {
 }
 
 function addCourseFormDeleteLink($courseFormLi) {
-    var $removeFormA = $('<a href="#" class="remove_course_link">Ištrinti universitetą</a>');
+    var $removeFormA = $('<button type="button" class="btn btn-default btn-sm"><span class="remove_course_link glyphicon glyphicon-minus"></span> Ištrinti universitetą</button>');
     $courseFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {
@@ -69,7 +69,7 @@ function addCourseFormDeleteLink($courseFormLi) {
 }
 
 function addBlankChoice($selectContainer) {
-	$selectContainer.prepend('<option value="">Pasirinkite universiteta:</option>');
+	$selectContainer.prepend('<option value="">Pasirinkite universitetą:</option>');
 	$selectContainer[0].options[0].selected = true;	
 
 }

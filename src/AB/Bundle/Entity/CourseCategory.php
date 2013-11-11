@@ -27,6 +27,11 @@ class CourseCategory
      * @ORM\OneToMany(targetEntity="Course", mappedBy="courseCategory")
      */
     protected $courses;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Pupil", mappedBy="courseCategory")
+     */
+    protected $pupils;
     
     /**
      * Constructor
@@ -104,5 +109,38 @@ class CourseCategory
 
     public function __toString() {
         return $this->name;
+    }
+
+    /**
+     * Add pupils
+     *
+     * @param \AB\Bundle\Entity\Pupil $pupils
+     * @return CourseCategory
+     */
+    public function addPupil(\AB\Bundle\Entity\Pupil $pupils)
+    {
+        $this->pupils[] = $pupils;
+    
+        return $this;
+    }
+
+    /**
+     * Remove pupils
+     *
+     * @param \AB\Bundle\Entity\Pupil $pupils
+     */
+    public function removePupil(\AB\Bundle\Entity\Pupil $pupils)
+    {
+        $this->pupils->removeElement($pupils);
+    }
+
+    /**
+     * Get pupils
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPupils()
+    {
+        return $this->pupils;
     }
 }

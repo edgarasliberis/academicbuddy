@@ -1,1 +1,32 @@
-Hello {{ name }}!
+{% extends "::base.html.twig" %}
+
+{% block content %}
+                    <div class="jumbotron">
+                        <h3>„Academic Brother“ – mentorystės projektas, padedantis Lietuvos moksleiviams įstoti į geriausius užsienio universitetus.</h3>
+                        <p class="lead">Siekiame padėti gabiems ir motyvuotiems Lietuvos moksleiviams, nusprendusiems stoti į užsienio universitetus, gauti aukščiausios kokybės išsilavinimą, atitinkantį jų akademinį potencialą; tuo pačiu buriame tarptautinę lietuvių studentų bendruomenę. Projekte dalyvauja užsienyje studijuojantys lietuviai, konsultuojantys ir visapusiškai padedantys paskutiniųjų klasių moksleiviams stojimo procesų metu.</p>
+                        <p><a class="btn btn-lg btn-success" href="#" role="button">Registruotis</a></p>
+                    </div>
+
+                    <div class="row marketing">
+                        <div class="col-lg-6">
+                            <h4>Projekto eiga 2013-14</h4>
+                            <p>
+09 28 II-ojo etapo atidarymo renginys<br/>
+10 15 - 12 15 mentorių registracija<br/>
+11 15 - 12 15 mentorių ir moksleivių registracija<br/>
+12 ... Renginys Lietuvoje<br/>
+12 ... - 01 15 moksleivių ir mentorių bendravimas<br/>
+01 15 UCAS paraiškos teikimo terminas<br/>
+</p>
+
+                        </div>
+
+                        <div class="col-lg-6">
+                          <h4>Organizatoriai</h4>
+                          <p><img width=150 src="{{ asset('bundles/ab/images/CULS-EN-version.jpg') }}" alt="some_text"/>
+                          <img width=150 src="{{ asset('bundles/ab/images/OULS-logo-3.png') }}" alt="some_text"/></p>
+                          <h4>Remėjai</h4>
+                          <p><img width=200 src="{{ asset('bundles/ab/images/logoLTBB.png') }}" alt="some_text"/></p>
+                        </div>
+                    </div>
+                {% endblock %}

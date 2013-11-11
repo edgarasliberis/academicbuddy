@@ -41,12 +41,12 @@ class Pupil
     protected $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $homeCity;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $about;
 
@@ -56,21 +56,25 @@ class Pupil
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */    	
     protected $schoolName;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Assert\NotBlank()
      */
     protected $schoolGraduationYear;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     protected $schoolCity;
 
     /**
      * @ORM\Column(type="decimal", scale=2)
+     * @Assert\NotBlank()
      */
     protected $schoolGrade;
 
@@ -80,16 +84,25 @@ class Pupil
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */ 
-    protected $universityChoice;
+    protected $universityRegion;
 
     /**
-     * @ORM\Column(type="smallint", length=2)
-     */ 
+     * @ORM\ManyToOne(targetEntity="CourseCategory", inversedBy="courses")
+     * @ORM\JoinColumn(name="course_category_id", referencedColumnName="id", nullable=false)
+     * @Assert\NotBlank()
+     */
     protected $courseCategory;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */ 
+    protected $courseName;    
+
+    /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     protected $motivation;
 
@@ -437,5 +450,51 @@ class Pupil
     public function getPhase()
     {
         return $this->phase;
+    }
+
+    /**
+     * Set universityRegion
+     *
+     * @param string $universityRegion
+     * @return Pupil
+     */
+    public function setUniversityRegion($universityRegion)
+    {
+        $this->universityRegion = $universityRegion;
+    
+        return $this;
+    }
+
+    /**
+     * Get universityRegion
+     *
+     * @return string 
+     */
+    public function getUniversityRegion()
+    {
+        return $this->universityRegion;
+    }
+
+    /**
+     * Set courseName
+     *
+     * @param string $courseName
+     * @return Pupil
+     */
+    public function setCourseName($courseName)
+    {
+        $this->courseName = $courseName;
+    
+        return $this;
+    }
+
+    /**
+     * Get courseName
+     *
+     * @return string 
+     */
+    public function getCourseName()
+    {
+        return $this->courseName;
     }
 }

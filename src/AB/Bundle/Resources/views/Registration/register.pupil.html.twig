@@ -1,0 +1,134 @@
+{% extends "::base.html.twig" %}
+
+{# Enable redefining #}
+{% form_theme form _self %}
+{# Import macros #}
+{% import _self as pupil_form %}
+
+{# Include stylesheets #}
+{% block stylesheets %}
+	{% stylesheets '@ABBundle/Resources/public/css/register.css' filter='cssrewrite' %}
+    	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+{% endblock %}
+
+{# Page content #}
+{% block content %}
+	<h1>Registracija pagrindinio etapo moksleiviams</h1>
+	{% if success is defined %}
+	<div class="alert alert-success">Registracija sėkminga!</div>
+	{% endif %}
+	<div id="register_form">
+		{{ form_start(form, { 'attr' : {'class': 'form-horizontal'} }) }}
+	    {{ form_errors(form) }}
+		<fieldset>
+			<legend>Asmeninė informacija</legend>
+			{{ form_row(form.pupil.firstName, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'Vardas'})
+			}}
+			{{ form_row(form.pupil.lastName, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'Pavardė'})
+			}}			
+			{{ form_row(form.pupil.email, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'El. pašto adresas'})
+			}}
+			{{ form_row(form.pupil.homeCity, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'Gyvenamoji vieta Lietuvoje',
+												 'help_text' : 'Miestas/rajonas (galimiems susitikimams su mažuoju broliu)'})
+			}}
+		</fieldset>
+		<fieldset>
+			<legend>Mokykla</legend>
+			{{ form_row(form.pupil.schoolName, { 'style' : 'horizontal',
+												  'widget_col' : 9,
+												  'label_col' : 3,
+												  'label' : 'Pavadinimas'})
+			}}
+			{{ form_row(form.pupil.schoolCity, { 'style' : 'horizontal',
+												  'widget_col' : 9,
+												  'label_col' : 3,
+												  'label' : 'Miestas'})
+			}}
+			{{ form_row(form.pupil.schoolGraduationYear, { 'style' : 'horizontal',
+												  			'widget_col' : 9,
+												  			'label_col' : 3,
+												  			'label' : 'Baigimo metai'})
+			}}
+			{{ form_row(form.pupil.schoolGrade, { 'style' : 'horizontal',
+												  			'widget_col' : 9,
+												  			'label_col' : 3,
+												  			'label' : 'Pažymių vidurkis',
+												  			'help_text': 'Pastarųjų metų bendras vidurkis'})
+			}}				
+		</fieldset>
+		<fieldset>
+			<legend>Planuojamos studijos</legend>
+			{{ form_row(form.pupil.courseCategory, { 'style' : 'horizontal',
+												  			'widget_col' : 9,
+												  			'label_col' : 3,
+												  			'label' : 'Studijų kryptis'})
+			}}
+			{{ form_row(form.pupil.universityRegion, { 'style' : 'horizontal',
+												  			'widget_col' : 9,
+												  			'label_col' : 3,
+												  			'label' : 'Planuojamas studijų regionas'})
+			}}
+			{{ form_row(form.pupil.courseName, { 'style' : 'horizontal',
+												  			'widget_col' : 9,
+												  			'label_col' : 3,
+												  			'label' : 'Kursas (jei jau žinai)',
+												  			})
+			}}								
+		</fieldset>
+		<fieldset>
+			<legend>Papildoma informacija</legend>
+			<p>This section has to be filled in English. Ability to write in English is necessary for a successful United Kingdom university application process. Do not worry too much if you find it difficult to write correctly or fluently now, but try to do your best.</p>
+			{{ form_row(form.pupil.motivation, { 'style' : 'horizontal',
+											 'widget_col' : 9,'label_col' : 3,
+											 'attr' : { 'rows' : '5' },
+											 'label' : 'Motivation',
+											  'help_text' : 'Please explain why you think you should participate in the "Academic Brother" project? What are your plans for the future, current academic interests and achievements? Max. 200 words.'})
+			}}
+			{{ form_row(form.pupil.about, { 'style' : 'horizontal',
+											 'widget_col' : 9,'label_col' : 3,
+											 'attr' : { 'rows' : '5' },
+											 'label' : 'Interests',
+											  'help_text' : 'Please tell us about your extra-curricular activity, general interests and hobbies. Max. 100 words.'})
+			}}
+		</fieldset>
+	    <div>
+	    <div id="terms" class="well">
+			{{ include('ABBundle:Registration:register.terms.html.twig')}}
+		</div>
+		<div>
+			{{ form_row(form.terms, {'label' : 'Sutinku su taisyklėmis'})
+			}}
+		</div>
+	        {{ form_row(form.save, { 'label' : 'Registruotis' }) }}
+	        {{ form_end(form) }}
+	    </div>
+	</div>
+{% endblock %}
+
+{# Include javascript #}
+{#
+{% block javascripts %}
+	{{ parent() }}
+	{% javascripts '@ABBundle/Resources/public/js/*' %}
+    	<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}  
+	{% javascripts '@ABBundle/Resources/public/chosen/chosen.jquery.min.js'
+ 				   %}
+     	<script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+
+{% endblock %}
+#}  

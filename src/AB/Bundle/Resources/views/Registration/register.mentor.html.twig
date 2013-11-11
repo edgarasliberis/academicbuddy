@@ -5,17 +5,6 @@
 {# Import macros #}
 {% import _self as mentor_form %}
 
-{# Macro for prining a form field #}
-{% macro print_row(field, label, help) %}
-<div class="form-group">
-    {{ form_label(field, label, { 'label_attr' : {'class': 'col-sm-3'}}) }}
-    <div class="col-sm-9">
-    	{{ form_errors(field) }}
-    	{{ form_widget(field, { 'help_text' : help}) }}
-    </div>
-</div>
-{% endmacro %}
-
 {% macro university_panel(course) %}
 <div class="panel panel-default">
 	<div class="panel-body">
@@ -61,7 +50,10 @@
 {# Page content #}
 {% block content %}
 	<h1>Registracija pagrindinio etapo mentoriams</h1>
-	<div id="register_form_mentor">
+	{% if success is defined %}
+	<div class="alert alert-success">Registracija sėkminga!</div>
+	{% endif %}
+	<div id="register_form">
 		{{ form_start(form, { 'attr' : {'class': 'form-horizontal'} }) }}
 	    {{ form_errors(form) }}
 		<fieldset>

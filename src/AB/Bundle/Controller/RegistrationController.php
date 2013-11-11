@@ -7,16 +7,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use AB\Bundle\Form\Type\MentorRegistrationType;
+use AB\Bundle\Form\Type\PupilRegistrationType;
 use AB\Bundle\Form\Model\MentorRegistration;
+use AB\Bundle\Form\Model\PupilRegistration;
 use AB\Bundle\Entity\Course;
 use AB\Bundle\Entity\Mentor;
+use AB\Bundle\Entity\Pupil;
 
 class RegistrationController extends Controller
 {
     /**
-     * @Route("/mentor/register", name="mentor_register")
+     * @Route("/register/mentor", name="mentor_register")
      */
-    public function registerAction()
+    public function registerMentorAction()
     {
         $mentor = new Mentor();
         $mentor->addCourse(new Course());
@@ -34,9 +37,24 @@ class RegistrationController extends Controller
     }
 
     /**
-     * @Route("/mentor/register/create", name="mentor_create")
+     * @Route("/register/pupil", name="pupil_register")
      */
-    public function createAction(Request $request)
+    public function registerPupilAction()
+    {
+        $form = $this->createForm(new PupilRegistrationType(), new PupilRegistration(), array(
+            'action' => $this->generateUrl('pupil_create'),
+        ));
+
+        return $this->render(
+            'ABBundle:Registration:register.pupil.html.twig',
+            array('form' => $form->createView())
+        );
+    }
+
+    /**
+     * @Route("/register/mentor/create", name="mentor_create")
+     */
+    public function createMentorAction(Request $request)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -79,11 +97,62 @@ class RegistrationController extends Controller
             ;
             $this->get('mailer')->send($confirmationMessage);
 
-            return $this->redirect("/");
+            return $this->render(
+                'ABBundle:Registration:register.mentor.html.twig',
+                array('form' => $form->createView(), 'success' => true)
+            );
         }
 
         return $this->render(
             'ABBundle:Registration:register.mentor.html.twig',
+            array('form' => $form->createView())
+        );
+    }
+
+    /**
+     * @Route("/register/pupil/create", name="pupil_create")
+     */
+    public function createPupilAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $form = $this->createForm(new PupilRegistrationType(), new PupilRegistration());
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $registration = $form->getData();
+
+            $pupil = $registration->getPupil();
+            $pupil->setActive(0);
+            //TODO: get phase from global config
+            $pupil->setPhase(1);
+
+            $em->persist($pupil);
+            $em->flush();
+
+            // Send confirmation email
+            $confirmationMessage = \Swift_Message::newInstance()
+                ->setSubject('Academic Brother: tavo registracija sėkminga!')
+                ->setFrom('academicbrother@gmail.com')
+                ->setTo($pupil->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'ABBundle:Email:register.pupil.confirmation.html.twig'
+                    ),
+                    'text/html'
+                )
+            ;
+            $this->get('mailer')->send($confirmationMessage);
+
+            return $this->render(
+                'ABBundle:Registration:register.pupil.html.twig',
+                array('form' => $form->createView(), 'success' => true)
+            );
+        }
+
+        return $this->render(
+            'ABBundle:Registration:register.pupil.html.twig',
             array('form' => $form->createView())
         );
     }

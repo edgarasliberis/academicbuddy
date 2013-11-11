@@ -21,11 +21,8 @@
         <div class="container">
             <div class="header">
                 {% block header %}
-                    <ul class="nav nav-pills pull-right">
-                      <li class="active"><a href="#">Home</a></li>
-                      <li><a href="#">About</a></li>
-                      <li><a href="#">Contact</a></li>
-                    </ul>
+
+                    {{ knp_menu_render('ABBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
                     <h3 class="text-muted">Academic Brother</h3>
                 {% endblock %}
             </div>

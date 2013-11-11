@@ -8,10 +8,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}", name="_hello")
+     * @Route("/", name="home")
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('MainBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('ABBundle:Default:index.html.twig', array('name' => 'home'));
+    }
+
+    /**
+     * @Route("/about", name="about")
+     */
+    public function aboutAction() 
+    {
+    	return $this->render('ABBundle:Default:index.html.twig', array('name' => 'about'));	
     }
 }
