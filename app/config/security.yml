@@ -19,7 +19,8 @@ security:
             security: false
 
         secured_area:
-            pattern:   ^/
+            pattern:    ^/
             anonymous: ~
+            form_login: ~
 
     access_control:
