@@ -4,3 +4,6 @@ main:
 
 login_check:
     path:   /login_check
+
+logout:
+    path:   /logout

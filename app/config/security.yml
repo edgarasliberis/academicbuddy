@@ -20,7 +20,8 @@ security:
 
         secured_area:
             pattern:    ^/
-            anonymous: ~
+            anonymous:  ~
             form_login: ~
+            logout:     ~
 
     access_control:
