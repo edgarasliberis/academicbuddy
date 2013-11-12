@@ -1,3 +1,7 @@
+{% extends "::base.html.twig" %}
+
+{% block all_content %}
+
 {% if error %}
     <div>{{ error.message }}</div>
 {% endif %}
@@ -11,3 +15,5 @@
 
     <button type="submit">Prisijungti</button>
 </form>
+
+{% endblock %}
