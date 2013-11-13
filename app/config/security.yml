@@ -1,17 +1,18 @@
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        AB\Bundle\Entity\User:
+            algorithm:        pbkdf2
+            hash_algorithm:   sha512
+            encode_as_base64: true
+            iterations:       1000
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN:       [ROLE_PUPIL, ROLE_MENTOR]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        participants:
+            entity: { class ABBundle:User:, property: username }
 
     firewalls:
         dev:

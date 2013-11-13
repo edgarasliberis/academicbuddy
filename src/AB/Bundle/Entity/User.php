@@ -1,7 +1,7 @@
 <?php
 namespace AB\Bundle\Entity;
 
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -10,9 +10,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="users")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"pupil" = "Pupil", "mentor" = "Mentor"})
+ * @ORM\DiscriminatorMap({"user" = "User", "pupil" = "Pupil", "mentor" = "Mentor"})
  */
-class User implements UserInterface, \Serializable
+class User implements AdvancedUserInterface, \Serializable
 {
     /**
      * @ORM\Column(type="integer")
@@ -83,7 +83,12 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        if($this instanceof Pupil) {
+            return array('ROLE_PUPIL');
+        } else if($this instanceof Mentor) {
+            return array('ROLE_MENTOR');
+        }
+        return array('ROLE_ADMIN'); // TODO: solve this properly
     }
 
     /**
@@ -132,7 +137,7 @@ class User implements UserInterface, \Serializable
     public function setUsername($username)
     {
         $this->username = $username;
-    
+
         return $this;
     }
 
@@ -145,7 +150,7 @@ class User implements UserInterface, \Serializable
     public function setSalt($salt)
     {
         $this->salt = $salt;
-    
+
         return $this;
     }
 
@@ -158,7 +163,7 @@ class User implements UserInterface, \Serializable
     public function setPassword($password)
     {
         $this->password = $password;
-    
+
         return $this;
     }
 
@@ -171,7 +176,7 @@ class User implements UserInterface, \Serializable
     public function setEmail($email)
     {
         $this->email = $email;
-    
+
         return $this;
     }
 
@@ -194,7 +199,7 @@ class User implements UserInterface, \Serializable
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
-    
+
         return $this;
     }
 
@@ -204,6 +209,26 @@ class User implements UserInterface, \Serializable
      * @return boolean 
      */
     public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
     {
         return $this->isActive;
     }
