@@ -45,8 +45,6 @@ class CreateAdminCommand extends ContainerAwareCommand
             false
         );
 
-        $output->writeln("I got $username");
-
         $password = $dialog->askHiddenResponseAndValidate(
             $output,
             'Please enter a password: ',
