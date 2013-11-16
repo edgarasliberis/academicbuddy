@@ -56,7 +56,7 @@ function addCourseForm(collectionHolder, $newLinkLi) {
 }
 
 function addCourseFormDeleteLink($courseFormLi) {
-    var $removeFormA = $('<button type="button" class="btn btn-default btn-sm"><span class="remove_course_link glyphicon glyphicon-minus"></span> Ištrinti universitetą</button>');
+    var $removeFormA = $('<p><button type="button" class="btn btn-default btn-sm"><span class="remove_course_link glyphicon glyphicon-minus"></span> Ištrinti universitetą</button></p>');
     $courseFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {

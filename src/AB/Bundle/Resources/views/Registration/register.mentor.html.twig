@@ -123,10 +123,10 @@
 	    <div id="terms" class="well">
 			{{ include('ABBundle:Registration:register.terms.html.twig')}}
 		</div>
-		<div>
+		<p>
 			{{ form_row(form.terms, {'label' : 'Sutinku su taisyklėmis'})
 			}}
-		</div>
+		</p>
 	        {{ form_row(form.save, { 'label' : 'Registruotis' }) }}
 	        {{ form_end(form) }}
 	    </div>
