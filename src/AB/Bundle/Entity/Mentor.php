@@ -9,15 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Table(name="mentor")
  */
-class Mentor
+class Mentor extends User
 {
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
     /*
         Personal infromation
     */
@@ -33,13 +26,6 @@ class Mentor
      * @Assert\NotBlank()
      */
     protected $lastName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Email()
-     */
-    protected $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -84,28 +70,14 @@ class Mentor
     */
 
     /**
-     * @ORM\Column(type="boolean")
-     */ 
-    protected $active;
-
-    /**
      * @ORM\Column(type="integer")
      */ 
     protected $phase;
 
     public function __construct()
     {
+        parent::__construct();
         $this->courses = new ArrayCollection();
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -152,29 +124,6 @@ class Mentor
     public function getLastName()
     {
         return $this->lastName;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Mentor
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -290,29 +239,6 @@ class Mentor
     public function getSchoolCity()
     {
         return $this->schoolCity;
-    }
-
-    /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return Mentor
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-    
-        return $this;
-    }
-
-    /**
-     * Get active
-     *
-     * @return boolean 
-     */
-    public function getActive()
-    {
-        return $this->active;
     }
 
     /**

@@ -8,15 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Table(name="pupil")
  */
-class Pupil
+class Pupil extends User
 {
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
 	/*
 		Personal infromation
 	*/
@@ -32,13 +25,6 @@ class Pupil
      * @Assert\NotBlank()
      */
     protected $lastName;
-
-	/**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     * @Assert\Email()
-     */
-    protected $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -111,24 +97,9 @@ class Pupil
     */
 
     /**
-     * @ORM\Column(type="boolean")
-     */ 
-    protected $active;
-
-    /**
      * @ORM\Column(type="integer")
      */ 
     protected $phase;
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set firstName
@@ -174,29 +145,6 @@ class Pupil
     public function getLastName()
     {
         return $this->lastName;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Pupil
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -404,29 +352,6 @@ class Pupil
     public function getMotivation()
     {
         return $this->motivation;
-    }
-
-    /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return Pupil
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-    
-        return $this;
-    }
-
-    /**
-     * Get active
-     *
-     * @return boolean 
-     */
-    public function getActive()
-    {
-        return $this->active;
     }
 
     /**

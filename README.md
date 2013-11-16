@@ -70,6 +70,10 @@ The server will be accessible through <http://localhost:8000/app_dev.php>.
 
         $ php app/console ab:dbpopulate db_resources/UK_uni_list.txt
 
+4. Create an administrator user
+
+        $ php app/console ab:createadmin
+
 4) Configure Bootstrap frontend framework
 --------------
 
