@@ -10,8 +10,7 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
 
-        $menu->setChildrenAttribute('class', 'nav nav-pills pull-right');
-
+        $menu->setChildrenAttribute('class', 'navbar-nav');
         
         $menu->addChild('Pradžia', array(
             'route' => 'home'

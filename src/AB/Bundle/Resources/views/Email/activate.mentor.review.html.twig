@@ -1,0 +1,21 @@
+<p><strong>Vardas:</strong> {{ user.firstName }}</p>
+<p><strong>Pavardė:</strong> {{ user.lastName }}</p>
+<p><strong>El. paštas:</strong> {{ user.email }}</p>
+
+<strong>Universitetas:</strong>
+<ul>
+{% for course in user.courses %}
+<li>
+<p>{{ course.university }}</p>
+<p>{{ course.name }}</p>
+<p>{{ course.startYear }} - {{ course.graduationYear }}</p>
+</li>
+{% endfor %}
+</ul>
+
+<p><strong>Apie:</strong> {{ user.about }}</p>
+<br/>
+
+<a href="{{ url('activate', { 'type': 'mentor', 'key': user.activationKey }) }}">
+    <button>Aktyvuoti</button>
+</a>

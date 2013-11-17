@@ -1,0 +1,9 @@
+{% extends "ABBundle::abbase.html.twig" %}
+
+{% block content %}
+    {% if error is defined %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% else %}
+    <div class="alert alert-success">Aktyvacija sėkminga</div>
+    {% endif %}
+{% endblock %}

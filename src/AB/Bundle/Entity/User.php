@@ -22,11 +22,6 @@ class User implements AdvancedUserInterface, \Serializable
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    protected $username;
-
-    /**
      * @ORM\Column(type="string", length=32)
      */
     protected $salt;
@@ -44,6 +39,11 @@ class User implements AdvancedUserInterface, \Serializable
     protected $email;
 
     /**
+     * @ORM\Column(type="string", length=10, unique=true)
+     */
+    protected $activationKey;
+
+    /**
      * @ORM\Column(name="is_active", type="boolean")
      */
     protected $isActive;
@@ -59,7 +59,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getUsername()
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**
@@ -136,7 +136,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setUsername($username)
     {
-        $this->username = $username;
+        $this->email = $username;
 
         return $this;
     }
@@ -188,6 +188,29 @@ class User implements AdvancedUserInterface, \Serializable
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set activationKey
+     *
+     * @param string $activationKey
+     * @return User
+     */
+    public function setActivationKey($activationKey)
+    {
+        $this->activationKey = $activationKey;
+
+        return $this;
+    }
+
+    /**
+     * Get activationKey
+     *
+     * @return string
+     */
+    public function getActivationKey()
+    {
+        return $this->activationKey;
     }
 
     /**

@@ -1,19 +1,24 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+    {% stylesheets '@ABBundle/Resources/public/css/signin.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block all_content %}
 
-{% if error %}
-    <div>{{ error.message }}</div>
-{% endif %}
-
-<form action="{{ path('login_check') }}" method="post">
-    <label for="username">Vartotojo vardas:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
-    
-    <label for="password">Slaptažodis:</label>
-    <input type="password" id="password" name="_password" />
-
-    <button type="submit">Prisijungti</button>
+<form class="form-signin" action="{{ path('login_check') }}" method="post">
+    <h2 class="form-signin-heading">Prisijungimas</h2>
+    {% if error %}
+        <div class="alert alert-danger">{{ error.message }}</div>
+    {% endif %}
+    <input type="text" id="username" name="_username" class="form-control" placeholder="El. paštas" value="{{ last_username }}" required autofocus>
+    <input type="password" id="password" name="_password" class="form-control" placeholder="Slaptažodis" required>
+   <!-- <label class="checkbox">
+        <input type="checkbox" value="remember-me"> Remember me
+    </label>-->
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Prisijungti</button>
 </form>
 
 {% endblock %}

@@ -296,4 +296,5 @@ class Mentor extends User
     {
         return $this->courses;
     }
+
 }

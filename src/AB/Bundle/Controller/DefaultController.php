@@ -12,7 +12,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('ABBundle:Default:index.html.twig', array('name' => 'home'));
+        return $this->render('ABBundle:Default:index.html.twig', array('user' => $user));
     }
 
     /**

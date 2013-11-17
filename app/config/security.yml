@@ -12,7 +12,7 @@ security:
 
     providers:
         participants:
-            entity: { class ABBundle:User:, property: username }
+            entity: { class ABBundle:User:, property: email }
 
     firewalls:
         dev:

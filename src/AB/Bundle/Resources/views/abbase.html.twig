@@ -1,13 +1,29 @@
 {% extends "::base.html.twig" %}
 {% block all_content %}
-            <div class="header">
+            <div id="header">
                 {% block header %}
-
-                    {{ knp_menu_render('ABBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
-                    <h3 class="text-muted">Academic Brother</h3>
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Academic Brother</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            {{ knp_menu_render('ABBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
+                            <div class="navbar-nav navbar-right">
+                                {% if is_granted('ROLE_MENTOR') or is_granted('ROLE_PUPIL')  %}
+                                    <p class="navbar-text navbar-left">{{ app.user.firstName }} {{ app.user.lastName }} </p>
+                                    <a chass="navbar-right" href="{{ path('logout') }}">
+                                        <button type="button" class="btn btn-default navbar-btn">Atsijungti</button>
+                                    </a>
+                                {% else %}
+                                    <a href="{{ path('login') }}">
+                                        <button type="button" class="btn btn-default navbar-btn">Prisijungti</button>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </nav>
                 {% endblock %}
             </div>
-
             <div id="content">
                 {% block content %}
                     <div class="jumbotron">
