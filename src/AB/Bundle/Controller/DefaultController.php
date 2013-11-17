@@ -12,7 +12,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('ABBundle:Default:index.html.twig', array('user' => $user));
+        return $this->render('ABBundle:Default:index.html.twig');
     }
 
     /**
@@ -20,6 +20,6 @@ class DefaultController extends Controller
      */
     public function aboutAction() 
     {
-    	return $this->render('ABBundle:Default:index.html.twig', array('name' => 'about'));	
+    	return $this->render('ABBundle:Default:index.html.twig');
     }
 }
