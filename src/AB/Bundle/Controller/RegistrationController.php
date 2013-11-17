@@ -79,10 +79,6 @@ class RegistrationController extends Controller
             $password = $encoder->encodePassword($random, $mentor->getSalt());
             $mentor->setPassword($password);
 
-            //Generate activation key
-            $activationKey = substr(md5(time()),0,10);
-            $mentor->setActivationKey($activationKey);
-
             foreach($mentor->getCourses() as $course) {
                 // Get university by name
                 $university = $course->getUniversity();
@@ -164,10 +160,6 @@ class RegistrationController extends Controller
 
             $password = $encoder->encodePassword($random, $pupil->getSalt());
             $pupil->setPassword($password);
-
-            //Generate activation key
-            $activationKey = substr(md5(time()),0,10);
-            $pupil->setActivationKey($activationKey);
 
             $em->persist($pupil);
             $em->flush();

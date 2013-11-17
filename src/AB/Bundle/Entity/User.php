@@ -64,6 +64,7 @@ class User implements AdvancedUserInterface, \Serializable
     {
         $this->isActive = false;
         $this->salt = md5(uniqid(null, true));
+        $this->activationKey = substr(md5(uniqid(null, true)), 0, 10);
     }
 
     /**
