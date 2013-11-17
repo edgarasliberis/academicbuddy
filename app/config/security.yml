@@ -26,3 +26,4 @@ security:
             logout:     ~
 
     access_control:
+        - { path: ^/activate, roles: ROLE_ADMIN }
