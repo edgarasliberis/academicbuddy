@@ -14,18 +14,6 @@ class Pupil extends User
 		Personal infromation
 	*/
 
-	/**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     */
-    protected $firstName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
-     */
-    protected $lastName;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -100,52 +88,6 @@ class Pupil extends User
      * @ORM\Column(type="integer")
      */ 
     protected $phase;
-
-    /**
-     * Set firstName
-     *
-     * @param string $firstName
-     * @return Pupil
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    
-        return $this;
-    }
-
-    /**
-     * Get firstName
-     *
-     * @return string 
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * Set lastName
-     *
-     * @param string $lastName
-     * @return Pupil
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    
-        return $this;
-    }
-
-    /**
-     * Get lastName
-     *
-     * @return string 
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
 
     /**
      * Set homeCity

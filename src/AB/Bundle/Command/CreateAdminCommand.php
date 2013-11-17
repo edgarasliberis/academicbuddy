@@ -61,6 +61,22 @@ class CreateAdminCommand extends ContainerAwareCommand
             false
         );
 
+        $firstname = $dialog->askAndValidate(
+            $output,
+            'Please enter first name: ',
+            $validatorfactory(255),
+            20,
+            false
+        );
+
+        $lastname = $dialog->askAndValidate(
+            $output,
+            'Please enter last name: ',
+            $validatorfactory(255),
+            20,
+            false
+        );
+
         $u = new User();
         $u->setUsername($username);
 
@@ -69,6 +85,8 @@ class CreateAdminCommand extends ContainerAwareCommand
         $u->setPassword($encpass);
 
         $u->setEmail($email);
+        $u->setFirstName($firstname);
+        $u->setLastName($lastname);
         $u->setIsActive(true);
         $em->persist($u);
         $em->flush();
