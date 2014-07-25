@@ -1,0 +1,36 @@
+{% extends "ABBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets 'bundles/ab/css/user_export.less' filter="less,cssrewrite" %}
+    	<link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+    <div class="panel-shadow">
+    	<p>Pasirink kokių vartotojų el.paštų sąrašą nori matyti (galima pasirinkti kelias kategorijas):</p>
+    	<div class="btn-group" data-toggle="buttons">
+			<label id="mentors" class="btn btn-primary">
+				<input type="checkbox"> Mentoriai
+			</label>
+			<label id="pupils" class="btn btn-primary">
+				<input type="checkbox"> Mokiniai
+			</label>
+			<label id="enabled" class="btn btn-primary">
+				<input type="checkbox"> Aktyvuoti
+			</label>
+			<label id="notenabled" class="btn btn-primary">
+				<input type="checkbox"> Neaktyvuoti
+			</label>
+		</div>
+		<br />
+		<p>Nukopijuok šitą sąrašą į 'bcc:' laiško laukelį:</p> 
+		<textarea id="list" rows="30"></textarea>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@ABBundle/Resources/public/js/user_export.js' filter='?uglifyjs2' %}
+    	<script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

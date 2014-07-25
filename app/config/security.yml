@@ -1,29 +1,98 @@
 security:
     encoders:
-        AB\Bundle\Entity\User:
-            algorithm:        pbkdf2
-            hash_algorithm:   sha512
-            encode_as_base64: true
-            iterations:       1000
+            FOS\UserBundle\Model\UserInterface: sha512
+#    encoders:
+#        AB\Bundle\Entity\User:
+#            algorithm:        pbkdf2
+#            hash_algorithm:   sha512
+#            encode_as_base64: true
+#            iterations:       1000
+
+#    role_hierarchy:
+#        ROLE_ADMIN:       [ROLE_PUPIL, ROLE_MENTOR]
+#        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+#
+#    providers:
+#        participants:
+#            entity: { class ABBundle:User:, property: email }
+#
+#    firewalls:
+#        dev:
+#            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+#
+#        secured_area:
+#            pattern:    ^/
+#            anonymous:  ~
+#            form_login: ~
+#            logout:     ~
+#
+#    access_control:
+#        - { path: ^/activate, roles: ROLE_ADMIN }
 
     role_hierarchy:
+        ROLE_MENTOR: [ROLE_USER]
+        ROLE_PUPIL: [ROLE_USER]
         ROLE_ADMIN:       [ROLE_PUPIL, ROLE_MENTOR]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        participants:
-            entity: { class ABBundle:User:, property: email }
+        #my_custom_hwi_provider:
+            #id: my.oauth_aware.user_provider.service
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+        #participants:
+            #entity: { class RefreshingAppBundle:User:, property: email }
 
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        secured_area:
+        main:
             pattern:    ^/
-            anonymous:  ~
-            form_login: ~
-            logout:     ~
-
+            anonymous:  true
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                login_path: /login
+                check_path: /login_check
+                always_use_default_target_path: false
+                default_target_path: /
+            logout:
+                path: /logout
+                target: /
+            #http_basic:
+            #    realm: "Secured Demo Area"
+            remember_me:
+                key: "%secret%"
+                lifetime: 31536000 # 365 days in seconds
+                path: /
+                domain:
     access_control:
-        - { path: ^/activate, roles: ROLE_ADMIN }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/view/mentors, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/view/mentors/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/view/mentors$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/view/mentors/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register/mentor$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register/pupil$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register/check-mail, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register/confirm, role: ROLE_ADMIN }
+        - { path: ^/register/confirmed, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register/$, role: ROLE_NO_ACCESS }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+
+#    access_control:
+#        - { path: ^/login$, allow_if: "not has_role('ROLE_USER')" }
+#        - { path: ^/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/register/$, role: ROLE_NO_ACCESS }
+#        - { path: ^/register/PUPIL$, allow_if: "not has_role('ROLE_USER')" }
+#        - { path: ^/register/PUPIL/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/register/MENTOR$, allow_if: "not has_role('ROLE_USER')" }
+#        - { path: ^/resetting, allow_if: "not has_role('ROLE_USER')" }
+#        - { path: ^/edit,  roles: ROLE_USER }
+#        - { path: ^/update/PUPIL,  roles: ROLE_USER }
+#        - { path: ^/admin, role: ROLE_ADMIN }
+#        - { path: ^/view/PUPIL/list, role: ROLE_MENTOR }
+#        - { path: ^/export, role: ROLE_MENTOR }

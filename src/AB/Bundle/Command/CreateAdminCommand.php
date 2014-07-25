@@ -21,9 +21,9 @@ class CreateAdminCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $em = $this->getContainer()->get('doctrine')->getEntityManager();
+//        $em = $this->getContainer()->get('doctrine')->getEntityManager();
         $dialog = $this->getHelperSet()->get('dialog');
-        $encfactory = $this->getContainer()->get('security.encoder_factory');
+//        $encfactory = $this->getContainer()->get('security.encoder_factory');
 
         $validatorfactory = function ($len) {
             return function ($value) {
@@ -37,9 +37,17 @@ class CreateAdminCommand extends ContainerAwareCommand
             };
         };
 
-        $username = $dialog->askAndValidate(
+//        $username = $dialog->askAndValidate(
+//            $output,
+//            'Please enter a username: ',
+//            $validatorfactory(255),
+//            20,
+//            false
+//        );
+
+        $email = $dialog->askAndValidate(
             $output,
-            'Please enter a username: ',
+            'Please enter an email: ',
             $validatorfactory(255),
             20,
             false
@@ -49,14 +57,6 @@ class CreateAdminCommand extends ContainerAwareCommand
             $output,
             'Please enter a password: ',
             $validatorfactory(4096),
-            20,
-            false
-        );
-
-        $email = $dialog->askAndValidate(
-            $output,
-            'Please enter an email: ',
-            $validatorfactory(255),
             20,
             false
         );
@@ -77,21 +77,24 @@ class CreateAdminCommand extends ContainerAwareCommand
             false
         );
 
-        $u = new User();
-        $u->setUsername($username);
 
-        $encoder = $encfactory->getEncoder($u);
-        $encpass = $encoder->encodePassword($password, $u->getSalt());
-        $u->setPassword($encpass);
+        $discriminator = $this->getContainer()->get('pugx_user.manager.user_discriminator');
+        $discriminator->setClass('AB\Bundle\Entity\Pupil');
+        $userManager = $this->getContainer()->get('pugx_user_manager');
+        $u = $userManager->createUser();
 
+        $u->setPlainPassword($password);
         $u->setEmail($email);
         $u->setFirstName($firstname);
         $u->setLastName($lastname);
-        $u->setIsActive(true);
-        $em->persist($u);
-        $em->flush();
+        $u->setEnabled(true);
+        $u->addRole("ROLE_ADMIN");
 
-        $output->writeln("Administrator $username created");
+
+
+        $userManager->updateUser($u, true);
+
+        $output->writeln("Administrator $email created");
     }
 }
 

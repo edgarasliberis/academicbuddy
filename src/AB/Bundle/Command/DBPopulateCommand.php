@@ -22,7 +22,7 @@ class DBPopulateCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $em = $this->getContainer()->get('doctrine')->getEntityManager();
+        $em = $this->getContainer()->get('doctrine')->getManager();
 
         $list = $input->getArgument('unilist');
         $lines = file($list, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);

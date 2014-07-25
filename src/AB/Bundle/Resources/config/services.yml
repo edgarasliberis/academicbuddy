@@ -1,7 +1,9 @@
 parameters:
-#    main.example.class: AB\Bundle\Example
+    ab_bundle.db.table_prefix: ab2_
 
 services:
-#    main.example:
-#        class: %main.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    ab_bundle.tblprefix_subscriber:
+        class: AB\Bundle\Subscriber\TablePrefixSubscriber
+        arguments: [%ab_bundle.db.table_prefix%]
+        tags:
+            - { name: doctrine.event_subscriber }

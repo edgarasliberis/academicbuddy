@@ -1,0 +1,22 @@
+{% extends "ABBundle::layout.html.twig" %}
+{% block content %}
+<div class="panel-shadow">
+    <h3>Susisiekti su mentoriumi</h3>
+    {% if mentorName is not null %}
+        <b>Gavėja(s):</b> {{ mentorName }}
+    {% endif %}
+    {% if success == true %}
+        <div class="alert alert-success">Žinutė sėkmingai išsiųsta</div>
+    {% elseif error is not null %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form class="form-vertical" action="{{ path('message', { 'mentorId' : mentorId }) }}" method="post">
+        {{ form_row(form.message, {
+        'label' : 'Žinutė:',
+        'help_text' : 'Ši žinutė bus nusiųstą į mentoriaus el pašto dėžutę',
+        'attr' : { 'rows' : '10' }}) }}
+        <input type="submit" class="btn btn-primary" value="Siųsti"/>
+        {{ form_end(form) }}
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <p>Aktyvacija sėkminga!</p>
+    {#{% if app.session is not empty %}#}
+        {#{% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}#}
+        {#{% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}#}
+       {##}
+    {#{% endif %}#}
+    {#<a href="{{ path('profile_view') }}"><button class="btn btn-sm btn-primary">Go to Profile</button></a>#}
+{% endblock fos_user_content %}

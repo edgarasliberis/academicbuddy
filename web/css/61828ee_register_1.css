@@ -1,0 +1,14 @@
+#register_form input[type=number]{
+	width: 60px;
+}
+
+#register_form input[type=text],
+#register_form input[type=email],
+#register_form select {   
+	width: 300px;
+}
+
+.required:after {
+    color: red;
+    content: ' *';
+}

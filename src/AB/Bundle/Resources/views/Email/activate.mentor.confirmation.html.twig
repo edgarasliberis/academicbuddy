@@ -1,18 +1,35 @@
-Sveikas(-a),
-<br/><br/>
-Sveikiname! Tavo registracijos anketa buvo patvirtinta. Pranešime, kai tavo anketa bus patalpinta academicbrother.lt puslapyje.
-<p>Tavo laikinas slaptažodis: {{ password }}</p>
-<br/><br/>
-Iki gruodžio pabaigos projekto veikla ir mentorystė vyks nuotoliniu būdu: asmeniniais laiškais bei diskusijomis grupėse. Gruodžio pabaigoje Vilniuje bus organizuojamas bendras susitikimas, kurio metu kviesime pristatyti savo universitetą bei pakonsultuoti moksleivius Personal Statement'o rašymo klausimais, taip pat susipažinti ir pabendrauti su kitais mentoriais.
-<br/><br/>
-Kol kas tiek. Jei kils klausimų, rašyk mums academic.brother@gmail.com, arba paskaityk "Apie projektą" skiltį. O dabar kviečiame prisijungti prie AB diskusijų grupių ir užsiprenumeruoti jų naujienas!<br>
-<ul>
-<li>Facebook grupė: <a href="https://www.facebook.com/groups/1430196147193777/"></a>https://www.facebook.com/groups/1430196147193777/</li>
-<li>Google grupė: <a href="https://groups.google.com/forum/#!forum/academic-brother-diskusiju-grupe/">https://groups.google.com/forum/#!forum/academic-brother-diskusiju-grupe/</a></li>
-<li>El. laiškai: tavo el. paštas bus matomas kitiems projekto dalyviams, kurie galės tau parašyti asmeniškai.</li>
-<li>Susitikimas: daugiau informacijos persiųsime gruodžio mėn.</li>
-</ul>
-<br/><br/>
-sėkmės mentorystėje -
-<br/>
-Academic Brother komanda
+{% block subject %}
+    {% autoescape false %}
+    Academic Buddy: tavo registracija patvirtinta!
+    {% endautoescape %}
+{% endblock %}
+{#{% block body_text %}#}
+    {#{% autoescape false %}#}
+    {#{{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}#}
+    {#{% endautoescape %}#}
+{#{% endblock %}#}
+{% block body_html %}
+Sveikiname!<br />
+<br />
+Mūsų sistemoje buvo sukurta Tavo prisijungimo paskyra:<br />
+<br />
+Prisijungimo vardas: {{ email }}<br />
+Slaptažodis: {{ password }}<br />
+<br />
+<br />
+Prisijungęs(-usi) prie <a href="{{ url('fos_user_security_login') }}">puslapio</a> aukščiau nurodytais duomenimis, galėsi peržiūrėti kitų mentorių aprašymus ir, radęs bendraminčių, parašyti jiems asmeninį laišką ir susipažinti. Tokiu pačiu būdu su Tavimi galės susiekti ir moksleiviai - pagalba jiems yra pagrindinis mūsų projekto tikslas! Skatiname gyvai susitikti su moksleiviais, jei tik yra abipusio noro ir galimybių. <br /> 
+Labai dėkojame už Tavo indėlį padedant spręsti mūsų mažiesiems broliams bei sesėms svarbius su akademine karjera susijusius klausimus.
+<br />
+Taip pat kviečiame prisijungti prie Facebook grupės ir dalyvauti bendrose diskusijose, dalintis mintimis su kitais moksleiviais ir mentoriais: <a href="https://www.facebook.com/groups/1424820664453637">https://www.facebook.com/groups/1424820664453637</a><br />
+<br />
+Jeigu kiltų klausimų, drąsiai rašyk mums <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a><br />
+<br />
+P.S. Tavo elektroninis pašto adresas nebus matomas kitiems projekto dalyviams, tačiau prie mūsų puslapio prisijungę nariai galės Tau siųsti laiškus registracijoje nurodytu el. paštu per mūsų sistemą.
+<br/ ><br />
+Sėkmės ir produktyvaus bendravimo!<br />
+Academic Buddy komanda<br />
+{% endblock %}
+
+
+
+

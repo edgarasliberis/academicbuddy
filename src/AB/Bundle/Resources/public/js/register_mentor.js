@@ -7,8 +7,8 @@ var $newLinkLi = $('<li></li>').append($addCourseLink);
   
 jQuery(document).ready(function() {
 	
-	addBlankChoice($("#mentor_registration_mentor_courses_0_university"));
-	$("#mentor_registration_mentor_courses_0_university").chosen(
+	addBlankChoice($("[name$='[courses][0][university]']"));
+	$("[name$='[courses][0][university]']").chosen(
 		{no_results_text: "Nerasta"}
 	); 
 

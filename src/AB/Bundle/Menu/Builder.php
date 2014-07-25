@@ -11,14 +11,30 @@ class Builder extends ContainerAware
         $menu = $factory->createItem('root');
 
         $menu->setChildrenAttribute('class', 'navbar-nav');
-        
-        $menu->addChild('Pradžia', array(
-            'route' => 'home'
-        ));
+		
         $menu->addChild('Apie', array(
             'route' => 'about'
         ));
+		
+        $menu->addChild('Parama', array(
+            'route' => 'support'
+        ));
+        
+        $menu->addChild('Mentoriai', array(
+            'route' => 'mentor_list'
+        ));
 
+        $securityContext = $this->container->get('security.context');
+
+        if ($securityContext->isGranted('ROLE_ADMIN')) {
+            $menu->addChild('Moksleiviai', array(
+                'route' => 'pupil_list'
+            ));
+
+            $menu->addChild('El. paštai', array(
+                'route' => 'user_export'
+            ));
+        }
         return $menu;
     }
 }

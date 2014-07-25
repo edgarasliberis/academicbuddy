@@ -1,14 +1,17 @@
+{% block subject %}[Nauja registracija][Moksleivis]{% endblock %}
+{% block body_html %}
 <p><strong>Vardas:</strong> {{ user.firstName }}</p>
 <p><strong>Pavardė:</strong> {{ user.lastName }}</p>
 <p><strong>El. paštas:</strong> {{ user.email }}</p>
 <p><strong>Miestas:</strong> {{ user.homeCity }}</p>
 
 <p><strong>Mokykla:</strong> {{ user.schoolName }} ({{ user.schoolCity }})</p>
-<p><strong>Baigimo metai:</strong> {{ user.schoolGraudationYear }}</p>
+<p><strong>Baigimo metai:</strong> {{ user.schoolGraduationYear }}</p>
 
 <p><strong>Motyvacija:</strong> {{ user.motivation }}</p>
 <p><strong>Apie:</strong> {{ user.about }}</p>
 
-<a href="{{ url('activate', { 'type': 'pupil', 'key': user.activationKey }) }}">
+<a href="{{ confirmationURL }}">
     <button>Aktyvuoti</button>
 </a>
+{% endblock %}

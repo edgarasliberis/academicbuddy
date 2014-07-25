@@ -1,4 +1,4 @@
-{% extends "ABBundle::abbase.html.twig" %}
+{% extends "ABBundle::layout.html.twig" %}
 
 {# Enable redefining #}
 {% form_theme form _self %}
@@ -26,12 +26,12 @@
 		{{ form_row(course.startYear, 
 					{ 'style' : 'horizontal', 'widget_col' : 9, 'label_col' : 3,
 					  'label' : 'Įstojimo metai',
-					   'help_text' : 'Pvz. 2013'})
+					   'help_text' : 'Pvz. 2010'})
 		}}
 		{{ form_row(course.graduationYear, 
 					{ 'style' : 'horizontal', 'widget_col' : 9, 'label_col' : 3,
 					  'label' : 'Baigimo metai',
-					  'help_text' : 'Pvz. 2010'})
+					  'help_text' : 'Pvz. 2014'})
 		}}
   </div>
 </div>
@@ -49,43 +49,54 @@
 
 {# Page content #}
 {% block content %}
-	<h1>Registracija pagrindinio etapo mentoriams</h1>
+	<h1>Registracija Oksbridžo etapo mentoriams</h1>
 	{% if success is defined %}
 	<div class="alert alert-success">Registracija sėkminga!</div>
 	{% endif %}
 	<div id="register_form">
-		{{ form_start(form, { 'attr' : {'class': 'form-horizontal'} }) }}
+        <form class="form-horizontal" action="{{ path('mentor_registration') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
 	    {{ form_errors(form) }}
 		<fieldset>
 			<legend>Asmeninė informacija</legend>
-			{{ form_row(form.mentor.firstName, { 'style' : 'horizontal',
+			{{ form_row(form.firstName, { 'style' : 'horizontal',
 												 'widget_col' : 9,
 												 'label_col' : 3,
 												 'label' : 'Vardas'})
 			}}
-			{{ form_row(form.mentor.lastName, { 'style' : 'horizontal',
+			{{ form_row(form.lastName, { 'style' : 'horizontal',
 												 'widget_col' : 9,
 												 'label_col' : 3,
 												 'label' : 'Pavardė'})
+			}}
+			{{ form_row(form.facebookId, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'Facebook ID'})
+			}}
+			{{ form_row(form.linkedInId, { 'style' : 'horizontal',
+												 'widget_col' : 9,
+												 'label_col' : 3,
+												 'label' : 'LinkedIn ID'})
 			}}			
-			{{ form_row(form.mentor.email, { 'style' : 'horizontal',
+			{{ form_row(form.email, { 'style' : 'horizontal',
 												 'widget_col' : 9,
 												 'label_col' : 3,
 												 'label' : 'El. pašto adresas'})
 			}}
-			{{ form_row(form.mentor.homeCity, { 'style' : 'horizontal',
+			{{ form_row(form.homeCity, { 'style' : 'horizontal',
 												 'widget_col' : 9,
 												 'label_col' : 3,
 												 'label' : 'Gyvenamoji vieta Lietuvoje',
-												 'help_text' : 'Miestas/rajonas (galimiems susitikimams su mažuoju broliu)'})
+												 'help_text' : 'Miestas/rajonas (galimiems susitikimams su akademiniu bičiuliu)'})
 			}}
 		</fieldset>
 		<fieldset>
 			<legend>Universitetas</legend>
 			<ul class="courses" data-prototype="
-				{{ mentor_form.university_panel(form.mentor.courses.vars.prototype)|e }}
-			">     
-		        {% for course in form.mentor.courses %}
+				{{ mentor_form.university_panel(form.courses.vars.prototype)|e }}
+			">
+                {#{{ form_row(form.courses) }}#}
+		        {% for course in form.courses %}
 		            <li>
 		            	{{ mentor_form.university_panel(course) }}
 		            </li>
@@ -94,17 +105,17 @@
 		</fieldset>
 		<fieldset>
 			<legend>Mokykla</legend>
-			{{ form_row(form.mentor.schoolName, { 'style' : 'horizontal',
+			{{ form_row(form.schoolName, { 'style' : 'horizontal',
 												  'widget_col' : 9,
 												  'label_col' : 3,
 												  'label' : 'Pavadinimas'})
 			}}
-			{{ form_row(form.mentor.schoolCity, { 'style' : 'horizontal',
+			{{ form_row(form.schoolCity, { 'style' : 'horizontal',
 												  'widget_col' : 9,
 												  'label_col' : 3,
 												  'label' : 'Miestas'})
 			}}
-			{{ form_row(form.mentor.schoolGraduationYear, { 'style' : 'horizontal',
+			{{ form_row(form.schoolGraduationYear, { 'style' : 'horizontal',
 												  			'widget_col' : 9,
 												  			'label_col' : 3,
 												  			'label' : 'Baigimo metai'})
@@ -112,25 +123,26 @@
 		</fieldset>
 		<fieldset>
 			<legend>Papildoma informacija</legend>
-			{{ form_row(form.mentor.about, { 'style' : 'horizontal',
+			{{ form_row(form.about, { 'style' : 'horizontal',
 											 'widget_col' : 9,'label_col' : 3,
 											 'attr' : { 'rows' : '5' },
 											 'label' : 'Apie save',
-											  'help_text' : 'Čia galite aprašyti savo pomėgius, papildomą veiklą, trumpai papasakoti, kodėl pasirinkote savo studijų kryptį ir pan. Rekomenduojame iki 200 žodžių'})
+											  'help_text' : 'Čia galite trumpai papasakoti, kodėl pasirinkote savo studijų kryptį, aprašyti savo pomėgius, papildomą veiklą ir pan. Rekomenduojame iki 200 žodžių.'})
 			}}
 		</fieldset>
-	    <div>
+
 	    <div id="terms" class="well">
 			{{ include('ABBundle:Registration:register.terms.html.twig')}}
 		</div>
-		<p>
+
 			{{ form_row(form.terms, {'label' : 'Sutinku su taisyklėmis'})
 			}}
-		</p>
-	        {{ form_row(form.save, { 'label' : 'Registruotis' }) }}
-	        {{ form_end(form) }}
-	    </div>
+
+	    {{ form_row(form.save, { 'label' : 'Registruotis' }) }}
+	    {{ form_end(form) }}
+        </form>
 	</div>
+
 {% endblock %}
 
 {# Include javascript #}

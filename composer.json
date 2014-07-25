@@ -8,7 +8,7 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.3.*",
+        "symfony/symfony": "2.4.*",
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.2.*",
         "twig/extensions": "1.0.*",
@@ -23,7 +23,10 @@
         "knplabs/knp-menu": "2.0.*@dev",
         "knplabs/knp-menu-bundle": "dev-master",
         "jquery/jquery":  "1.10.*",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "pugx/multi-user-bundle": "3.0.*@dev",
+        "friendsofsymfony/jsrouting-bundle": "~1.1"
     },
     "repositories": [
         {

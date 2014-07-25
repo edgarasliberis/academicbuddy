@@ -1,0 +1,12 @@
+parameters:
+    ab_user.from_email: academic.buddy@gmail.com
+
+services:
+    ab_user.listener.email_confirmation:
+        class: AB\UserBundle\EventListener\EmailListener
+        arguments: [@ab_user.mailer, @fos_user.util.token_generator, @router, @session]
+        tags:
+            - { name: kernel.event_subscriber }
+    ab_user.mailer:
+        class: AB\UserBundle\Mailer\Mailer
+        arguments: [@mailer, @router, @twig, {fromEmail: %ab_user.from_email%}]

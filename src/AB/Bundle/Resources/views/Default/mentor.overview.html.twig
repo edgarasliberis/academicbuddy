@@ -1,0 +1,91 @@
+<div class="mentor-overview">
+    <div class="mentor-avatar col-md-1">
+        {% set avatar = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50" %}
+        {% if user.facebookId is not null and user.facebookId | length > 3 %}
+            {% set fbId = user.facebookId %}
+            {% if 'facebook.com' in user.facebookId %}
+                {% set components = user.facebookId|split('/') %}
+                {% set fbId = components[components|length - 1] %}
+            {% endif %}
+            {% set avatar = "https://graph.facebook.com/" ~ fbId ~ "/picture" %}
+        {% endif %}
+        <img src="{{ avatar }}"/>
+    </div>
+    <div class="mentor-info col-md-11">
+        <div class="mentor-name">
+            {% if user.firstName is not null and user.lastName is not null %}
+                {{ user.firstName }} {{ user.lastName }}
+            {% else  %}
+                {{ user.username }}
+            {% endif %}
+        </div>
+        <div class="mentor-summary">
+            <div class="overview">
+                <div class="summary-label">Universitetas:</div>
+                {% for course in user.courses %}
+                    {{ course.university.name }}, {{ course.name }}, {{ course.startYear }}-{{ course.graduationYear}}</br>
+                {% endfor %}
+            </div>
+            <div class="extended" style="display: none">
+                {% if user.schoolName is not null and user.schoolName | length > 3%}
+                    <div><div class="summary-label">Mokykla: </div>
+                        {{ user.schoolName }}{% if user.schoolCity is not null and user.schoolCity|length > 3 %}, {{ user.schoolCity }}{% endif %}{% if user.schoolGraduationYear != 0 %}, {{ user.schoolGraduationYear }}{% endif %}
+                    </div>
+                {% endif %}
+                <div><div class="summary-label">Prisistatymas: </div>
+                    <p>{{ user.about }}</p>
+                </div>
+                <div>
+                    {% if user.facebookId is not null and user.facebookId|length > 3 %}
+                        {% set fburl = 'http://www.facebook.com/' %}
+                        {% if 'facebook.com' in user.faceBookId %}
+                            {% set fburl ='' %}
+                        {% endif %}
+						{% set fbfinalUrl = fburl ~ user.facebookId %}
+						{% if 'http' not in fbfinalUrl %}
+							{% set fbfinalUrl = 'http://' ~ fbfinalUrl %}
+						{% endif %}
+                    <a class="social social-fb" href="{{ fbfinalUrl }}"></a>
+                    {% else %}
+                    <br/><br/>
+                    {% endif %}
+                    {% if user.linkedinId is not null and user.linkedinId|length > 3 %}
+                        {% set lurl = 'http://www.linkedin.com/' %}
+                        {% if 'linkedin.com' in user.linkedinId %}
+                            {% set lurl ='' %}
+                        {% endif %}
+                        {% if 'pub' not in user.linkedinId and 'in' not in user.linkedinId %}
+                            {% set lurl = lurl ~ 'in/' %}
+                        {% endif %}
+						{% set finalUrl = lurl ~ user.linkedinId %}
+						{% if 'http' not in finalUrl %}
+							{% set finalUrl = 'http://' ~ finalUrl %}
+						{% endif %}
+                    <a class="social social-lnkd" href="{{ finalUrl }}"></a>
+                    {% endif %}
+                </div>
+                {% if is_granted('ROLE_USER') %}
+                    <div class="message-button">
+                        <a href="{{ path('message', {'mentorId' : user.id}) }}"><button class="btn btn-primary btn-sm">Susisiekti</button>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="show show-more">Daugiau</div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="activate">
+                    {% if user.enabled != 1 %}
+                    <a href="{{ path('fos_user_registration_confirm', {'token' : user.confirmationToken}) }}">
+                        <button class="btn btn-success btn-xs">Aktyvuoti</button>
+                    </a>
+                    {% else %}
+                        <button class="btn btn-default btn-xs" disabled="disabled">Aktyvuota</button>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {#<a href="{{ path('profile_public', {'id' : user.id}) }}">#}
+            {#<button class="btn btn-primary btn-sm">View</button>#}
+            {#</a>#}
+        </div>
+    </div>
+</div>

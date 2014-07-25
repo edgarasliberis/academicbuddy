@@ -4,10 +4,12 @@ namespace AB\Bundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="mentor")
+ * @UniqueEntity(fields = "email", targetClass = "AB\Bundle\Entity\User", message="fos_user.email.already_used")
  */
 class Mentor extends User
 {
@@ -49,7 +51,8 @@ class Mentor extends User
     */
 
     /**
-     * @ORM\OneToMany(targetEntity="Course", mappedBy="mentor")
+     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity="Course", mappedBy="mentor", cascade={"persist","remove"})
      */
     protected $courses;
 
@@ -66,6 +69,8 @@ class Mentor extends User
     {
         parent::__construct();
         $this->courses = new ArrayCollection();
+        $this->addRole("ROLE_MENTOR");
+        $this->addCourse(new Course()); // an empty Course for the registration form
     }
 
     /**
@@ -214,6 +219,7 @@ class Mentor extends User
      */
     public function addCourse(\AB\Bundle\Entity\Course $courses)
     {
+        $courses->setMentor($this);
         $this->courses[] = $courses;
     
         return $this;

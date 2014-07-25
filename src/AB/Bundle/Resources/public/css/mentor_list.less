@@ -1,0 +1,150 @@
+@import (reference) "base.less";
+
+body {
+  background-color: rgb(244, 244, 244);
+}
+
+.mentor-list {
+    position: relative;
+    .mentor-overview {
+        .make-row();
+        margin: 5px 0;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        .mentor-avatar {
+            padding: 0px;
+        }
+        .mentor-info {
+            padding: 0 5px;
+            .mentor-name {
+                font-weight: bold;
+            }
+            .mentor-summary {
+                font-size: 90%;
+                .summary-label {
+                    color: #888;
+                }
+                .extended{
+                    position: relative;
+                    .social {
+                        width: 24px;
+                        height: 24px;
+                        display: inline-block;
+
+                        margin: 5px 5px 0 0;
+
+                    }
+                    .social-fb {
+                        background: url('../images/facebook.png');
+                        background-size: 100%;
+                    }
+                    .social-lnkd {
+                        background: url('../images/linkedin.png');
+                        background-size: 100%;
+                    }
+                    .message-button {
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                    }
+                }
+            }
+        }
+        .mentor-view {
+            height: 100%;
+            button {
+                margin: auto;
+            }
+        }
+    }
+    .show {
+        position: absolute;
+        cursor: pointer;
+        top: 2px;
+        right: 5px;
+        border: 0px none;
+
+        color: rgb(139, 139, 139);
+        font-size: 90%;
+    }
+
+    .activate {
+        position: absolute;
+        top: 0;
+        right: 80px;
+        margin-top: 5px;
+    }
+}
+
+.category-select {
+    width: 250px;
+
+}
+
+.mentor {
+  background-color: #fff;
+  padding: 15px;
+  .box-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
+
+//  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+//  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+//  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+  .mentor-header {
+
+    .mentor-name {
+      display: block;
+      float: left;
+      margin-left: 15px;
+      text-transform: uppercase;
+
+    }
+    .mentor-avatar {
+      display: block;
+      float: left;
+      position:relative;
+      .edit-avatar-button {
+        display: block;
+        position: absolute;
+        padding: 5px;
+        margin: 0px;
+        background: none repeat scroll 0% 0% rgba(66, 137, 202, 0.8);
+        width: 100%;
+        bottom: 0px;
+        text-align: center;
+        color: #fff;
+      }
+
+    }
+    .update-info {
+      float: right;
+    }
+    .clearfix();
+  }
+
+  .mentor-summary {
+      text-align: center;
+      p {
+        font-size: 80%;
+        width:80%;
+        margin: 15px auto;
+      }
+
+  }
+  .mentor-extra-info {
+      margin: 30px 0px;
+      text-align: left;
+      .mentor-extra-info-label {
+          font-weight: bold;
+      }
+  }
+  .mentor-status-message-content {
+        display:block;
+  }
+  .mentor-status-message-label {
+        font-weight: bold;
+  }
+
+
+}

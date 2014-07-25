@@ -1,0 +1,111 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install', 'less' ]
+2 info using npm@1.3.11
+3 info using node@v0.10.21
+4 verbose cache add [ 'less', null ]
+5 verbose cache add name=undefined spec="less" args=["less",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'less',
+6 verbose parsed url   path: 'less',
+6 verbose parsed url   href: 'less' }
+7 silly lockFile 0b439cf4-less less
+8 verbose lock less /home/vagrant/.npm/0b439cf4-less.lock
+9 silly lockFile 0b439cf4-less less
+10 silly lockFile 0b439cf4-less less
+11 verbose addNamed [ 'less', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile e13833ab-less less@
+14 verbose lock less@ /home/vagrant/.npm/e13833ab-less.lock
+15 silly addNameRange { name: 'less', range: '*', hasData: false }
+16 verbose url raw less
+17 verbose url resolving [ 'https://registry.npmjs.org/', './less' ]
+18 verbose url resolved https://registry.npmjs.org/less
+19 info trying registry request attempt 1 at 17:08:43
+20 verbose etag "BYS328JA9AVUYPAZQ7QGO836X"
+21 http GET https://registry.npmjs.org/less
+22 http 200 https://registry.npmjs.org/less
+23 silly registry.get cb [ 200,
+23 silly registry.get   { vary: 'Accept',
+23 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R15B03)',
+23 silly registry.get     etag: '"AMPENQ41R2PK275BNZMLGLVLZ"',
+23 silly registry.get     date: 'Mon, 18 Nov 2013 17:08:44 GMT',
+23 silly registry.get     'content-type': 'application/json',
+23 silly registry.get     'content-length': '100755' } ]
+24 silly addNameRange number 2 { name: 'less', range: '*', hasData: true }
+25 silly addNameRange versions [ 'less',
+25 silly addNameRange   [ '1.0.10',
+25 silly addNameRange     '1.0.11',
+25 silly addNameRange     '1.0.14',
+25 silly addNameRange     '1.0.18',
+25 silly addNameRange     '1.0.19',
+25 silly addNameRange     '1.0.21',
+25 silly addNameRange     '1.0.32',
+25 silly addNameRange     '1.0.36',
+25 silly addNameRange     '1.0.5',
+25 silly addNameRange     '1.0.40',
+25 silly addNameRange     '1.0.41',
+25 silly addNameRange     '1.0.44',
+25 silly addNameRange     '1.1.0',
+25 silly addNameRange     '1.1.1',
+25 silly addNameRange     '1.1.2',
+25 silly addNameRange     '1.1.4',
+25 silly addNameRange     '1.1.5',
+25 silly addNameRange     '1.1.6',
+25 silly addNameRange     '1.2.0',
+25 silly addNameRange     '1.2.1',
+25 silly addNameRange     '1.2.2',
+25 silly addNameRange     '1.3.0',
+25 silly addNameRange     '1.3.1',
+25 silly addNameRange     '1.3.2',
+25 silly addNameRange     '1.3.3',
+25 silly addNameRange     '1.4.0-b1',
+25 silly addNameRange     '1.4.0-b2',
+25 silly addNameRange     '1.4.0-b3',
+25 silly addNameRange     '1.4.0-b4',
+25 silly addNameRange     '1.4.0',
+25 silly addNameRange     '1.4.1',
+25 silly addNameRange     '1.4.2',
+25 silly addNameRange     '1.5.0-b1',
+25 silly addNameRange     '1.5.0-b2',
+25 silly addNameRange     '1.5.0-b3',
+25 silly addNameRange     '1.5.0-b4',
+25 silly addNameRange     '1.5.0',
+25 silly addNameRange     '1.5.1' ] ]
+26 verbose addNamed [ 'less', '1.5.1' ]
+27 verbose addNamed [ '1.5.1', '1.5.1' ]
+28 silly lockFile 5a0b359d-less-1-5-1 less@1.5.1
+29 verbose lock less@1.5.1 /home/vagrant/.npm/5a0b359d-less-1-5-1.lock
+30 silly lockFile dc43e8fc-ry-npmjs-org-less-less-1-5-1-tgz https://registry.npmjs.org/less/-/less-1.5.1.tgz
+31 verbose lock https://registry.npmjs.org/less/-/less-1.5.1.tgz /home/vagrant/.npm/dc43e8fc-ry-npmjs-org-less-less-1-5-1-tgz.lock
+32 verbose addRemoteTarball [ 'https://registry.npmjs.org/less/-/less-1.5.1.tgz',
+32 verbose addRemoteTarball   '633313130efd12a3b78c56aa799dab3eeffffff4' ]
+33 silly lockFile dc43e8fc-ry-npmjs-org-less-less-1-5-1-tgz https://registry.npmjs.org/less/-/less-1.5.1.tgz
+34 silly lockFile dc43e8fc-ry-npmjs-org-less-less-1-5-1-tgz https://registry.npmjs.org/less/-/less-1.5.1.tgz
+35 silly lockFile 5a0b359d-less-1-5-1 less@1.5.1
+36 silly lockFile 5a0b359d-less-1-5-1 less@1.5.1
+37 silly lockFile e13833ab-less less@
+38 silly lockFile e13833ab-less less@
+39 error Error: EACCES, mkdir '/home/vagrant/tmp/npm-4284-kny4qb8G'
+39 error  { [Error: EACCES, mkdir '/home/vagrant/tmp/npm-4284-kny4qb8G']
+39 error   errno: 3,
+39 error   code: 'EACCES',
+39 error   path: '/home/vagrant/tmp/npm-4284-kny4qb8G' }
+40 error Please try running this command again as root/Administrator.
+41 error System Linux 3.2.0-23-generic-pae
+42 error command "/usr/local/bin/node" "/usr/local/bin/npm" "install" "less"
+43 error cwd /vagrant/academicbrother2/src/AB/Bundle
+44 error node -v v0.10.21
+45 error npm -v 1.3.11
+46 error path /home/vagrant/tmp/npm-4284-kny4qb8G
+47 error code EACCES
+48 error errno 3
+49 error stack Error: EACCES, mkdir '/home/vagrant/tmp/npm-4284-kny4qb8G'
+50 verbose exit [ 3, true ]

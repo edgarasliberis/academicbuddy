@@ -1,32 +1,116 @@
-{% extends "ABBundle::abbase.html.twig" %}
-
+{% extends "ABBundle::layout.html.twig" %}
+{% block title %}Pradžia{% endblock %}
 {% block content %}
-                    <div class="jumbotron">
-                        <h3>„Academic Brother“ – mentorystės projektas, padedantis Lietuvos moksleiviams įstoti į geriausius užsienio universitetus.</h3>
-                        <p class="lead">Siekiame padėti gabiems ir motyvuotiems Lietuvos moksleiviams, nusprendusiems stoti į užsienio universitetus, gauti aukščiausios kokybės išsilavinimą, atitinkantį jų akademinį potencialą; tuo pačiu buriame tarptautinę lietuvių studentų bendruomenę. Projekte dalyvauja užsienyje studijuojantys lietuviai, konsultuojantys ir visapusiškai padedantys paskutiniųjų klasių moksleiviams stojimo procesų metu.</p>
-                        <p><a class="btn btn-lg btn-success" href="#" role="button">Registruotis</a></p>
-                    </div>
+    <div class="panel-shadow">
+		<div id="home_about">
+			{# <p align="center"><img src="{{ asset('bundles/ab/images/logo_und.png') }}" style="max-width: 284px; width: 100%;"></p> #}
+			
+			<p align="CENTER">„Academic Buddy“ (buvęs „Academic Brother“) - mentorystės projektas, padedantis Lietuvos moksleiviams įstoti į geriausius užsienio universitetus.</p>
+			{# <p align="CENTER" style="font-size: 22pt;">Registracija stojimams į Oksfordą ir Kembridžą:</p>
+			<p style="text-align: center;">
+				<a href="{{ path('mentor_registration') }}"><img src="{{ asset('bundles/ab/images/logo_reg_mentor.png') }}"></a>
+				<a href="{{ path('pupil_registration') }}"><img src="{{ asset('bundles/ab/images/logo_reg_pupil.png') }}"></a>
+			</p> #}
 
-                    <div class="row marketing">
-                        <div class="col-lg-6">
-                            <h4>Projekto eiga 2013-14</h4>
-                            <p>
-09 28 II-ojo etapo atidarymo renginys<br/>
-10 15 - 12 15 mentorių registracija<br/>
-11 15 - 12 15 mentorių ir moksleivių registracija<br/>
-12 ... Renginys Lietuvoje<br/>
-12 ... - 01 15 moksleivių ir mentorių bendravimas<br/>
-01 15 UCAS paraiškos teikimo terminas<br/>
-</p>
+			<div id="slides">
+				{% for i in 1..12 %}
+					<img src={{ asset('bundles/ab/images/photos/%d.JPG'|format(i)) }} />
+				{% endfor %}
+				<a href="#" class="slidesjs-previous slidesjs-navigation">{{ icon('chevron-left') }}</a>
+				<a href="#" class="slidesjs-next slidesjs-navigation">{{ icon('chevron-right') }}</a>
+			</div>
+			<br />
+			
+			<p>Gegužės - spalio mėn. vyksta I-asis projekto etapas, skirtas planuojantiems stoti į Oksfordo ir Kembridžo (sutrumpintai Oksbridžo) universitetus. Nors oficiali registracija į šį projekto etapą jau baigėsi, kviečiame moksleivius, susidomėjusius stojimais į Oksbridžą, parašyti mums <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>. Na, o moksleiviai, nusprendę dalyvauti I-ajame projekto etape, vis tiek vėliau galės dalyvauti ir II-ajame, skirtame stojantiems į kitus geriausius Jungtinės Karalystės universitetus, įskaitant LSE, UCL, Edinburgh, Durham ir Warwick. Abiturientus, kuriuos vis tik labiau domina būtent II-asis, bendrojo priėmimo, etapas, registruotis pakviesime rudens pradžioje.</p>
 
-                        </div>
+			<p>Siekiame padėti gabiems ir motyvuotiems Lietuvos moksleiviams, nusprendusiems stoti į užsienio universitetus, gauti aukščiausios kokybės išsilavinimą, atitinkantį jų akademinį potencialą; tuo pačiu buriame tarptautinę lietuvių studentų bendruomenę. Projekte dalyvauja užsienyje studijuojantys lietuviai, konsultuojantys ir visapusiškai padedantys paskutiniųjų klasių moksleiviams stojimo procesų metu. Turi klausimų? Parašyk mums <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a></p>
 
-                        <div class="col-lg-6">
-                          <h4>Organizatoriai</h4>
-                          <p><img width=150 src="{{ asset('bundles/ab/images/CULS-EN-version.jpg') }}" alt="some_text"/>
-                          <img width=150 src="{{ asset('bundles/ab/images/OULS-logo-3.png') }}" alt="some_text"/></p>
-                          <h4>Remėjai</h4>
-                          <p><img width=200 src="{{ asset('bundles/ab/images/logoLTBB.png') }}" alt="some_text"/></p>
-                        </div>
-                    </div>
-                {% endblock %}
+			<p align="center" style="font-size: 15pt;"><b>Norinčius gauti projekto naujienas, <a href="https://docs.google.com/forms/d/1a7g5Y34M4rClUV365ueQv9rZ-KKGAgKwgdvwv8Xyalk/viewform">kviečiame užsiprenumeruoti mūsų naujienlaiškį</a>.</b></p>
+			
+		</div>
+		<div class="row marketing">
+			<div class="col-lg-6">
+				<h4>Projekto eiga 2014/15 m.</h4>
+				<p>
+				<table class="table">
+					<tr>
+						<td>iki 07 06</td>
+						<td>mentorių ir moksleivių registracija</td>
+					</tr>
+					<tr>
+						<td>
+						06 27
+						</td>
+						<td>
+						atidaromasis renginys
+						</td>
+					</tr>
+					<tr>
+						<td>
+						07 10
+						</td>
+						<td>
+						prasideda mentorių ir moksleivių bendravimas
+						</td>
+					</tr>
+					<tr>
+						<td>
+						rugsėjis
+						</td>
+						<td>
+						pasiruošimo stojimui stovykla
+						</td>
+					</tr>
+					<tr>
+						<td>
+						10 15
+						</td>
+						<td>
+						UCAS formos pildymo galutinis terminas
+						</td>
+					</tr>
+					<tr>
+						<td>
+						gruodis
+						</td>
+						<td>
+						kvietimai į interviu
+						</td>
+					</tr>
+					<tr>
+						<td>
+						sausis
+						</td>
+						<td>
+						universitetai skelbia stojimo rezultatus
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="col-lg-6">
+			  <h4>Organizatoriai</h4>
+			  <p><img width=150 src="{{ asset('bundles/ab/images/CULS-EN-version.jpg') }}" alt="some_text" style="display: block"/>
+			  <img width=150 src="{{ asset('bundles/ab/images/OULS-logo-3.png') }}" alt="some_text"/></p>
+			  <h4>Partneriai</h4>
+			  <p><img width=200 src="{{ asset('bundles/ab/images/logoLTBB.png') }}" alt="some_text"/></p>
+			</div>
+		</div>
+		<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FAcademicBuddy&amp;width=670&amp;height=395&amp;colorscheme=light&amp;show_faces=false&amp;header=false&amp;stream=true&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:395px;" allowTransparency="true"></iframe>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {% javascripts '@ABBundle/Resources/public/slides/jquery.slides.js' filter='?uglifyjs2' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+	    $(function(){
+			$("#slides").slidesjs({
+				width: 670,
+				height: 450,
+				navigation: { active: false },
+				pagination: { active: false },
+				play: { auto: true }
+			});
+	    });
+    </script>
+{% endblock %}

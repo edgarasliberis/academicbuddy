@@ -1,23 +1,20 @@
-Sveikas(-a),
+{% block subject %}Academic Buddy: tavo registracija patvirtinta!{% endblock %}
+{% block body_html %}
+Sveikiname!
 <br/><br/>
-Sveikiname! Tavo registracijos anketa ir dalyvavimas projekte buvo patvirtinti!
+Mūsų sistemoje buvo sukurta Tavo paskyra:
 <br/><br/>
-"Academic Brother" projektas suteikia tau plačias galimybes bendrauti ir gauti reikiamą pagalbą bei informaciją iš geriausiuose Jungtinės Karalystės universitetuose studijuojančių lietuvių studentų.
-<br/><br/>
-Tačiau primename, kad viskas priklauso tik nuo TAVO iniciatyvos: savo nuožiūra turi nuspręsti, ką nori sužinoti, suformuluoti klausimus, susirasti tave dominančius žmones ir susisiekti su jais arba parašyti diskusijų grupėje. Kitu atveju rizikuoji neišnaudoti galimybių, kurias siūlo projektas ir padėti norintys mentoriai.
-<br/><br/>
-Iki gruodžio pabaigos projekto veikla ir mentorystė vyks nuotoliniu būdu: asmeniniais laiškais bei diskusijomis grupėse. Gruodžio pabaigoje Vilniuje bus organizuojamas bendras susitikimas, kurio metu mentoriai pasakos apie gyvenimą ir studijas įvairiuose JK universitetuose ir padės tau patobulinti tavo motyvacinį laišką (angl. Personal Statement).
-<br/><br/>
-Kol kas tiek. Jei kils klausimų, rašyk mums academic.brother@gmail.com, arba paskaityk "Apie projektą" skiltį. O dabar kviečiame prisijungti prie AB diskusijų grupių ir užsiprenumeruoti jų naujienas!<br/>
-<ul>
-<li>Facebook grupė: <a href="https://www.facebook.com/groups/1430196147193777/">https://www.facebook.com/groups/1430196147193777/</a></li>
-<li>Google grupė: <a href="https://www.facebook.com/groups/1430196147193777/">https://www.facebook.com/groups/1430196147193777/</a>https://groups.google.com/forum/#!forum/academic-brother-diskusiju-grupe</li>
-<li>El. laiškai: pranešime, kai bus paruoštas mentorių sąrašas. Ten galėsi rasti jų aprašymus, el. pašto adresus ir ieškotis sau mentorių pagal specialybę ar regioną.</li>
-<li>Susitikimas: daugiau informacijos persiųsime gruodžio mėn.</li>
-</ul>
+Prisijungimo vardas: {{ email }}
 <br/>
-Atsimink: šios platformos buvo sukurtos būtent TAU, tad kviečiame nerti į projektą: bendrauti, diskutuoti, klausti, domėtis, ieškoti!
-<br/><br/>
-sėkmės moksluose -
+Slaptažodis: {{ password }}<br/>
 <br/>
-Academic Brother komanda
+<br/><br/>
+Prisijungęs(-usi) prie <a href="{{ url('fos_user_security_login') }}">puslapio</a> aukščiau nurodytais duomenimis, galėsi peržiūrėti detalius mentorių aprašymus ir <strong>parašyti jiems asmeninį laišką!</strong>. Kviečiame nebijoti jau dabar rašyti mentoriams (tačiau, kita vertus, gerbti jų laiką klausiant vien prasmingų klausimų).<br/><br/>
+Taip pat kviečiame prisijungti prie Facebook grupės ir dalyvauti bendrose diskusijose, dalintis mintimis su kitais moksleiviais ir mentoriais: <a href="https://www.facebook.com/groups/1424820664453637">https://www.facebook.com/groups/1424820664453637</a>
+<br/><br/>
+Jei kiltų klausimų, drąsiai rašyk mums
+<a href="mailto:academic.buddy@gmail.com" target="_top">academic.buddy@gmail.com</a>
+<br/><br/>
+Sėkmės ir produktyvaus bendravimo!<br/>
+Academic Buddy komanda
+{% endblock %}

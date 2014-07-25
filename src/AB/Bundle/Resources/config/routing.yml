@@ -1,3 +1,48 @@
-ab_routes:
-    resource: "@ABBundle/Controller"
-    type:     annotation
+#ab_routes:
+#    resource: "@ABBundle/Controller"
+#    type:     annotation
+mentor_registration:
+    pattern:  /register/mentor
+    defaults: { _controller: ABBundle:Registration:registerMentor }
+
+pupil_registration:
+    pattern:  /register/pupil
+    defaults: { _controller: ABBundle:Registration:registerPupil }
+
+home:
+    pattern: /
+    defaults: {_controller: ABBundle:Default:index }
+
+about:
+    pattern: /about
+    defaults: {_controller: ABBundle:Default:about }
+
+support:
+    pattern: /support
+    defaults: {_controller: ABBundle:Default:support }
+
+mentor_list:
+    pattern: /view/mentors/{category}/{page}
+    defaults: {_controller: ABBundle:Default:mentorList, page: 1, category: 0 }
+    options:
+        expose: true
+
+pupil_list:
+    pattern: /view/pupils/{category}/{page}
+    defaults: {_controller: ABBundle:Default:pupilList, page: 1, category: 0 }
+    options:
+        expose: true
+
+message:
+    pattern: /message/{mentorId}
+    defaults: {_controller: ABBundle:Messaging:sendMessage}
+
+user_export:
+    pattern: /export
+    defaults: {_controller: ABBundle:Default:userExport }
+
+user_data:
+    pattern: /export_data
+    defaults: {_controller: ABBundle:Default:userData }
+    options:
+        expose: true

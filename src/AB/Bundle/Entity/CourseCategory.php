@@ -39,6 +39,7 @@ class CourseCategory
     public function __construct()
     {
         $this->courses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pupils = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**

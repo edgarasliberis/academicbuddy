@@ -1,0 +1,429 @@
+body {
+  padding-top: 0px !important;
+  padding-bottom: 20px;
+  background-color: #f4f4f4;
+  /*width: 890px;*/
+  margin: 0px auto;
+}
+body .content {
+  padding: 40px 15px;
+  max-width: 730px;
+}
+.navbar-brand img {
+  height: 20px;
+}
+.navbar {
+  margin-bottom: 0px !important;
+}
+/* Registration forms */
+.required:after {
+  color: red;
+  content: ' *';
+}
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.marketing {
+  margin: 5px 0px !important;
+}
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #bbb;
+}
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+  .navbar {
+    margin-bottom: 21px !important;
+  }
+}
+.message-container {
+  max-width: 330px;
+  margin: 100px auto;
+  padding-top: 5px;
+}
+.has-error .help-block {
+  list-style: none;
+  padding: 0;
+  font-size: 80%;
+}
+.panel-shadow {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+.header-info a {
+  padding: 0 !important;
+}
+.header-info a .avatar {
+  display: inline-block;
+}
+.header-info a .avatar img {
+  width: 22px;
+  height: 22px;
+  margin: auto 3px;
+}
+.header-info a .name {
+  display: inline-block;
+}
+/* Bootstrap fix */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+legend {
+  border-bottom: 1px solid #c0c0c0;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+.mentor-list {
+  position: relative;
+}
+.mentor-list .mentor-overview {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin: 5px 0;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.mentor-list .mentor-overview:before,
+.mentor-list .mentor-overview:after {
+  content: " ";
+  display: table;
+}
+.mentor-list .mentor-overview:after {
+  clear: both;
+}
+.mentor-list .mentor-overview:before,
+.mentor-list .mentor-overview:after {
+  content: " ";
+  display: table;
+}
+.mentor-list .mentor-overview:after {
+  clear: both;
+}
+.mentor-list .mentor-overview .mentor-avatar {
+  padding: 0px;
+}
+.mentor-list .mentor-overview .mentor-info {
+  padding: 0 5px;
+}
+.mentor-list .mentor-overview .mentor-info .mentor-name {
+  font-weight: bold;
+}
+.mentor-list .mentor-overview .mentor-info .mentor-summary {
+  font-size: 90%;
+}
+.mentor-list .mentor-overview .mentor-info .mentor-summary .summary-label {
+  color: #888;
+}
+.mentor-list .mentor-overview .mentor-info .mentor-summary .extended {
+  position: relative;
+}
+.mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin: 5px 5px 0 0;
+}
+.mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-fb {
+  background: url('../../Resources/public/images/facebook.png');
+  background-size: 100%;
+}
+.mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-lnkd {
+  background: url('../../Resources/public/images/linkedin.png');
+  background-size: 100%;
+}
+.mentor-list .mentor-overview .mentor-info .mentor-summary .extended .message-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.mentor-list .mentor-overview .mentor-view {
+  height: 100%;
+}
+.mentor-list .mentor-overview .mentor-view button {
+  margin: auto;
+}
+.mentor-list .show {
+  position: absolute;
+  cursor: pointer;
+  top: 2px;
+  right: 5px;
+  border: 0px none;
+  color: #8b8b8b;
+  font-size: 90%;
+}
+.mentor-list .activate {
+  position: absolute;
+  top: 0;
+  right: 80px;
+  margin-top: 5px;
+}
+.category-select {
+  width: 250px;
+}
+.mentor {
+  background-color: #fff;
+  padding: 15px;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.mentor .mentor-header .mentor-name {
+  display: block;
+  float: left;
+  margin-left: 15px;
+  text-transform: uppercase;
+}
+.mentor .mentor-header .mentor-avatar {
+  display: block;
+  float: left;
+  position: relative;
+}
+.mentor .mentor-header .mentor-avatar .edit-avatar-button {
+  display: block;
+  position: absolute;
+  padding: 5px;
+  margin: 0px;
+  background: none repeat scroll 0% 0% rgba(66, 137, 202, 0.8);
+  width: 100%;
+  bottom: 0px;
+  text-align: center;
+  color: #fff;
+}
+.mentor .mentor-header .update-info {
+  float: right;
+}
+.mentor .mentor-header:before,
+.mentor .mentor-header:after {
+  content: " ";
+  display: table;
+}
+.mentor .mentor-header:after {
+  clear: both;
+}
+.mentor .mentor-header:before,
+.mentor .mentor-header:after {
+  content: " ";
+  display: table;
+}
+.mentor .mentor-header:after {
+  clear: both;
+}
+.mentor .mentor-summary {
+  text-align: center;
+}
+.mentor .mentor-summary p {
+  font-size: 80%;
+  width: 80%;
+  margin: 15px auto;
+}
+.mentor .mentor-extra-info {
+  margin: 30px 0px;
+  text-align: left;
+}
+.mentor .mentor-extra-info .mentor-extra-info-label {
+  font-weight: bold;
+}
+.mentor .mentor-status-message-content {
+  display: block;
+}
+.mentor .mentor-status-message-label {
+  font-weight: bold;
+}
+
+#register_form input[type=number]{
+	width: 60px;
+}
+
+#register_form input[type=text],
+#register_form input[type=email],
+#register_form select {   
+	width: 300px;
+}
+
+.required:after {
+    color: red;
+    content: ' *';
+}
+div.chosen-search input{
+	width: 295px;
+}
+
+ul.courses{
+	list-style: none;
+	padding-left: 0px;
+}
+
+ul.courses .add_course_link {
+
+}
+
+ul.help-block {
+	list-style: none;
+	padding-left: 0px;
+	color: red;
+}
+
+ul.courses .university-info {
+
+}
+
+ 
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f4f4f4;
+}
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f4f4f4;
+}
+.form-signin {
+  max-width: 330px;
+  margin: 0 auto;
+}
+.form-signin input {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-signin input :focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin .or {
+  color: #666666;
+  margin: 10px auto;
+  text-align: center;
+  width: 40px;
+  left: 90px;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#list {
+  font-family: "Courier New", Courier, monospace;
+  width: 100%;
+}

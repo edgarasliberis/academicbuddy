@@ -20,8 +20,7 @@ class Course
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Mentor", inversedBy="courses")
-     * @ORM\JoinColumn(name="mentor_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Mentor", inversedBy="courses", cascade={"persist","remove"}, fetch="EAGER")
      */
     protected $mentor;
 
@@ -54,7 +53,7 @@ class Course
 
     /**
      * @ORM\ManyToOne(targetEntity="CourseCategory", inversedBy="courses")
-     * @ORM\JoinColumn(name="course_category_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="course_category_id", referencedColumnName="id")
      */
     protected $courseCategory;
 

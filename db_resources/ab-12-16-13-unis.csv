@@ -1,0 +1,116 @@
+"mentor_id","university_name","college","course","course_section","uni_start_year","uni_graduation_year"
+6,"University of Oxford","Jesus","DPhil History",1,2010,2013
+5,"University of Cambridge","King\\'s","PhD Computational Neuroscience",0,2012,2016
+4,"University of Cambridge","Homerton","PhD in Oncology",0,2012,2015
+3,"University of Cambridge","Homerton","BA Economics",1,2010,2013
+19,"University of Cambridge","Churchill","BA Archaelogy and anthropology ",1,2012,2016
+1,"University of Cambridge","Homerton","BA Computer Science",0,2010,2013
+7,"University of Cambridge","Newnham","BA Linguistics",1,2011,2014
+8,"University of Oxford","St Hughs","MMathPhil Mathematics & Philosophy",1,2012,2016
+9,"University of Oxford","St Hilda\\\\\\'s, St Cross, Brasenose","Magister Juris 2012; MPhil in Law 2013; DPhil in Law 2016",1,2011,2016
+9,"Mykolo Romerio universitetas","","Teises bakalauras ir tarpt. teises magistras",1,2004,2010
+10,"University of Cambridge","Trinity Hall","MPhil Economics",1,2012,2013
+10,"University of Nottingham","","BSc Economics and Econometrics",1,2007,2010
+11,"University of Oxford","Lincoln College","D.Phil. in General Linguistics and Comparative Philology (Sociolinguistics)",1,2012,2015
+11,"University of Oxford","Lincoln College","M.St. in General Linguistics and Comparative Philology",1,2011,2012
+12,"University of Cambridge","Homerton College","BA/MSci Natural Sciences (Physical)",0,2011,2015
+13,"University of Oxford","St Edmund Hall","MChem Chemistry / DPhil Physiology",0,2008,2016
+14,"University of Oxford","St. Hughs","BMBCh Medicine",0,2012,2016
+15,"University of Cambridge","Girton","MEng Engineering",0,2012,2016
+16,"University of Oxford","St. Peter\\'s","Visiting Student Philosophy, Politics and Economics",1,2012,2013
+17,"University of Cambridge","Corpus Christi","MPhil Educational Research",1,2013,2014
+17,"Jagiellonian University in Krakow","","MA Education",1,2010,2012
+17,"Vilnius University","","BA Psychology",1,2006,2010
+18,"University of Oxford","St Catherine\\'s","BA Psychology & Philosophy",1,2011,2014
+20,"University of Cambridge","Girton","Natural Sciences (Chemistry)",0,2010,2014
+21,"University of Cambridge","Homerton","Natural Sciences (Chemistry)",0,2010,2014
+22,"University of Cambridge","St. Catharine\\'s","BA Natural Sciences",0,2013,2016
+22,"Vilniaus universitetas","","Biochemija",0,2012,2013
+23,"University of Oxford","Balliol","MPhys Physics",0,2009,2014
+24,"University of Oxford","St Catherine\\'s","Medical Sciences",0,2010,2016
+25,"University of Cambridge","Girton","BA & M.Eng (Hons) Engineering",0,2011,2015
+26,"University of Cambridge","Girton","BA Computer Science",0,2011,2014
+27,"University of Cambridge","Peterhouse","BA & M.Eng (Hons) Engineering",0,2012,2016
+28,"University of Oxford","St Anne\\'s","BA/MMath Mathematics",0,2010,2014
+29,"University of Cambridge","Girton","BA Natural Sciences/Physics",0,2010,2014
+30,"University of Cambridge","King\\'s College","BA Politics, Psychology and Sociology",1,2012,2015
+31,"University of Oxford","Merton","BA History",1,2010,2013
+32,"University of Cambridge","Girton","BA/M Math",0,2010,2014
+33,"University of Cambridge","St Catharine\\'s","BA Natural Sciences",0,2011,2015
+34,"University of Cambridge","Girton","BA Mathematics",0,2011,2014
+35,"University of Cambridge","Trinity College","BA Economics",1,2010,2013
+36,"University of Cambridge","Trinity","PhD Economics",1,2009,2013
+36,"University of Cambridge","Trinity ","MPhil Economic Research",1,2008,2009
+37,"University of Cambridge","Homerton","BA Natural Sciences",0,2011,2014
+38,"University of Cambridge","Peterhouse","BA Mathematics",0,2011,2014
+43,"Aberystwyth University","","BA",2,2012,2016
+42,"University of Oxford","","BA Psychology & Philosophy",1,2011,2014
+44,"Aberystwyth University","","BA Mathematics",0,2010,2013
+45,"University of Oxford","","BA Psychology & Philosophy",1,2011,2014
+46,"Lancaster University","","BSc (Hons) in Marketing and Design",6,2013,2016
+47,"University of Glasgow","","BA Economics/Politics",5,2012,2016
+48,"University of Strathclyde","","BA Economics and Finance",6,2010,2014
+49,"University of York","","BA Philosophy, Politics and Economics (PPE)",5,2011,2014
+50,"University of Warwick","","BA Sociology ",5,2013,2016
+51,"Lancaster University","","BSc Economics",6,2011,2014
+52,"University of Warwick","","BSc Hons Accounting and Finance",6,2013,2016
+53,"The University of Edinburgh","","BEng Software Engineering",0,2012,2016
+54,"The University of Edinburgh","","MSc Performance Psychology",5,2012,2013
+54,"University of St Andrews","","BSc Mathematics and Psychology (Honors)",5,2008,2012
+55,"University of St Andrews","","Joint BSc, Chemistry and Mathematics",2,2013,2017
+56,"University of Glasgow","","BSc Mathematics and Business & Management",0,2011,2015
+57,"University of Glasgow","","MA Politics",5,2012,2016
+58,"The University of Edinburgh","","BEng Civil Engineering with Honours Engineering",3,2010,2014
+59,"The University of Edinburgh","","BSc Mathematics",0,2012,2016
+60,"University College London (University of London)","","BA Economics and Business with East European Studies and Year Abroad",6,2010,2014
+61,"Newcastle University","","BA Media, Communication and Cultural studies",4,2011,2014
+62,"The University of Edinburgh","","MEng Civil Engineering",3,2010,2015
+63,"University of Essex","","BA Psychology",5,2011,2014
+64,"Goldsmiths, University of London","","BA Anthropology",5,2013,2016
+65,"The University of Edinburgh","","BA Biological Sciences (Biochemistry)",1,2013,2017
+66,"Newcastle University","","BSc Biomedical Sciences",1,2010,2013
+67,"University of Warwick","","BA Politics and International Studies",5,2013,2016
+68,"Newcastle University","","BA Media, Communications and Cultural Studies",4,2012,2015
+69,"University of Oxford","","BA History",4,2013,2016
+70,"Oxford Brookes University","","BA (Hons) Architecture",4,2010,2013
+71,"Newcastle University","","MSc Advanced Food Marketing",5,2012,2013
+72,"University of Warwick","","BSc Management",5,2012,2015
+73,"University of Sunderland","","BA Graphic Communication",4,2012,2015
+74,"The University of Edinburgh","","BEng Civil Engineering",3,2013,2017
+75,"University of Warwick","","BA History of Art",4,2012,2015
+76,"Bournemouth University","","Ba (hons) Computer Animation Arts",4,2013,2017
+77,"University of Warwick","","BSc Psychology",1,2011,2014
+78,"Newcastle University","","Electronic Engineering",3,2011,2014
+79,"The University of Edinburgh","","BMus Music Technology",4,2011,2014
+80,"University of Essex","","BA International Relations & Politics",5,2012,2015
+81,"University of Bath","","BSc Business Administration",6,2011,2015
+82,"University of Warwick","","BSc Management",5,2011,2014
+83,"King\\'s College London (University of London)","","MSc Organisational Psychology & Psychiatry",5,2012,2013
+84,"Durham University","","MMath Mathematics",0,2010,2014
+85,"The University of Edinburgh","","BSci Neuroscience",1,2013,2016
+85,"University of Glasgow","","BSci Neuroscience",1,2012,2013
+86,"Queen Mary, University of London","","LLB Law",5,2012,2015
+87,"The University of Edinburgh","","BSc (Joint Hons) Mathematics and Business Studies",0,2010,2013
+88,"The University of Edinburgh","","BSc Ecological Science",1,2009,2013
+89,"University College London (University of London)","","BSc Archaeology",5,2011,2014
+90,"The University of Edinburgh","","MEng Electronics & Electrical Engineering",3,2010,2015
+91,"The University of Edinburgh","","MInf Informatics",0,2010,2014
+92,"The University of Edinburgh","","MA (Hons) History of Art",4,2013,2017
+93,"University College London (University of London)","","BA Politics and East European Studies",5,2013,2016
+94,"The University of Edinburgh","","MA Economics",6,2010,2014
+95,"The University of Edinburgh","","MA Psychology and Business Studies",5,2011,2015
+96,"Imperial College London","","MSc Bioinformatics & Theoretical Systems Biology",1,2013,2014
+97,"University of Sheffield","","MEng Civil & Structural Engineering",3,2011,2015
+98,"University of Glasgow","","MA Comparative Literature/History of Art",4,2010,2014
+99,"The University of Edinburgh","","Psychology & Business",5,2013,2017
+100,"University of St Andrews","","MA Psychology and Social Anthropology",5,2010,2014
+101,"University College London (University of London)","","MSci Chemistry",2,2011,2015
+102,"University College London (University of London)","","BSc Psychology",1,2012,2015
+103,"The University of Edinburgh","","BSc Hons Biotechnology",1,2010,2014
+104,"London School of Economics and Political Science (University of London)","","Bsc International Relations",5,2012,2015
+105,"Durham University","","BSc Psychology",1,2013,2016
+106,"University of Leicester","","BSc Communications, Media and Society",5,2011,2014
+107,"The University of Edinburgh","","BEng Software Engineering with Management",0,2009,2013
+108,"The University of Edinburgh","","MEng Electronics and Electrical Engineering",3,2010,2015
+109,"University College London (University of London)","","MSc Economics, BA Philosophy and Economics",5,2006,2010
+110,"University of Cambridge","","Education",5,2010,2014

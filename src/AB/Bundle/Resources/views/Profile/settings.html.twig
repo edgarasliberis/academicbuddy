@@ -1,0 +1,31 @@
+{% extends 'ABBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets '@ABBundle/Resources/public/css/settings.less' filter='less' %}
+    <link rel="stylesheet" href="{{ asset_url }}" xmlns="http://www.w3.org/1999/html"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}Nustatymai{% endblock %}
+{% block content %}
+    <div class="panel-shadow">
+        <h2>Nustatymai</h2>
+
+        {{ form_start(form) }}
+        <fieldset>
+            <legend>Pakeisti slaptažodį:</legend>
+            {% if success == true %}
+                <div class="alert alert-success">Slaptažodis pakeistas sėkmingai!</div>
+            {% endif %}
+
+        {{ form_row(form.current_password) }}
+        {{ form_row(form.plainPassword) }}
+
+        <button class="btn btn-primary btn-sm" type="submit">Keisti</button>
+        </fieldset>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

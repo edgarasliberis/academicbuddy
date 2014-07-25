@@ -1,3 +1,5 @@
+{% block subject %}[Nauja registracija][Mentorius]{% endblock %}
+{% block body_html %}
 <p><strong>Vardas:</strong> {{ user.firstName }}</p>
 <p><strong>Pavardė:</strong> {{ user.lastName }}</p>
 <p><strong>El. paštas:</strong> {{ user.email }}</p>
@@ -16,6 +18,7 @@
 <p><strong>Apie:</strong> {{ user.about }}</p>
 <br/>
 
-<a href="{{ url('activate', { 'type': 'mentor', 'key': user.activationKey }) }}">
+<a href="{{ confirmationURL }}">
     <button>Aktyvuoti</button>
 </a>
+{% endblock %}

@@ -1,12 +1,15 @@
 <?php
 namespace AB\Bundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="pupil")
+ * @UniqueEntity(fields = "email", targetClass = "AB\Bundle\Entity\User", message="fos_user.email.already_used")
  */
 class Pupil extends User
 {
@@ -29,25 +32,25 @@ class Pupil extends User
     */
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank()
      */    	
     protected $schoolName;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="smallint", nullable=true)
      * @Assert\NotBlank()
      */
     protected $schoolGraduationYear;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank()
      */
     protected $schoolCity;
 
     /**
-     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\Column(type="decimal", scale=2, nullable=true)
      * @Assert\NotBlank()
      */
     protected $schoolGrade;
@@ -57,15 +60,13 @@ class Pupil extends User
     */
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank()
      */ 
     protected $universityRegion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CourseCategory", inversedBy="courses")
-     * @ORM\JoinColumn(name="course_category_id", referencedColumnName="id", nullable=false)
-     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="CourseCategory", inversedBy="pupils")
      */
     protected $courseCategory;
 
@@ -75,7 +76,7 @@ class Pupil extends User
     protected $courseName;    
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      * @Assert\NotBlank()
      */
     protected $motivation;
@@ -84,10 +85,13 @@ class Pupil extends User
     	Additional fields
     */
 
-    /**
-     * @ORM\Column(type="integer")
-     */ 
-    protected $phase;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->courses = new ArrayCollection();
+        $this->addRole("ROLE_PUPIL");
+    }
 
     /**
      * Set homeCity
@@ -227,28 +231,6 @@ class Pupil extends User
         return $this->schoolGrade;
     }
 
-    /**
-     * Set universityChoice
-     *
-     * @param string $universityChoice
-     * @return Pupil
-     */
-    public function setUniversityChoice($universityChoice)
-    {
-        $this->universityChoice = $universityChoice;
-    
-        return $this;
-    }
-
-    /**
-     * Get universityChoice
-     *
-     * @return string 
-     */
-    public function getUniversityChoice()
-    {
-        return $this->universityChoice;
-    }
 
     /**
      * Set courseCategory
