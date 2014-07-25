@@ -16,7 +16,7 @@ academicbrother2
 
 1. Clone the repository:
 
-        $ git clone https://github.com/aursulis/academicbrother2.git
+        $ git clone https://github.com/edgarasliberis/academicbrother2.git
 
 2. Install Composer:
 
@@ -44,7 +44,7 @@ academicbrother2
 
     6.1. upgraded to PHP 5.5 via <http://dotdeb.org>
     
-    6.2. set the `date.timezone` setting in `/etc/php5/{apache2,cli}/php.ini`, in my case to `Europe/Vilnius`
+    6.2. set the `date.timezone` setting in `/etc/php5/{apache2,cli}/php.ini`, in my case to `Europe/London`
 
 2) Try it out!
 --------------
