@@ -107,7 +107,7 @@ body .content {
   background-color: #fff;
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-  padding: 15px;
+  padding: 25px;
 }
 .header-info a {
   padding: 0 !important;
@@ -131,6 +131,33 @@ fieldset {
 }
 legend {
   border-bottom: 1px solid #c0c0c0;
+}
+#short-descr {
+  text-align: left;
+  margin: 0.5em;
+}
+#main-logo {
+  text-align: center;
+}
+#main-logo img {
+  float: none;
+  max-width: 270px;
+  width: 100%;
+}
+.org-logo {
+  display: block;
+  width: 95%;
+}
+#photo-block {
+  margin: 10px;
+}
+a.slidesjs-previous {
+  float: left;
+}
+a.slidesjs-next {
+  float: right;
+  margin-top: -2px;
+  /* Weird offset */
 }
 
 body {
@@ -188,11 +215,11 @@ body {
   margin: 5px 5px 0 0;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-fb {
-  background: url('../../Resources/public/images/facebook.png');
+  background: url('../Resources/public/images/facebook.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-lnkd {
-  background: url('../../Resources/public/images/linkedin.png');
+  background: url('../Resources/public/images/linkedin.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .message-button {

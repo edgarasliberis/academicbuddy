@@ -13,9 +13,13 @@ home:
     pattern: /
     defaults: {_controller: ABBundle:Default:index }
 
-about:
-    pattern: /about
-    defaults: {_controller: ABBundle:Default:about }
+about_oxbridge:
+    pattern: /about/oxbridge
+    defaults: {_controller: ABBundle:Default:aboutOxbridge }
+
+about_uk:
+    pattern: /about/uk
+    defaults: {_controller: ABBundle:Default:aboutUk }
 
 support:
     pattern: /support

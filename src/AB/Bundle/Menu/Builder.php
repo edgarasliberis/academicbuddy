@@ -12,8 +12,12 @@ class Builder extends ContainerAware
 
         $menu->setChildrenAttribute('class', 'navbar-nav');
 		
-        $menu->addChild('Apie', array(
-            'route' => 'about'
+        $menu->addChild('Apie Oksbridžo etapą', array(
+            'route' => 'about_oxbridge'
+        ));
+
+        $menu->addChild('Apie II etapą (JK)', array(
+            'route' => 'about_uk'
         ));
 		
         $menu->addChild('Parama', array(
@@ -24,7 +28,7 @@ class Builder extends ContainerAware
             'route' => 'mentor_list'
         ));
 
-        $securityContext = $this->container->get('security.context');
+        /*$securityContext = $this->container->get('security.context');
 
         if ($securityContext->isGranted('ROLE_ADMIN')) {
             $menu->addChild('Moksleiviai', array(
@@ -34,7 +38,7 @@ class Builder extends ContainerAware
             $menu->addChild('El. paštai', array(
                 'route' => 'user_export'
             ));
-        }
+        }*/
         return $menu;
     }
 }

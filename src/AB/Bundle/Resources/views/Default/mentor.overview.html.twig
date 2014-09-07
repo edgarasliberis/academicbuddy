@@ -2,11 +2,8 @@
     <div class="mentor-avatar col-md-1">
         {% set avatar = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50" %}
         {% if user.facebookId is not null and user.facebookId | length > 3 %}
-            {% set fbId = user.facebookId %}
-            {% if 'facebook.com' in user.facebookId %}
-                {% set components = user.facebookId|split('/') %}
-                {% set fbId = components[components|length - 1] %}
-            {% endif %}
+            {% set components = user.facebookId|split('/') %}
+            {% set fbId = components[components|length - 1] %}
             {% set avatar = "https://graph.facebook.com/" ~ fbId ~ "/picture" %}
         {% endif %}
         <img src="{{ avatar }}"/>
@@ -37,30 +34,19 @@
                 </div>
                 <div>
                     {% if user.facebookId is not null and user.facebookId|length > 3 %}
-                        {% set fburl = 'http://www.facebook.com/' %}
-                        {% if 'facebook.com' in user.faceBookId %}
-                            {% set fburl ='' %}
+                        {% set fbfinalUrl = user.facebookId %}
+                        {% if '//' not in fbfinalUrl %}
+                            {% set fbfinalUrl = 'https://' ~ user.facebookId %}
                         {% endif %}
-						{% set fbfinalUrl = fburl ~ user.facebookId %}
-						{% if 'http' not in fbfinalUrl %}
-							{% set fbfinalUrl = 'http://' ~ fbfinalUrl %}
-						{% endif %}
                     <a class="social social-fb" href="{{ fbfinalUrl }}"></a>
                     {% else %}
                     <br/><br/>
                     {% endif %}
                     {% if user.linkedinId is not null and user.linkedinId|length > 3 %}
-                        {% set lurl = 'http://www.linkedin.com/' %}
-                        {% if 'linkedin.com' in user.linkedinId %}
-                            {% set lurl ='' %}
+                        {% set finalUrl = user.linkedinId %}
+                        {% if '//' not in finalUrl %}
+                            {% set finalUrl = 'https://' ~ finalUrl %}
                         {% endif %}
-                        {% if 'pub' not in user.linkedinId and 'in' not in user.linkedinId %}
-                            {% set lurl = lurl ~ 'in/' %}
-                        {% endif %}
-						{% set finalUrl = lurl ~ user.linkedinId %}
-						{% if 'http' not in finalUrl %}
-							{% set finalUrl = 'http://' ~ finalUrl %}
-						{% endif %}
                     <a class="social social-lnkd" href="{{ finalUrl }}"></a>
                     {% endif %}
                 </div>

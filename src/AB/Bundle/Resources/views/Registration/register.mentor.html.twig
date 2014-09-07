@@ -49,7 +49,7 @@
 
 {# Page content #}
 {% block content %}
-	<h1>Registracija Oksbridžo etapo mentoriams</h1>
+	<h1>Registracija II etapo mentoriams</h1>
 	{% if success is defined %}
 	<div class="alert alert-success">Registracija sėkminga!</div>
 	{% endif %}
@@ -71,12 +71,12 @@
 			{{ form_row(form.facebookId, { 'style' : 'horizontal',
 												 'widget_col' : 9,
 												 'label_col' : 3,
-												 'label' : 'Facebook ID'})
+												 'label' : 'Facebook URL'})
 			}}
 			{{ form_row(form.linkedInId, { 'style' : 'horizontal',
 												 'widget_col' : 9,
 												 'label_col' : 3,
-												 'label' : 'LinkedIn ID'})
+												 'label' : 'LinkedIn URL'})
 			}}			
 			{{ form_row(form.email, { 'style' : 'horizontal',
 												 'widget_col' : 9,
@@ -151,8 +151,7 @@
 	{% javascripts '@ABBundle/Resources/public/js/*' %}
     	<script type="text/javascript" src="{{ asset_url }}"></script>
 	{% endjavascripts %}  
-	{% javascripts '@ABBundle/Resources/public/chosen/chosen.jquery.min.js'
- 				   %}
-     	<script src="{{ asset_url }}" type="text/javascript"></script>
+	{% javascripts '@ABBundle/Resources/public/chosen/chosen.jquery.min.js' %}
+     	<script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

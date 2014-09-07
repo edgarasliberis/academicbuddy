@@ -1,14 +1,6 @@
 <div class="mentor-overview">
     <div class="mentor-avatar col-md-1">
         {% set avatar = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50" %}
-        {% if user.facebookId is not null and user.facebookId | length > 3 %}
-            {% set fbId = user.facebookId %}
-            {% if 'facebook.com' in user.facebookId %}
-                {% set components = user.facebookId|split('/') %}
-                {% set fbId = components[components|length - 1] %}
-            {% endif %}
-            {% set avatar = "https://graph.facebook.com/" ~ fbId ~ "/picture" %}
-        {% endif %}
         <img src="{{ avatar }}"/>
     </div>
     <div class="mentor-info col-md-11">
@@ -26,6 +18,7 @@
                         {{ user.schoolName }}
                         {% if user.schoolCity is not null %}, {{ user.schoolCity }}{% endif %}
                         {% if user.schoolGraduationYear is not null %}, {{ user.schoolGraduationYear }}{% endif %}
+                        {% if user.schoolGrade is not null%}, (Vid. {{ user.schoolGrade }}){% endif %}
                     </div>
                 {% endif %}
                 <div><div class="summary-label">Motyvacija: </div>
@@ -33,26 +26,6 @@
                 </div>
                 <div><div class="summary-label">Prisistatymas: </div>
                     {{ user.about }}
-                </div>
-                <div>
-                    {% if user.facebookId is not null and user.facebookId|length > 3 %}
-                        {% set fburl = 'http://www.facebook.com/' %}
-                        {% if 'facebook.com' in user.faceBookId %}
-                            {% set fburl ='' %}
-                        {% endif %}
-                        <a class="social social-fb" href="{{ fburl ~ user.facebookId }}"></a>
-                    {% endif %}
-                    {% if user.linkedinId is not null and user.linkedinId|length > 3 %}
-                        {% set lurl = 'http://www.linkedin.com/' %}
-                        {% if 'linkedin.com' in user.linkedinId %}
-                            {% set lurl ='' %}
-                        {% endif %}
-                        {% if 'pub' not in user.linkedinId and 'in' not in user.linkedinId %}
-                            {% set lurl = lurl ~ 'in/' %}
-                        {% endif %}
-                        <a class="social social-lnkd" href="{{ lurl ~ user.linkedinId }}"></a>
-
-                    {% endif %}
                 </div>
             </div>
             {% if is_granted('ROLE_ADMIN') %}
