@@ -10,7 +10,7 @@
 {% block title %}Mentorių sąrašas{% endblock %}
 {% block content %}
 	{% if is_granted('ROLE_USER') == false %}
-		<p><em>Laiškus mentoriams gali siųsti tik užsiregistravę ir prisijungę vartotojai.</em></p>
+		<div class="alert alert-warning"><p>Laiškus mentoriams gali siųsti tik užsiregistravę ir prisijungę vartotojai.</p></div>
 	{% endif %}
     <div class="mentor-list panel-shadow">
         <h4>Mentorių sąrašas 2014-2015</h4>

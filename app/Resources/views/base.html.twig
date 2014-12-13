@@ -21,12 +21,13 @@
         <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
         {% block stylesheets %}{% endblock %}
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 	<style>
 	    body {
-	        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 	    }
 	    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 	    }
 	</style>
 	<meta property="og:title" content="Academic Buddy"/>
@@ -48,7 +49,7 @@
         {# Typeahead plugin #}
         {#<script src="//twitter.github.com/typeahead.js/releases/latest/typeahead.min.js"></script>#}
         {% block javascripts %}{% endblock %}
-	{# GA #}
+	    {# GA #}
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

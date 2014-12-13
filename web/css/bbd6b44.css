@@ -130,8 +130,14 @@ legend {
   border-bottom: 1px solid #c0c0c0;
 }
 #short-descr {
-  text-align: left;
-  margin: 0.5em;
+  /*text-align: center;
+  color: white;
+  background-color: #252525;*/
+  border-style: rounded;
+  border-radius: 5px;
+}
+#short-descr p {
+  margin: 0.5em 0.1em;
 }
 #main-logo {
   text-align: center;
@@ -158,6 +164,15 @@ a.slidesjs-next {
 }
 .centered {
   text-align: center;
+}
+.text-block {
+  margin-bottom: 2em;
+}
+ol.d {
+  list-style-type: lower-alpha;
+}
+ol.c {
+  list-style-type: upper-roman;
 }
 
 body {
@@ -191,10 +206,7 @@ body {
   clear: both;
 }
 .mentor-list .mentor-overview .mentor-avatar {
-  padding: 0px;
-}
-.mentor-list .mentor-overview .mentor-info {
-  padding: 0 5px;
+  padding: 3px 0px;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-name {
   font-weight: bold;
