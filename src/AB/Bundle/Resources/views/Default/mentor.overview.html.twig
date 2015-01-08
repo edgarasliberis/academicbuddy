@@ -1,5 +1,5 @@
 <div class="mentor-overview">
-    <div class="mentor-avatar col-xs-1">
+    <div class="mentor-avatar">
         {% set avatar = "https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=50" %}
         {% if user.facebookId is not null and user.facebookId | length > 3 %}
             {% set components = user.facebookId|split('/') %}
@@ -8,7 +8,7 @@
         {% endif %}
         <img src="{{ avatar }}"/>
     </div>
-    <div class="mentor-info col-xs-11">
+    <div class="mentor-info">
         <div class="mentor-name">
             {% if user.firstName is not null and user.lastName is not null %}
                 {{ user.firstName }} {{ user.lastName }}

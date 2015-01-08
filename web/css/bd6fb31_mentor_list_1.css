@@ -29,7 +29,16 @@ body {
   clear: both;
 }
 .mentor-list .mentor-overview .mentor-avatar {
+  float: left;
   padding: 3px 0px;
+}
+.mentor-list .mentor-overview .mentor-info {
+  float: left;
+  position: relative;
+  padding: 0 10px;
+  width: calc(100% - 50px);
+  /* Sorry */
+  overflow: hidden;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-name {
   font-weight: bold;

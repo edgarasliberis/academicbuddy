@@ -151,6 +151,9 @@ legend {
   display: block;
   width: 95%;
 }
+.container {
+  padding: 0;
+}
 #photo-block {
   margin: 10px;
 }
