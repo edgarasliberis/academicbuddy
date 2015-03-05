@@ -1,0 +1,114 @@
+{% extends "ABBundle::layout.html.twig" %}
+{% block title %}Pradžia{% endblock %}
+{% block content %}
+    <div class="panel-shadow">
+        <div class="row marketing">
+            <div class="col-sm-6">
+                <div id="main-logo">
+                    <img style="width: 80%" src="{{ asset('bundles/ab/images/logo_und.png') }}">
+                </div>
+            </div> 
+            <div class="col-sm-6" id="short-descr">
+                <p>„Academic Buddy“ (buvęs „Academic Brother“) — mentorystės projektas, padedantis Lietuvos moksleiviams įstoti į geriausius užsienio universitetus.</p>
+            </div>
+        </div>
+        
+        <br />
+        <div class="row marketing">
+            <div class="col-sm-6">
+                <h4>II etapo eiga 2014/15 m.</h4>
+                <table class="table">
+                    <tr>
+                        <td>iki 10 13</td>
+                        <td>mentorių ir moksleivių registracija</td>
+                    </tr>
+                    <tr>
+                        <td>09 13</td>
+                        <td>atidaromasis renginys</td>
+                    </tr>
+                    <tr>
+                        <td>spalio pabaiga</td>
+                        <td>prasideda mentorių ir moksleivių bendravimas</td>
+                    </tr>
+                    <tr>
+                        <td><b>gruodis</b></td>
+                        <td><b>Personal Statements dirbtuvės</b></td>
+                    </tr>
+                    <tr>
+                        <td>01 15</td>
+                        <td>UCAS formos pildymo galutinis terminas (II etapas)</td>
+                    </tr>
+                    <tr>
+                        <td>pavasaris</td>
+                        <td>universitetai skelbia stojimo rezultatus</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <h4>Oksbridžo etapo eiga 2014/15 m.</h4>
+                <table class="table">
+                    <tr>
+                        <td nowrap>iki 07 06</td>
+                        <td>mentorių ir moksleivių registracija</td>
+                    </tr>
+                    <tr>
+                        <td>06 27</td>
+                        <td>atidaromasis renginys</td>
+                    </tr>
+                    <tr>
+                        <td>07 10</td>
+                        <td>prasideda mentorių ir moksleivių bendravimas</td>
+                    </tr>
+                    <tr>
+                        <td>rugsėjis</td>
+                        <td>pasiruošimo stojimui stovykla</td>
+                    </tr>
+                    <tr>
+                        <td>10 15</td>
+                        <td>UCAS formos pildymo galutinis terminas</td>
+                    </tr>
+                    <tr>
+                        <td><b>gruodis</b></td>
+                        <td><b>kvietimai į interviu</b></td>
+                    </tr>
+                    <tr>
+                        <td>sausis</td>
+                        <td>universitetai skelbia stojimo rezultatus</td>
+                    </tr>
+                </table>
+            </div>
+        </div> 
+
+        <div id="description">
+            <p>„Academic Buddy“ projektas vyksta dviem etapais: Oksbridžo ir likę Jungtinės Karalystės universitetai.<p>
+
+            {# <h4>Registracija į projekto II etapą</h4>
+            <div class="centered">
+                <a class="btn btn-default btn-lg" href="{{ path('mentor_registration') }}">Mentorių registracija</a>
+                <a class="btn btn-default btn-lg" href="{{ path('pupil_registration') }}">Moksleivių registracija</a>
+            </div> #}
+            
+            <p>Nors oficiali registracija į šį projekto etapą 2014-15 m. m. jau baigėsi, kviečiame moksleivius, susidomėjusius stojimais į geriausius JK universitetus, parašyti mums <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>.</p>
+
+            <p>Gegužės - spalio mėn. vyksta I-asis projekto etapas, skirtas planuojantiems stoti į Oksfordo ir Kembridžo (sutrumpintai Oksbridžo) universitetus. Rugsėjo – sausio mėn. vyksta II-asis projekto etapas, skirtas stojantiems į kitus geriausius Jungtinės Karalystės universitetus, pavyzdžiui, LSE, UCL, Edinburgh, St Andrews, Durham, Warwick ir kiti. II-ajame etape gali dalyvauti ir I-ojo etapo dalyviai.<p>
+
+            <p>Siekiame padėti gabiems ir motyvuotiems Lietuvos moksleiviams, nusprendusiems stoti į užsienio universitetus, gauti aukščiausios kokybės išsilavinimą, atitinkantį jų akademinį potencialą; tuo pačiu buriame tarptautinę lietuvių studentų bendruomenę. Projekte dalyvauja užsienyje studijuojantys lietuviai, konsultuojantys ir visapusiškai padedantys paskutiniųjų klasių moksleiviams stojimo procesų metu. Turi klausimų? Parašyk mums <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>.</p>
+
+            <p style="font-size: 13pt"><b>Norinčius gauti projekto naujienas, <a href="https://docs.google.com/forms/d/1a7g5Y34M4rClUV365ueQv9rZ-KKGAgKwgdvwv8Xyalk/viewform" target="_blank">kviečiame užsiprenumeruoti mūsų naujienlaiškį</a>.</b></p>   
+        </div>                
+              
+        <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FAcademicBuddy&amp;width=670&amp;height=425&amp;colorscheme=light&amp;show_faces=false&amp;header=false&amp;stream=true&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:425px;" allowTransparency="true"></iframe>
+
+        <div class="row marketing">
+            <div class="col-xs-6 col-md-4">
+                <h4>Organizatoriai</h4>
+                <img class="org-logo" src="{{ asset('bundles/ab/images/CULS-EN-version.jpg') }}" alt="Cambridge University Lithuanian Society">
+                <img class="org-logo" src="{{ asset('bundles/ab/images/OULS-logo-3.png') }}" alt="Oxford University Lithuanian Society">
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <h4>Partneriai</h4>
+                <img class="org-logo" src="{{ asset('bundles/ab/images/logoLTBB.png') }}" alt="LT Big Brother">
+            </div>
+        </div>
+    </div>
+{% endblock %}

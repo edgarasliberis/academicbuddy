@@ -10,23 +10,23 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
 
-        $menu->setChildrenAttribute('class', 'navbar-nav');
+        $menu->setChildrenAttribute('class', 'navbar-nav nav');
 		
         $menu->addChild('Apie Oksbridžo etapą', array(
             'route' => 'about_oxbridge'
-        ));
+        ))->setExtra('translation_domain', 'messages');
 
         $menu->addChild('Apie II etapą (JK)', array(
             'route' => 'about_uk'
-        ));
+        ))->setExtra('translation_domain', 'messages');
 		
         $menu->addChild('Parama', array(
             'route' => 'support'
-        ));
+        ))->setExtra('translation_domain', 'messages');
         
         $menu->addChild('Mentoriai', array(
             'route' => 'mentor_list'
-        ));
+        ))->setExtra('translation_domain', 'messages');
 
         /*$securityContext = $this->container->get('security.context');
 

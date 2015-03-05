@@ -10,23 +10,27 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return $this->render('ABBundle:Default:index.html.twig');
+        $locale = $request->getLocale();
+        return $this->render('ABBundle:Default:index.'.$locale.'.html.twig');
     }
 
-    public function aboutOxbridgeAction() 
+    public function aboutOxbridgeAction(Request $request) 
     {
+        $locale = $request->getLocale();
     	return $this->render('ABBundle:Default:about.oxbridge.html.twig');
     }
 
-    public function aboutUkAction() 
+    public function aboutUkAction(Request $request) 
     {
+        $locale = $request->getLocale();
         return $this->render('ABBundle:Default:about.uk.html.twig');
     }
 
-    public function supportAction() 
+    public function supportAction(Request $request) 
     {
+        $locale = $request->getLocale();
     	return $this->render('ABBundle:Default:support.html.twig');
     }
 

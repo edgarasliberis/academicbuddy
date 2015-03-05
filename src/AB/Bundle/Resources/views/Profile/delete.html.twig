@@ -1,0 +1,32 @@
+{% extends 'ABBundle::layout.html.twig' %}
+
+{# Include stylesheets #}
+{% block stylesheets %}
+    {% stylesheets '@ABBundle/Resources/public/css/settings.less' filter='less' %}
+    <link rel="stylesheet" href="{{ asset_url }}" xmlns="http://www.w3.org/1999/html"/>
+    {% endstylesheets %}
+    {% stylesheets '@ABBundle/Resources/public/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{# Include javascript #}
+{% block javascripts %}
+{% endblock %}
+
+
+{% block title %}Nustatymai{% endblock %}
+{% block content %}
+    <div class="panel-shadow">
+        <h2>Šalinimas</h2>
+        {% if success %}
+            <div class="alert alert-success">Vartotojo paskyra sėkmingai pašalinta.</div>
+        {% else %}
+            <p>Ar tikrai norite ištrinti vartotojo paskyrą?</p>
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            <button class="btn btn-danger" type="submit">Trinti</button>
+            {{ form_end(form) }}
+        {% endif %}
+    </div>
+{% endblock %}

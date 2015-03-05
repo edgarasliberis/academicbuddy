@@ -12,6 +12,9 @@ body .content {
 .navbar-brand img {
   height: 20px;
 }
+.lang-flag {
+  height: 17px;
+}
 .navbar {
   margin-bottom: 0px !important;
 }

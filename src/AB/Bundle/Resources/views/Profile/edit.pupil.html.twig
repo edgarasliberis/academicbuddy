@@ -1,0 +1,94 @@
+{# Enable redefining #}
+{% form_theme form _self %}
+{# Import macros #}
+{% import _self as pupil_form %}
+
+{# Page content #}
+{% block content %}
+    <div id="register_form">
+        {{ form_start(detailsForm) }}
+        {{ form_errors(form) }}
+        <fieldset>
+            <legend>Asmeninė informacija</legend>
+            {{ form_row(form.firstName, { 'style' : 'horizontal',
+                                                 'widget_col' : 9,
+                                                 'label_col' : 3,
+                                                 'label' : 'Vardas'})
+            }}
+            {{ form_row(form.lastName, { 'style' : 'horizontal',
+                                                 'widget_col' : 9,
+                                                 'label_col' : 3,
+                                                 'label' : 'Pavardė'})
+            }}
+            {{ form_row(form.homeCity, { 'style' : 'horizontal',
+                                                 'widget_col' : 9,
+                                                 'label_col' : 3,
+                                                 'label' : 'Gyvenamoji vieta Lietuvoje',
+                                                 'help_text' : 'Miestas/rajonas (galimiems susitikimams su mentoriumi)'})
+            }}
+        </fieldset>
+        <fieldset>
+            <legend>Mokykla</legend>
+            {{ form_row(form.schoolName, { 'style' : 'horizontal',
+                                                  'widget_col' : 9,
+                                                  'label_col' : 3,
+                                                  'label' : 'Pavadinimas'})
+            }}
+            {{ form_row(form.schoolCity, { 'style' : 'horizontal',
+                                                  'widget_col' : 9,
+                                                  'label_col' : 3,
+                                                  'label' : 'Miestas'})
+            }}
+            {{ form_row(form.schoolGraduationYear, { 'style' : 'horizontal',
+                                                            'widget_col' : 9,
+                                                            'label_col' : 3,
+                                                            'label' : 'Baigimo metai'})
+            }}
+            {{ form_row(form.schoolGrade, { 'style' : 'horizontal',
+                                                            'widget_col' : 9,
+                                                            'label_col' : 3,
+                                                            'label' : 'Pažymių vidurkis',
+                                                            'help_text': 'Pastarųjų metų bendras vidurkis'})
+            }}              
+        </fieldset>
+        <fieldset>
+            <legend>Planuojamos studijos</legend>
+            {{ form_row(form.courseCategory, { 'style' : 'horizontal',
+                                                            'widget_col' : 9,
+                                                            'label_col' : 3,
+                                                            'label' : 'Studijų kryptis'})
+            }}
+            {{ form_row(form.universityRegion, { 'style' : 'horizontal',
+                                                            'widget_col' : 9,
+                                                            'label_col' : 3,
+                                                            'label' : 'Planuojamas regionas'})
+            }}
+            {{ form_row(form.courseName, { 'style' : 'horizontal',
+                                                            'widget_col' : 9,
+                                                            'label_col' : 3,
+                                                            'label' : 'Kursas (jei jau žinai)',
+                                                            })
+            }}                              
+        </fieldset>
+        <fieldset>
+            <legend>Papildoma informacija</legend>
+            <p>This section has to be filled in English. Ability to write in English is necessary for a successful United Kingdom university application process. Do not worry too much if you find it difficult to write correctly or fluently now, but try to do your best.</p>
+            {{ form_row(form.motivation, { 'style' : 'horizontal',
+                                             'widget_col' : 9,'label_col' : 3,
+                                             'attr' : { 'rows' : '5' },
+                                             'label' : 'Motivation',
+                                              'help_text' : 'Please explain why you think you should participate in the "Academic Buddy" project? What are your plans for the future, current academic interests and achievements? Max. 200 words.'})
+            }}
+            {{ form_row(form.about, { 'style' : 'horizontal',
+                                             'widget_col' : 9,'label_col' : 3,
+                                             'attr' : { 'rows' : '5' },
+                                             'label' : 'Interests',
+                                              'help_text' : 'Please tell us about your extra-curricular activity, general interests and hobbies. Max. 100 words.'})
+            }}
+        </fieldset>
+        <div>
+            <button class="btn btn-primary btn-sm" type="submit">Keisti</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -24,10 +24,16 @@
                                     {{ app.user.firstName }} {{ app.user.lastName }} <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ path('settings') }}">Nustatymai</a></li>
+                                    <li>{% if app.request.getLocale() == 'lt' %}
+                                        <a href="{{ path('lang_en', {'parent_route': app.request.attributes.get('_route'), 'parent_route_params': app.request.attributes.get('_route_params')}) }}">In English</a>
+                                        {% else %}
+                                        <a href="{{ path('lang_lt', {'parent_route': app.request.attributes.get('_route'), 'parent_route_params': app.request.attributes.get('_route_params')}) }}">Lietuviškai</a>
+                                        {% endif %}
+                                    </li>
+                                    <li><a href="{{ path('settings') }}">{{ 'Nustatymai'|trans }}</a></li>
                                     {% if is_granted("ROLE_ADMIN") %}
-                                        <li><a href="{{ path('pupil_list') }}">Moksleiviai</a></li>
-                                        <li><a href="{{ path('user_export') }}">El. paštai</a></li>
+                                        <li><a href="{{ path('pupil_list') }}">{{ 'Moksleiviai'|trans }}</a></li>
+                                        <li><a href="{{ path('user_export') }}">{{ 'El. paštai'|trans }}</a></li>
                                     {% endif %}
                                     <li>
                                         <a href="{{ path('fos_user_security_logout') }}">
@@ -37,9 +43,17 @@
                                 </ul>
                             </li>
                         {% else %}
+                            <li>{% if app.request.getLocale() == 'lt' %}
+                                <a href="{{ path('lang_en', {'parent_route': app.request.attributes.get('_route'), 'parent_route_params': app.request.attributes.get('_route_params')}) }}">
+                                    <img class="lang-flag" src="{{ asset('bundles/ab/images/en-flag.png') }}"></a>
+                                {% else %}
+                                <a href="{{ path('lang_lt', {'parent_route': app.request.attributes.get('_route'), 'parent_route_params': app.request.attributes.get('_route_params')}) }}">
+                                    <img class="lang-flag" src="{{ asset('bundles/ab/images/lt-flag.png') }}"></a>
+                                {% endif %}
+                            </li>
                             <li>
                             <a href="{{ path('fos_user_security_login') }}">
-                                Prisijungti
+                                {{ 'Prisijungti'|trans }}
                             </a>
                             </li>
                         {% endif %}

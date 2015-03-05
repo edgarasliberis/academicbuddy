@@ -6,20 +6,16 @@ fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
 
-#fos_user_profile:
+# fos_user_profile:
 #    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
 #    prefix: /profile
 
-fos_user_profile_show:
-    pattern: /profile
-    defaults: { _controller: ABBundle:Default:index }
+# fos_user_profile_show:
+#     pattern: /profile
+#     defaults: { _controller: ABBundle:Default:index }
 #fos_user_profile_edit:
 #    pattern: /profile/edit
 #    defaults: { _controller: RefreshingAppBundle:Profile:edit }
-
-settings:
-       pattern: /settings
-       defaults: { _controller: ABBundle:Profile:settings }
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"

@@ -1,31 +1,56 @@
 {% extends 'ABBundle::layout.html.twig' %}
 
+{# Include stylesheets #}
 {% block stylesheets %}
     {% stylesheets '@ABBundle/Resources/public/css/settings.less' filter='less' %}
     <link rel="stylesheet" href="{{ asset_url }}" xmlns="http://www.w3.org/1999/html"/>
     {% endstylesheets %}
+    {% stylesheets '@ABBundle/Resources/public/chosen/chosen.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% stylesheets '@ABBundle/Resources/public/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
+
+{# Include javascript #}
+
+{% block javascripts %}
+{% if template == 'mentor' %}
+    {{ parent() }}
+    {% javascripts '@ABBundle/Resources/public/js/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}  
+    {% javascripts '@ABBundle/Resources/public/chosen/chosen.jquery.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endif %}
+{% endblock %}
+
 
 {% block title %}Nustatymai{% endblock %}
 {% block content %}
     <div class="panel-shadow">
         <h2>Nustatymai</h2>
+        {% if success %}
+            <div class="alert alert-success">Duomenys pakeisti sėkmingai!</div>
+        {% endif %}
 
-        {{ form_start(form) }}
+        {% embed 'ABBundle:Profile:edit.' ~ template ~ '.html.twig' with {'form' : detailsForm} %}
+        {% endembed %}
+
+        <hr>
+
+        {{ form_start(passForm) }}
         <fieldset>
             <legend>Pakeisti slaptažodį:</legend>
-            {% if success == true %}
-                <div class="alert alert-success">Slaptažodis pakeistas sėkmingai!</div>
-            {% endif %}
 
-        {{ form_row(form.current_password) }}
-        {{ form_row(form.plainPassword) }}
+        {{ form_row(passForm.current_password) }}
+        {{ form_row(passForm.plainPassword) }}
 
         <button class="btn btn-primary btn-sm" type="submit">Keisti</button>
         </fieldset>
-        {{ form_end(form) }}
+        {{ form_end(passForm) }}
 
     </div>
-{% endblock %}
-{% block javascripts %}
 {% endblock %}

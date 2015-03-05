@@ -9,21 +9,70 @@ pupil_registration:
     pattern:  /register/pupil
     defaults: { _controller: ABBundle:Registration:registerPupil }
 
+# JMSI18nRoutingBundle could lead to a more elegant solution, 
+# but since we only need 4 routes to be translated, that's ok to duplicate routes.
+# (Enables URLs without locale, i.e. just domain.lt/about/oxbridge)
+
+home_noloc:
+    path: /
+    defaults: {_controller: FrameworkBundle:Redirect:redirect, route: home }
+
+# about_oxbridge_noloc:
+#     pattern: /about/oxbridge
+#     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: about_oxbridge }
+
+# about_uk_noloc:
+#     pattern: /about/uk
+#     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: about_uk }
+
+# support_noloc:
+#     pattern: /support
+#     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: support }
+
+lang_lt:
+    pattern: /language/lt
+    defaults: {_controller: ABBundle:Language:lithuanian }
+
+lang_en:
+    pattern: /language/en
+    defaults: {_controller: ABBundle:Language:english }
+
 home:
-    pattern: /
+    pattern: /{_locale}
     defaults: {_controller: ABBundle:Default:index }
+    requirements:
+        _locale: lt|en
 
 about_oxbridge:
+    # pattern: /{_locale}/about/oxbridge
     pattern: /about/oxbridge
     defaults: {_controller: ABBundle:Default:aboutOxbridge }
+    # requirements:
+    #     _locale: lt|en
 
 about_uk:
+    # pattern: /{_locale}/about/uk
     pattern: /about/uk
     defaults: {_controller: ABBundle:Default:aboutUk }
+    # requirements:
+    #     _locale: lt|en
 
 support:
+    # pattern: /{_locale}/support
     pattern: /support
     defaults: {_controller: ABBundle:Default:support }
+    # requirements:
+    #     _locale: lt|en
+
+# Aliases for support page as requested
+support_parama:
+    pattern: /parama
+    defaults: {_controller: FrameworkBundle:Redirect:redirect, route: support, permanent: true }
+
+support_ataskaita:
+    pattern: /ataskaita
+    defaults: {_controller: FrameworkBundle:Redirect:redirect, route: support, permanent: true }
+
 
 mentor_list:
     pattern: /view/mentors/{category}/{page}
@@ -36,6 +85,14 @@ pupil_list:
     defaults: {_controller: ABBundle:Default:pupilList, page: 1, category: 0 }
     options:
         expose: true
+
+settings:
+    pattern: /settings/{id}
+    defaults: { _controller: ABBundle:Profile:settings, id: null }
+
+delete:
+    pattern: /delete/{id}
+    defaults: { _controller: ABBundle:Profile:delete }
 
 message:
     pattern: /message/{mentorId}

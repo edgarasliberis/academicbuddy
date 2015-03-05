@@ -1,0 +1,113 @@
+{% extends "ABBundle::layout.html.twig" %}
+{% block title %}Main{% endblock %}
+{% block content %}
+    <div class="panel-shadow">
+        <div class="row marketing">
+            <div class="col-sm-6">
+                <div id="main-logo">
+                    <img style="width: 80%" src="{{ asset('bundles/ab/images/logo_und.png') }}">
+                </div>
+            </div> 
+            <div class="col-sm-6" id="short-descr">
+                <p>’Academic Buddy’ (f.k.a. ’Academic Brother’) — mentorship project, that aims at helping pupils from Lithuania to enter best foreign universities.</p>
+            </div>
+        </div>
+        <br />
+        <div class="row marketing">
+            <div class="col-sm-6">
+                <h4>2nd stage 2014/15 m.</h4>
+                <table class="table">
+                    <tr>
+                        <td>until 10 13</td>
+                        <td>mentor and pupil registration</td>
+                    </tr>
+                    <tr>
+                        <td>09 13</td>
+                        <td>opening event</td>
+                    </tr>
+                    <tr>
+                        <td>end of October</td>
+                        <td>mentors’ and pupils’ communication commences</td>
+                    </tr>
+                    <tr>
+                        <td><b>December</b></td>
+                        <td><b>Personal Statement workshops</b></td>
+                    </tr>
+                    <tr>
+                        <td>01 15</td>
+                        <td>UCAS application deadline (UK-wide stage)</td>
+                    </tr>
+                    <tr>
+                        <td>Spring</td>
+                        <td>universities announce admission results</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <h4>Oxbridge stage 2014/15 m.</h4>
+                <table class="table">
+                    <tr>
+                        <td nowrap>until 07 06</td>
+                        <td>mentor and pupil registration</td>
+                    </tr>
+                    <tr>
+                        <td>06 27</td>
+                        <td>opening event</td>
+                    </tr>
+                    <tr>
+                        <td>07 10</td>
+                        <td>mentors’ and pupils’ communication commences</td>
+                    </tr>
+                    <tr>
+                        <td>September</td>
+                        <td>application prep camp</td>
+                    </tr>
+                    <tr>
+                        <td>10 15</td>
+                        <td>UCAS deadline (Oxbridge stage)</td>
+                    </tr>
+                    <tr>
+                        <td><b>December</b></td>
+                        <td><b>invitations to the interviews</b></td>
+                    </tr>
+                    <tr>
+                        <td>January</td>
+                        <td>universities announce admission results</td>
+                    </tr>
+                </table>
+            </div>
+        </div> 
+
+        <div id="description">
+            <p>’Academic Buddy’ project progresses in two stages: Oxbridge stage and 2nd (rest of UK) stage.<p>
+
+            {# <h4>Registration</h4>
+            <div class="centered">
+                <a class="btn btn-default btn-lg" href="{{ path('mentor_registration') }}">Mentors’ registration</a>
+                <a class="btn btn-default btn-lg" href="{{ path('pupil_registration') }}">Pupils’ registration</a>
+            </div> #}
+            
+            <p>Although official registration for 2014-15 m. m. has ended, we strongly encourage pupils, who are interested in applying to the best UK universities, to email us at <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>.</p>
+
+            <p>From May to October, Oxbridge stage of the project takes place, which is devoted to help pupils, applying to Oxford or Cambridge (Oxbridge) universities. From September to January, 2nd stage of the project takes place, which is devoted to ones applying to the best universities in the rest of UK, e.g. LSE, UCL, Edinburgh, St Andrews, Durham, Warwick etc. Pupils, participating in Oxbridge stage may also participate in 2nd stage.</p>
+
+            <p>We aim to help talented and motivated students from Lithuania who decided to apply to foreign universities to get high quality education, matching their academic potential. At the same time we are gathering an international Lithuanian students’ community. Lithuanians studying abroad participate in this project by consulting and providing assistance to final year high-school students in the process of their applications. Do you have any questions? Write to us <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>.</p>
+
+            <p style="font-size: 13pt"><b>For those interested in project news, <a href="https://docs.google.com/forms/d/1a7g5Y34M4rClUV365ueQv9rZ-KKGAgKwgdvwv8Xyalk/viewform">subscribe to our newsletter</a>.</b></p>   
+        </div>                
+              
+        <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FAcademicBuddy&amp;width=670&amp;height=425&amp;colorscheme=light&amp;show_faces=false&amp;header=false&amp;stream=true&amp;show_border=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:425px;" allowTransparency="true"></iframe>
+
+        <div class="row marketing">
+            <div class="col-xs-6 col-md-4">
+                <h4>Organisers</h4>
+                <img class="org-logo" src="{{ asset('bundles/ab/images/CULS-EN-version.jpg') }}" alt="Cambridge University Lithuanian Society">
+                <img class="org-logo" src="{{ asset('bundles/ab/images/OULS-logo-3.png') }}" alt="Oxford University Lithuanian Society">
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <h4>Partners</h4>
+                <img class="org-logo" src="{{ asset('bundles/ab/images/logoLTBB.png') }}" alt="LT Big Brother">
+            </div>
+        </div>
+    </div>
+{% endblock %}

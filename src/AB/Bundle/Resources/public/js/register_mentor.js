@@ -10,7 +10,7 @@ jQuery(document).ready(function() {
 	addBlankChoice($("[name$='[courses][0][university]']"));
 	$("[name$='[courses][0][university]']").chosen(
 		{no_results_text: "Nerasta"}
-	); 
+	);
 
     // count the current form inputs we have (e.g. 2), use that as the new
     // index when inserting a new item (e.g. 2)
@@ -70,6 +70,8 @@ function addCourseFormDeleteLink($courseFormLi) {
 
 function addBlankChoice($selectContainer) {
 	$selectContainer.prepend('<option value="">Pasirinkite universitetą:</option>');
+    for(var opt = 0; opt < $selectContainer[0].options.length; ++opt) {
+        if($selectContainer[0].options[opt].hasAttribute('selected')) return;
+    }
 	$selectContainer[0].options[0].selected = true;	
-
 }

@@ -12,6 +12,9 @@ body .content {
 .navbar-brand img {
   height: 20px;
 }
+.lang-flag {
+  height: 17px;
+}
 .navbar {
   margin-bottom: 0px !important;
 }
@@ -239,11 +242,11 @@ body {
   margin: 5px 5px 0 0;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-fb {
-  background: url('../../Resources/public/images/facebook.png');
+  background: url('../Resources/public/images/facebook.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-lnkd {
-  background: url('../../Resources/public/images/linkedin.png');
+  background: url('../Resources/public/images/linkedin.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .message-button {
@@ -266,10 +269,10 @@ body {
   color: #8b8b8b;
   font-size: 90%;
 }
-.mentor-list .activate {
+.mentor-list .control-buttons {
   position: absolute;
   top: 0;
-  right: 80px;
+  right: 60px;
   margin-top: 5px;
 }
 .category-select {
@@ -352,6 +355,10 @@ body {
 #register_form input[type=email],
 #register_form select {   
 	width: 300px;
+}
+
+.chosen-search input[type=text] {
+	width: 100% !important;
 }
 
 .required:after {

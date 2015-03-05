@@ -8,6 +8,10 @@
 	width: 300px;
 }
 
+.chosen-search input[type=text] {
+	width: 100% !important;
+}
+
 .required:after {
     color: red;
     content: ' *';

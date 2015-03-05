@@ -7,3 +7,8 @@ services:
         arguments: [%ab_bundle.db.table_prefix%]
         tags:
             - { name: doctrine.event_subscriber }
+    ab_bundle.locale_listener:
+        class: AB\Bundle\EventListener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }
