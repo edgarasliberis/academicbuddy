@@ -1,3 +1,91 @@
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  width: 100% \9;
+  max-width: 100%;
+  height: auto;
+}
+.form-horizontal .form-group-sm .form-control {
+  height: 31px;
+  padding: 5px 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 0;
+}
+.form-horizontal .form-group-lg .form-control {
+  height: 64px;
+  padding: 18px 30px;
+  font-size: 19px;
+  line-height: 1.3333333;
+  border-radius: 0;
+}
+.btn-group-lg > .btn {
+  padding: 18px 30px;
+  font-size: 19px;
+  line-height: 1.3333333;
+  border-radius: 0;
+}
+.btn-group-sm > .btn {
+  padding: 5px 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 0;
+}
+.btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 0;
+}
+.dl-horizontal dd:before,
+.dl-horizontal dd:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after,
+.btn-toolbar:before,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after,
+.pager:before,
+.pager:after,
+.panel-body:before,
+.panel-body:after,
+.modal-footer:before,
+.modal-footer:after {
+  content: " ";
+  display: table;
+}
+.dl-horizontal dd:after,
+.container:after,
+.container-fluid:after,
+.row:after,
+.form-horizontal .form-group:after,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after,
+.pager:after,
+.panel-body:after,
+.modal-footer:after {
+  clear: both;
+}
 body {
   padding-top: 0px !important;
   padding-bottom: 20px;
@@ -9,8 +97,11 @@ body .content {
   padding: 40px 15px;
   max-width: 730px;
 }
+.navbar-brand {
+  padding: 15px 15px 15px 25px;
+}
 .navbar-brand img {
-  height: 20px;
+  height: 30px;
 }
 .lang-flag {
   height: 17px;
@@ -50,30 +141,8 @@ body .content {
   color: #777;
   border-top: 1px solid #bbb;
 }
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
 .container-narrow > hr {
   margin: 30px 0;
-}
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -116,8 +185,7 @@ body .content {
   display: inline-block;
 }
 .header-info a .avatar img {
-  width: 22px;
-  height: 22px;
+  height: 40px;
   margin: auto 3px;
 }
 .header-info a .name {
@@ -132,30 +200,9 @@ fieldset {
 legend {
   border-bottom: 1px solid #c0c0c0;
 }
-#short-descr {
-  /*text-align: center;
-  color: white;
-  background-color: #252525;*/
-  border-style: rounded;
-  border-radius: 5px;
-}
-#short-descr p {
-  margin: 0.5em 0.1em;
-}
-#main-logo {
-  text-align: center;
-}
-#main-logo img {
-  float: none;
-  max-width: 270px;
-  width: 100%;
-}
 .org-logo {
   display: block;
-  width: 95%;
-}
-.container {
-  padding: 0;
+  width: 80%;
 }
 #photo-block {
   margin: 10px;
@@ -179,4 +226,26 @@ ol.d {
 }
 ol.c {
   list-style-type: upper-roman;
+}
+.main-banner {
+  background-image: url("/bundles/ab/images/sky.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#main-logo img {
+  margin: 50px;
+  width: 80%;
+}
+#short-descr {
+  text-align: right;
+}
+#short-descr p {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  margin: 20px;
+  font-size: 20pt;
+  line-height: 1.1;
+}
+.reg-button {
+  margin: 5px 0px 7px 0px;
+  width: 240px;
 }

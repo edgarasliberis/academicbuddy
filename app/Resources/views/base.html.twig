@@ -4,22 +4,16 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Academic Buddy{% endblock %}</title>
-        {# Glyphicons #}
-        <link href="http://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-
-        {# Bootstrap #}
-        {#<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">#}
-
-        {#<link href="http://bootswatch.com/yeti/bootstrap.min.css" rel="stylesheet">#}
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+        
         {% stylesheets '@ABBundle/Resources/public/css/base.less' filter='less' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <!-- <link href="{{ asset('css/jumbotron-narrow.css') }}" rel="stylesheet"> -->
-        <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+        
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
         {% block stylesheets %}{% endblock %}
 	<style>
@@ -34,20 +28,19 @@
 	<meta property="og:image" content="{{ asset('bundles/ab/images/logo_moved.png') }}">
     </head>
     <body>
-        <div class="container">
-            {% block body %}
-            {% endblock %}
-        </div>
+        {% block body %}
+        {% endblock %}
+
         {# FOS JS routing #}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
         {# jQuery (necessary for Bootstraps JavaScript plugins) #}
-        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="{{ asset('js/jquery.js') }}"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         {# Include all JavaScripts, compiled by Assetic #}
         <script src="{{ asset('js/bootstrap.js') }}"></script>
-        {# Typeahead plugin #}
-        {#<script src="//twitter.github.com/typeahead.js/releases/latest/typeahead.min.js"></script>#}
+
         {% block javascripts %}{% endblock %}
 	    {# GA #}
         <script>

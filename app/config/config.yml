@@ -46,6 +46,14 @@ assetic:
         uglifyjs2:
             bin: /usr/bin/uglifyjs
             apply_to: "\.js$"
+    # assets:
+    #     bootstrap_css:
+    #         inputs:
+    #             - %kernel.root_dir%/../src/AB/Bundle/Resources/public/bootstrap/less/bootstrap.less
+    #         filters:
+    #             - less
+    #             - cssrewrite
+    #         output: css/bootstrap.css
 
 #FOSUserBundle configuration
 fos_user:
@@ -90,19 +98,20 @@ pugx_multi_user:
             type: AB\Bundle\Form\Type\PupilProfileType
 #Bootstrap configuration
 braincrafted_bootstrap:
-    output_dir: #%kernel.root_dir%/../web
+    output_dir: 
     assets_dir: %kernel.root_dir%/../vendor/twbs/bootstrap
-    jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.10.2.js
+    jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.1.js
     less_filter: less # "less", "lessphp" or "none"
+    fonts_dir: %kernel.root_dir%/../web/fonts
     auto_configure:
         assetic: true
         twig: true
         knp_menu: true
         knp_paginator: true
-#    customize_variables:
-#        variables_file: ~
-#        bootstrap_output: %kernel.root_dir%/Resources/less/bootstrap.less
-#        bootstrap_template: BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig
+    customize:
+        variables_file: %kernel.root_dir%/../src/AB/Bundle/Resources/public/bootstrap/less/variables.less
+        #bootstrap_output: %kernel.root_dir%/../src/AB/Bundle/Resources/public/bootstrap/less/bootstrap.less
+        bootstrap_template: BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig
 #Doctrine Configuration
 doctrine:
     dbal:

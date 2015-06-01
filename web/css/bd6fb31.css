@@ -1,3 +1,94 @@
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  width: 100% \9;
+  max-width: 100%;
+  height: auto;
+}
+.form-horizontal .form-group-sm .form-control {
+  height: 31px;
+  padding: 5px 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 0;
+}
+.form-horizontal .form-group-lg .form-control {
+  height: 64px;
+  padding: 18px 30px;
+  font-size: 19px;
+  line-height: 1.3333333;
+  border-radius: 0;
+}
+.btn-group-lg > .btn {
+  padding: 18px 30px;
+  font-size: 19px;
+  line-height: 1.3333333;
+  border-radius: 0;
+}
+.btn-group-sm > .btn {
+  padding: 5px 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 0;
+}
+.btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 0;
+}
+.dl-horizontal dd:before,
+.dl-horizontal dd:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after,
+.btn-toolbar:before,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after,
+.pager:before,
+.pager:after,
+.panel-body:before,
+.panel-body:after,
+.modal-footer:before,
+.modal-footer:after,
+.mentor-list .mentor-overview:before,
+.mentor-list .mentor-overview:after {
+  content: " ";
+  display: table;
+}
+.dl-horizontal dd:after,
+.container:after,
+.container-fluid:after,
+.row:after,
+.form-horizontal .form-group:after,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after,
+.pager:after,
+.panel-body:after,
+.modal-footer:after,
+.mentor-list .mentor-overview:after {
+  clear: both;
+}
 body {
   background-color: #f4f4f4;
 }
@@ -12,22 +103,6 @@ body {
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
 }
-.mentor-list .mentor-overview:before,
-.mentor-list .mentor-overview:after {
-  content: " ";
-  display: table;
-}
-.mentor-list .mentor-overview:after {
-  clear: both;
-}
-.mentor-list .mentor-overview:before,
-.mentor-list .mentor-overview:after {
-  content: " ";
-  display: table;
-}
-.mentor-list .mentor-overview:after {
-  clear: both;
-}
 .mentor-list .mentor-overview .mentor-avatar {
   float: left;
   padding: 3px 0px;
@@ -36,7 +111,7 @@ body {
   float: left;
   position: relative;
   padding: 0 10px;
-  width: calc(100% - 50px);
+  width: calc(100% - 51px);
   /* Sorry */
   overflow: hidden;
 }

@@ -19,10 +19,10 @@
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
 	    "braincrafted/bootstrap-bundle": "~2.0@alpha",
-	    "twbs/bootstrap": "3.0.*",
+	    "twbs/bootstrap": "3.2.*",
         "knplabs/knp-menu": "2.0.*@dev",
         "knplabs/knp-menu-bundle": "dev-master",
-        "jquery/jquery":  "1.10.*",
+        "jquery/jquery":  "1.11.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "pugx/multi-user-bundle": "3.0.*@dev",
@@ -33,9 +33,9 @@
             "type": "package",
             "package": {
                 "name": "jquery/jquery",
-                "version": "1.10.2",
+                "version": "1.11.1",
                 "dist": {
-                    "url": "http://code.jquery.com/jquery-1.10.2.js",
+                    "url": "http://code.jquery.com/jquery-1.11.1.js",
                     "type": "file"
                 }
             }
@@ -47,14 +47,16 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
         ]
     },
     "config": {
