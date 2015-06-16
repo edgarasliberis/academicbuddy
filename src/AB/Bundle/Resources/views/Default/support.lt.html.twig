@@ -1,0 +1,51 @@
+{% extends "ABBundle::layout.html.twig" %}
+{% block title %}Parama{% endblock %}
+
+{% block content %}
+    <div class="panel-shadow clearfix">
+    	<div class="text-block col-md-6 col-xs-12 l-float">
+    		<h3>Ataskaita</h3>
+    		<p>Academic Buddy baigė jau trečius savo veiklos metus, ir tuoj pradės ketvirtuosius. Kasmetiniu tapęs projektas kiekvienais metais plečiasi, tobulėja ir keičiasi.</p>
+    		<p>Pateikiame
+				<ul>
+					<li>2013/2014 metų <a href="{{ asset('bundles/ab/files/AB-13-14-slides.pdf') }}" target="_blank">metinį pranešimą</a>, bei</li>
+					<li>2013.10 prasidedančią <a href="{{ asset('bundles/ab/files/AB-financial-report.pdf') }}" target="_blank">finansinę ataskaitą</a></li>
+				</ul>
+			Iškilus klausimams, pasiūlymams, pastaboms, ar norėdami finansiškai paremti projektą, susisiekite su mumis <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>.
+			</p>
+    	</div>
+
+    	<div class="text-block col-md-6 col-xs-12 r-float">
+			<img title="Paramos plakatas" src="{{ asset('bundles/ab/images/parama.jpg') }}" width="100%"/>
+		</div>
+    	
+    	<div class="text-block col-md-6 col-xs-12 l-float">
+    		<h3>Parama</h3>
+			<h5><strong>Jūs irgi galite prisidėti</strong> prie sėkmingo <em>Academic Buddy</em> projekto įgyvendinimo suteikdami finansinę paramą!</h5>
+		
+			<h4>Paramos gavėjas:</h4>
+			<p style="padding-left: 10px;">
+				Asociacija "<em>Kembridžo universiteto lietuvių bendrija</em>"
+				<br />
+				Juridinio asmens kodas: <strong>302856918</strong>
+				<br />
+				Paramos gavėjas nuo 2012.09.07
+			</p>
+
+			<h4>Paramos būdai:</h4>
+			<ul>
+				<li> 2% Parama. <strong>Kaip užpildyti deklaraciją?</strong> Tai užtruks tik kelias minutes!
+					<ol>
+						<li>Prisijunkite prie EDS per savo banką ar naudodamiesi el. parašu:
+							<a class="link-wrap" href="http://deklaravimas.vmi.lt/lt/Pradinis_Prisijungimo_puslapis/Prisijungimasperisorinessistemas.aspx">http://deklaravimas.vmi.lt/lt/Pradinis_Prisijungimo_puslapis/Prisijungimasperisorinessistemas.aspx</a></li>
+						<li>Užpildykite deklaraciją pagal šią paprastą instrukciją:
+							<a class="link-wrap" href="http://epilietis.eu/index.php/mokymas/e-paslaugos/viesosios-paslaugos/e-deklaravimas/114-prasymas-pervesti-iki-2-procentu-pajamu-mokescio">http://epilietis.eu/index.php/mokymas/e-paslaugos/viesosios-paslaugos/e-deklaravimas/114-prasymas-pervesti-iki-2-procentu-pajamu-mokescio</a></li>
+					</ol>
+				</li>
+				<li> Kiti paramos teikimo būdai. Dėl kitų paramos būdų prašome kreiptis adresu <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>
+			</ul>
+
+			<p><span style="text-decoration: underline;">Visos</span> surinktos lėšos bus skirtos "Academic Buddy" projekto išlaidoms padengti!</p>
+		</div>
+    </div>
+{% endblock %}

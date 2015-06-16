@@ -1,0 +1,103 @@
+{% extends "ABBundle::layout.html.twig" %}
+
+{% block title %}About the 2nd Stage{% endblock %}
+{% block content %}
+    <div class="panel-shadow clearfix">
+        <div class="alert alert-warning">
+            <p>Project dates on this page are for 2014/15. Exact dates for 2015/16 have not been announced yet.</p>
+        </div>
+        <div class="text-block col-md-6 col-xs-12 l-float">
+            <h3>About the 2nd Stage</h3>
+            <p>The 2nd stage is for students in their finals year of high school who are interested in studying in the best<a href="#fn1" id="ref1"><sup>*</sup></a> universities in the UK (except for Oxford and Cambridge; due to procedural differences in application ‘Academic Buddy’ has a <a href="{{ path('about_oxbridge') }}">stage dedicated solely to them</a>).</p>
+            <p>You can introduce yourself to the history and goals of the project in <a href="{{ path('about_oxbridge') }}">the Oxbridge stage page</a>.</p>
+         </div>
+
+        <div class="text-block col-md-6 col-xs-12 r-float">
+            <h3>The Process</h3>    
+            <p>Application to UK’s universities happens through a centralized system called ‘UCAS’ <a href="http://www.ucas.com/">http://www.ucas.com/</a>. The deadline for UCAS applications (for universities outside Oxbridge) is 15th January</p>
+            <p>It is crucial to dedicate time and energy to your UCAS application, as that substantially increases chances of getting an offer from your desired university. For this reason, the 2nd stage of ‘Academic Buddy’ starts in September<a href="#fn2" id="ref2"><sup>**</sup></a>. High school students and other wishing to participate in ‘Academic Buddy’ need to register on our website before the deadline (specified below). Every reigstered participant is then assigned a mentor according to (i) interests and motivation expressed in the application form, and (ii) expressed mentor preferences.</p>
+
+            <p>The student will communicate with his/her mentor mostly by e-mail/Skype/Google Hangouts and other remote methods. The mentor will consult the student in all questions that might arise, will help to prepare their <i>Personal Statement</i> and other parts of the UCAS form, etc. The mentor does not do anything on behalf of the student – students have to apply themselves! We believe that students who are accepted to ‘Academic Buddy’ are capable to grapple with the UCAS form and other parts of their application by themselves; the mentors are there to guide them and answer their questions.</p>
+
+            <p>The 2nd stage also includes to live events. The first one is the opening event happening in September, which introduces students to peculiarities of UK’s universities, admissions procedures, differences between higher education and living in different regions of UK, and other preliminary information. The second event - <i>Personal Statement</i> improvement workshop, which happens in December, when mentors (usually students in UK) come back to Lithuania for their Christmas vacation.</p>
+        </div>
+        
+        
+        <div class="text-block col-md-6 col-xs-12 l-float">
+            <h3>2nd Stage dates</h3>
+            <table class="table">
+                <tr>
+                    <td>8th September – 13th October</td>
+                    <td>registration for mentors and students</td>
+                </tr>
+                <tr>
+                    <td>early September</td>
+                    <td>opening event</td>
+                </tr>
+                <tr>
+                    <td>late October</td>
+                    <td>communication between students and mentors starts</td>
+                </tr>
+                <tr>
+                    <td>late December</td>
+                    <td><em>Personal Statement</em> workshop</td>
+                </tr>
+                <tr>
+                    <td>15th January</td>
+                    <td>UCAS deadline</td>
+                </tr>
+                <tr>
+                    <td>November<a href="#fn2"><sup>**</sup></a> – April</td>
+                    <td>university admission results</td>
+                </tr>
+                <tr>
+                    <td>May - June</td>
+                    <td>Lithuanian high school exams</td>
+                </tr>
+                <tr>
+                    <td>July - August</td>
+                    <td>universities accept students who’ve fulfilled conditions in their offers</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="text-block  col-md-6 col-xs-12 r-float">
+            <h3>Pupil and mentor registration</h3>
+            <p><strong>Pupil registration.</strong> September - October</p>
+            <p>All last year high school students and older willing participants are welcome to register. Students are accepted/rejected based on their motivation and abilities as stated/visible from their application form. The application form will also be used to assign a mentor. Application forms which are written hastily (e. g. don’t contain relevant information or are very short) will be rejected, so we ask all future participants to spend time on their application to ‘Academic Buddy’</p>
+            <p><strong>Mentor registration.</strong> September - October</i></p>
+            <p>All Lithuanian students who study or are alumni of the best universities in the United Kingdom are very needed! All information in mentor applications, except for their e-mail, will be publicly available and students will base their mentor preferences on it.</p>
+        </div>
+
+        <div class="text-block col-md-6 col-xs-12 l-float">
+            <h3>The opening event</h3>
+            <p>The goal of this event is to provide introductory information about studies in the United Kingdom, rendering students available to choose whether they want to pursue them, and also to pick their favourite courses and universities. This is also a good opportunity to meet other prospective participants and mentors.</p>
+            <p>Date: September</p>
+        </div>
+
+        <div class="text-block col-md-6 col-xs-12 l-float">
+            <hr>
+            <p><a href="#ref1" id="fn1"><sup>*</sup></a>All Russell Group universities, and also universities that are amongst the top 10 in<a href="http://www.theguardian.com/education/ng-interactive/2014/jun/02/university-league-tables-2015-the-complete-list">The Guardian rankings</a> (also, some exceptional specialized courses, e. g. art/engineering courses in less well known/ranked univerisites can be accepted if they are exceptional in their domain!)</p>
+            <p><a href="#ref2" id="fn2"><sup>**</sup></a> If you send your application early, universities might also reply early with an offer/rejection. It’s not obligatory to wait until 15th January if both the pupil and the mentor think that the UCAS application is in good form.</p>
+        </div>
+
+        <div class="text-block col-md-6 col-xs-12 r-float">
+            <h4>Organisers</h4>
+            <div>
+                <a href="http://www.cu-ls.org" target="_blank">
+                    <img class="org-logo" src="{{ asset('bundles/ab/images/CULS-EN-version.jpg') }}" alt="Cambridge University Lithuanian Society" style="max-width: 230px" /></a>
+                <br />
+                <a href="http://www.ou-ls.org" target="_blank">
+                    <img class="org-logo" src="{{ asset('bundles/ab/images/OULS-logo-3.png') }}" alt="Oxford University Lithuanian Society" style="max-width: 220px" /></a>
+            </div>
+            <h4>Partners</h4>
+            <div>
+                <a href="http://www.ltbigbrother.com/apie-projekta/">
+                    <img class="org-logo" src="{{ asset('bundles/ab/images/logoLTBB.png') }}" alt="LT Big Brother" style="max-width: 230px" /></a>
+                <a href="http://vischool.lt/">
+                    <img class="org-logo" src="{{ asset('bundles/ab/images/vis-logo.png') }}" alt="Vilnius International School" style="max-width: 212px"></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

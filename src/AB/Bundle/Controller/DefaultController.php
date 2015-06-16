@@ -19,19 +19,19 @@ class DefaultController extends Controller
     public function aboutOxbridgeAction(Request $request) 
     {
         $locale = $request->getLocale();
-    	return $this->render('ABBundle:Default:about.oxbridge.html.twig');
+    	return $this->render('ABBundle:Default:about.oxbridge.'.$locale.'.html.twig');
     }
 
     public function aboutUkAction(Request $request) 
     {
         $locale = $request->getLocale();
-        return $this->render('ABBundle:Default:about.uk.html.twig');
+        return $this->render('ABBundle:Default:about.uk.'.$locale.'.html.twig');
     }
 
     public function supportAction(Request $request) 
     {
         $locale = $request->getLocale();
-    	return $this->render('ABBundle:Default:support.html.twig');
+    	return $this->render('ABBundle:Default:support.'.$locale.'.html.twig');
     }
 
     public function mentorListAction($category, $page) {

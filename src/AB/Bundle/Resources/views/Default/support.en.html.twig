@@ -1,0 +1,51 @@
+{% extends "ABBundle::layout.html.twig" %}
+{% block title %}Support{% endblock %}
+
+{% block content %}
+    <div class="panel-shadow clearfix">
+    	<div class="text-block col-md-6 col-xs-12 l-float">
+    		<h3>Report</h3>
+    		<p>'Academic Buddy' finished its third year and is about to begin the fourth iteration of the project. We are proud to say that this yearly project is successfully expanding, changing and is constantly improving on past experience.</p>
+    		<p>We present (in Lithuanian) our
+				<ul>
+					<li>2013/2014 <a href="{{ asset('bundles/ab/files/AB-13-14-slides.pdf') }}" target="_blank">yearly report</a>, and</li>
+					<li><a href="{{ asset('bundles/ab/files/AB-financial-report.pdf') }}" target="_blank">financial report</a> since October 2013</li>
+				</ul>
+			If you have any questions, comments, suggestions, or you would like to support the project financially, please get in touch by email <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>.
+			</p>
+    	</div>
+
+    	<div class="text-block col-md-6 col-xs-12 r-float">
+			<img title="Support poster (in Lithuanian)" src="{{ asset('bundles/ab/images/parama.jpg') }}" width="100%"/>
+		</div>
+    	
+    	<div class="text-block col-md-6 col-xs-12 l-float">
+    		<h3>Support</h3>
+			<h5><strong>You can contribute to </strong> successful realization of the goals of <em>Academic Buddy</em> by providing financial support!</h5>
+		
+			<h4>The receiver (in Lithuanian):</h4>
+			<p style="padding-left: 10px;">
+				Asociacija "<em>Kembridžo universiteto lietuvių bendrija</em>"
+				<br />
+				Legal entity code (lt. “juridinio asmens kodas”): <strong>302856918</strong>
+				<br />
+				Receiver of support from 2012.09.07
+			</p>
+
+			<h4>Ways to support:</h4>
+			<ul>
+				<li> 2% from the income tax. <strong>How should you fill in the declaration?</strong> This will only take a few minutes!
+					<ol>
+						<li>Login to EDS through your bank using your e-signature:
+							<a class="link-wrap" href="http://deklaravimas.vmi.lt/lt/Pradinis_Prisijungimo_puslapis/Prisijungimasperisorinessistemas.aspx">http://deklaravimas.vmi.lt/lt/Pradinis_Prisijungimo_puslapis/Prisijungimasperisorinessistemas.aspx</a></li>
+						<li>Fill in the declaration according to these simple instructions:
+							<a class="link-wrap" href="http://epilietis.eu/index.php/mokymas/e-paslaugos/viesosios-paslaugos/e-deklaravimas/114-prasymas-pervesti-iki-2-procentu-pajamu-mokescio">http://epilietis.eu/index.php/mokymas/e-paslaugos/viesosios-paslaugos/e-deklaravimas/114-prasymas-pervesti-iki-2-procentu-pajamu-mokescio</a></li>
+					</ol>
+				</li>
+				<li> Other ways to support us. If you are interesting in supporting us in other ways, get in touch via <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>
+			</ul>
+
+			<p><span style="text-decoration: underline;">All</span> of your support will be used to cover the expenses of running 'Academic Buddy'! We are student volunteers, hence we work for free.</p>
+		</div>
+    </div>
+{% endblock %}

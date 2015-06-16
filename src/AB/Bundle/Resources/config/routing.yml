@@ -9,26 +9,27 @@ pupil_registration:
     pattern:  /register/pupil
     defaults: { _controller: ABBundle:Registration:registerPupil }
 
+# Enables URLs without locale, i.e. just domain.lt/about/oxbridge.
 # JMSI18nRoutingBundle could lead to a more elegant solution, 
-# but since we only need 4 routes to be translated, that's ok to duplicate routes.
-# (Enables URLs without locale, i.e. just domain.lt/about/oxbridge)
+# but since we only need 4 routes to be translated, it's fine to duplicate routes.
 
 home_noloc:
     path: /
     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: home }
 
-# about_oxbridge_noloc:
-#     pattern: /about/oxbridge
-#     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: about_oxbridge }
+about_oxbridge_noloc:
+    pattern: /about/oxbridge
+    defaults: {_controller: FrameworkBundle:Redirect:redirect, route: about_oxbridge }
 
-# about_uk_noloc:
-#     pattern: /about/uk
-#     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: about_uk }
+about_uk_noloc:
+    pattern: /about/uk
+    defaults: {_controller: FrameworkBundle:Redirect:redirect, route: about_uk }
 
-# support_noloc:
-#     pattern: /support
-#     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: support }
+support_noloc:
+    pattern: /support
+    defaults: {_controller: FrameworkBundle:Redirect:redirect, route: support }
 
+# Language switcher routes
 lang_lt:
     pattern: /language/lt
     defaults: {_controller: ABBundle:Language:lithuanian }
@@ -37,6 +38,7 @@ lang_en:
     pattern: /language/en
     defaults: {_controller: ABBundle:Language:english }
 
+# Pages routes
 home:
     pattern: /{_locale}
     defaults: {_controller: ABBundle:Default:index }
@@ -44,25 +46,25 @@ home:
         _locale: lt|en
 
 about_oxbridge:
-    # pattern: /{_locale}/about/oxbridge
-    pattern: /about/oxbridge
+    pattern: /{_locale}/about/oxbridge
+    # pattern: /about/oxbridge
     defaults: {_controller: ABBundle:Default:aboutOxbridge }
-    # requirements:
-    #     _locale: lt|en
+    requirements:
+        _locale: lt|en
 
 about_uk:
-    # pattern: /{_locale}/about/uk
-    pattern: /about/uk
+    pattern: /{_locale}/about/uk
+    # pattern: /about/uk
     defaults: {_controller: ABBundle:Default:aboutUk }
-    # requirements:
-    #     _locale: lt|en
+    requirements:
+        _locale: lt|en
 
 support:
-    # pattern: /{_locale}/support
-    pattern: /support
+    pattern: /{_locale}/support
+    # pattern: /support
     defaults: {_controller: ABBundle:Default:support }
-    # requirements:
-    #     _locale: lt|en
+    requirements:
+        _locale: lt|en
 
 # Aliases for support page as requested
 support_parama:

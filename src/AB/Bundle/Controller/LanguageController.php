@@ -20,7 +20,7 @@ class LanguageController extends Controller
         $parentRoute = $request->get('parent_route'); 
         $parentRouteParams = is_null($request->get('parent_route_params'))? array() : $request->get('parent_route_params');
 
-        // Generate URL with changed locale (won't pick up changes from session, have to enforce).
+        // Generate URL with changed locale (won't pick up changes from the session, have to enforce).
         $url = $this->get('router')->generate($parentRoute, array('_locale' => $loc) + $parentRouteParams);
 
         // As a result of previous line, URL's that don't have locale in path, will get query ?_locale=... 
