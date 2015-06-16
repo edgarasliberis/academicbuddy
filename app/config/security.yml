@@ -53,7 +53,7 @@ security:
             anonymous:  true
             form_login:
                 provider: fos_userbundle
-                csrf_provider: form.csrf_provider
+                csrf_provider: security.csrf.token_manager
                 login_path: /login
                 check_path: /login_check
                 always_use_default_target_path: false

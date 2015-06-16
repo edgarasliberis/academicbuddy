@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class DefaultController extends Controller
 {
@@ -114,6 +116,7 @@ class DefaultController extends Controller
             throw new AccessDeniedException();
         }
 
+        // Process query
         $men = $request->query->get('mentors') === 'true'? true : false;
         $pup = $request->query->get('pupils') === 'true'? true : false;
         $enb = $request->query->get('enabled') === 'true'? true : false;
@@ -122,6 +125,7 @@ class DefaultController extends Controller
         $any = ($men || $pup) && ($enb || $nen);
         $users = array();
 
+        // Retrieve data
         if($any) {
             $allStatuses = $enb && $nen;
             $allRoles = $men && $pup;
@@ -139,12 +143,79 @@ class DefaultController extends Controller
             $users = $query->getResult();
         }
 
-        $formatUser = function($user) { 
-            return $user->getFirstName() . ' ' . $user->getLastName() . ' <' . $user->getEmail() . '>'; 
-        };
-        $respStrs = array_map($formatUser, $users);
+        // Output in a requested format
+        // CSV
+        if ($request->query->get('type') === 'csv') {
+            if(!($men xor $pup)) {
+                return new HttpException(500, "Only mentors' or pupils' export can be requested, but not both or neither.");
+            }
 
-        $response = new Response(implode(",\n", $respStrs));
-        return $response;
+            $response = new StreamedResponse();
+            $response->setCallback(function() use ($users, $men, $pup) {
+                $handle = fopen('php://output', 'w+');
+                $del = ',';
+                $esc = '"';
+
+                if($men) {
+                    // Put mentors' table headings
+                    fputcsv($handle, array('First name', 'Last name', 'Email',
+                        'Facebook', 'LinkedIn',
+                        'Home City', 'About', 'School Name', 
+                        'School City', 'School Grad Year', 'Course Category', 
+                        'Course Name', 'Start Year', 'Grad Year', 'University'), $del, $esc);
+                    foreach($users as $user)
+                    {
+                        // Mentor can have multiple courses listed.
+                        // Output that mentor multiple times for each course.
+                        foreach($user->getCourses() as $course) {
+                            fputcsv($handle, 
+                                array($user->getFirstName(), $user->getLastName(), $user->getEmail(), 
+                                    $user->getFacebookId(), $user->getLinkedinId(),
+                                    $user->getHomeCity(), $user->getAbout(), $user->getSchoolName(), 
+                                    $user->getSchoolCity(), $user->getSchoolGraduationYear(), $course->getCourseCategory(),
+                                    $course->getName(), $course->getStartYear(), $course->getGraduationYear(), $course->getUniversity()), 
+                                $del, $esc);
+                        }
+                        
+                    }
+                } else if ($pup) {
+                    // Put pupils' table headings
+                    fputcsv($handle, array('First name', 'Last name', 'Email', 
+                        'Home City', 'Interests', 'School Name', 
+                        'School City', 'Grad year', 'School Grade', 
+                        'Course Category', 'Motivation', 'University Region', 'Course Name'), $del, $esc);
+                    foreach($users as $user)
+                    {
+                        fputcsv($handle, 
+                            array($user->getFirstName(), $user->getLastName(), $user->getEmail(), 
+                                $user->getHomeCity(), $user->getAbout(), $user->getSchoolName(), 
+                                $user->getSchoolCity(), $user->getSchoolGraduationYear(), $user->getSchoolGrade(),
+                                $user->getCourseCategory(), $user->getMotivation(), $user->getUniversityRegion(), $user->getCourseName()),
+                            $del, $esc);
+                    }
+                }
+
+                fclose($handle);
+            });
+         
+            $filename = ($men? "mentors" : "pupils") . date('-Ymd-Hi') . '.csv';
+            $response->setStatusCode(200);
+            $response->headers->set('Content-Type', 'text/csv; charset=utf-8');
+            $response->headers->set('Content-Disposition','attachment; filename="'.$filename.'"');
+         
+            return $response;
+        }
+        // List of emails
+        else if ($request->query->get('type') === 'email') {
+            $formatUser = function($user) { 
+                return $user->getFirstName() . ' ' . $user->getLastName() . ' <' . $user->getEmail() . '>'; 
+            };
+            $respStrs = array_map($formatUser, $users);
+
+            $response = new Response(implode(",\n", $respStrs));
+            return $response;
+        }
+
+        return null;
     }        
 }

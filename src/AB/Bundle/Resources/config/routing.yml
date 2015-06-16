@@ -2,11 +2,11 @@
 #    resource: "@ABBundle/Controller"
 #    type:     annotation
 mentor_registration:
-    pattern:  /register/mentor
+    path:  /register/mentor
     defaults: { _controller: ABBundle:Registration:registerMentor }
 
 pupil_registration:
-    pattern:  /register/pupil
+    path:  /register/pupil
     defaults: { _controller: ABBundle:Registration:registerPupil }
 
 # Enables URLs without locale, i.e. just domain.lt/about/oxbridge.
@@ -18,94 +18,94 @@ home_noloc:
     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: home }
 
 about_oxbridge_noloc:
-    pattern: /about/oxbridge
+    path: /about/oxbridge
     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: about_oxbridge }
 
 about_uk_noloc:
-    pattern: /about/uk
+    path: /about/uk
     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: about_uk }
 
 support_noloc:
-    pattern: /support
+    path: /support
     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: support }
 
 # Language switcher routes
 lang_lt:
-    pattern: /language/lt
+    path: /language/lt
     defaults: {_controller: ABBundle:Language:lithuanian }
 
 lang_en:
-    pattern: /language/en
+    path: /language/en
     defaults: {_controller: ABBundle:Language:english }
 
 # Pages routes
 home:
-    pattern: /{_locale}
+    path: /{_locale}
     defaults: {_controller: ABBundle:Default:index }
     requirements:
         _locale: lt|en
 
 about_oxbridge:
-    pattern: /{_locale}/about/oxbridge
-    # pattern: /about/oxbridge
+    path: /{_locale}/about/oxbridge
+    # path: /about/oxbridge
     defaults: {_controller: ABBundle:Default:aboutOxbridge }
     requirements:
         _locale: lt|en
 
 about_uk:
-    pattern: /{_locale}/about/uk
-    # pattern: /about/uk
+    path: /{_locale}/about/uk
+    # path: /about/uk
     defaults: {_controller: ABBundle:Default:aboutUk }
     requirements:
         _locale: lt|en
 
 support:
-    pattern: /{_locale}/support
-    # pattern: /support
+    path: /{_locale}/support
+    # path: /support
     defaults: {_controller: ABBundle:Default:support }
     requirements:
         _locale: lt|en
 
 # Aliases for support page as requested
 support_parama:
-    pattern: /parama
+    path: /parama
     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: support, permanent: true }
 
 support_ataskaita:
-    pattern: /ataskaita
+    path: /ataskaita
     defaults: {_controller: FrameworkBundle:Redirect:redirect, route: support, permanent: true }
 
 
 mentor_list:
-    pattern: /view/mentors/{category}/{page}
+    path: /view/mentors/{category}/{page}
     defaults: {_controller: ABBundle:Default:mentorList, page: 1, category: 0 }
     options:
         expose: true
 
 pupil_list:
-    pattern: /view/pupils/{category}/{page}
+    path: /view/pupils/{category}/{page}
     defaults: {_controller: ABBundle:Default:pupilList, page: 1, category: 0 }
     options:
         expose: true
 
 settings:
-    pattern: /settings/{id}
+    path: /settings/{id}
     defaults: { _controller: ABBundle:Profile:settings, id: null }
 
 delete:
-    pattern: /delete/{id}
+    path: /delete/{id}
     defaults: { _controller: ABBundle:Profile:delete }
 
 message:
-    pattern: /message/{mentorId}
+    path: /message/{mentorId}
     defaults: {_controller: ABBundle:Messaging:sendMessage}
 
 user_export:
-    pattern: /export
+    path: /export
     defaults: {_controller: ABBundle:Default:userExport }
 
 user_data:
-    pattern: /export_data
+    path: /export_data
     defaults: {_controller: ABBundle:Default:userData }
     options:
         expose: true

@@ -10,12 +10,16 @@
     <div class="panel-shadow">
     	<p>Pasirink kokių vartotojų el.paštų sąrašą nori matyti (galima pasirinkti kelias kategorijas):</p>
     	<div class="btn-group" data-toggle="buttons">
+    		Kas? <br />
 			<label id="mentors" class="btn btn-primary">
 				<input type="checkbox"> Mentoriai
 			</label>
 			<label id="pupils" class="btn btn-primary">
 				<input type="checkbox"> Mokiniai
 			</label>
+		</div>
+		<div class="btn-group" data-toggle="buttons">
+			Kokie?<br />
 			<label id="enabled" class="btn btn-primary">
 				<input type="checkbox"> Aktyvuoti
 			</label>
@@ -23,9 +27,16 @@
 				<input type="checkbox"> Neaktyvuoti
 			</label>
 		</div>
-		<br />
+
+		<div class="btn-group">
+			<i>Veikia pasirinkus tik vieną kategoriją vartotojų (mentoriai ar mokiniai)</i> <br />
+			<button id="export-csv" type="button" class="btn btn-success">
+			  <span class="glyphicon glyphicon-download-alt"></span> Atsisiųsti CSV
+			</button>
+		</div>
+		<br /> <br />
 		<p>Nukopijuok šitą sąrašą į 'bcc:' laiško laukelį:</p> 
-		<textarea id="list" rows="30"></textarea>
+		<textarea id="list" rows="25"></textarea>
     </div>
 {% endblock %}
 

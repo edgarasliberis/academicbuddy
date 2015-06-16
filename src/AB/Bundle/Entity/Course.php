@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Course
 {
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer")G
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -235,7 +235,7 @@ class Course
      * @param \AB\Bundle\Entity\CourseCategory $courseCategory
      * @return Course
      */
-    public function setCourseCategory(\AB\Bundle\Entity\CourseCategory $courseCategory)
+    public function setCourseCategory(\AB\Bundle\Entity\CourseCategory $courseCategory = null)
     {
         $this->courseCategory = $courseCategory;
     

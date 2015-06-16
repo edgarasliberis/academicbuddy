@@ -1,7 +1,6 @@
 <div class="mentor-overview">
     <div class="mentor-avatar">
-        {% set avatar = asset('bundles/ab/images/icon-user-default.png') %}
-        <img src="{{ avatar }}"/>
+        <img src="{{ asset('bundles/ab/images/icon-user-default.png') }}"/>
     </div>
     <div class="mentor-info">
         <div class="mentor-name">
@@ -18,7 +17,7 @@
                         {{ user.schoolName }}
                         {% if user.schoolCity is not null %}, {{ user.schoolCity }}{% endif %}
                         {% if user.schoolGraduationYear is not null %}, {{ user.schoolGraduationYear }}{% endif %}
-                        {% if user.schoolGrade is not null%}, (Vid. {{ user.schoolGrade }}){% endif %}
+                        {% if user.schoolGrade is not null%}, (Vidurkis: {{ user.schoolGrade }}){% endif %}
                     </div>
                 {% endif %}
                 <div><div class="summary-label">Motyvacija: </div>

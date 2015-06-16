@@ -38,7 +38,7 @@
 {# Page content #}
 {% block content %}
     <div id="register_form">
-        {{ form_start(detailsForm) }}
+        {{ form_start(detailsForm, {'attr': {'class': 'form-horizontal'}}) }}
         {{ form_errors(form) }}
         <fieldset>
             <legend>Asmeninė informacija</legend>

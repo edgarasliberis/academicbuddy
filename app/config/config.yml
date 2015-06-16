@@ -44,7 +44,7 @@ assetic:
             apply_to: "\.less$"
         cssrewrite: ~
         uglifyjs2:
-            bin: /usr/bin/uglifyjs
+            bin: /usr/local/bin/uglifyjs
             apply_to: "\.js$"
     # assets:
     #     bootstrap_css:

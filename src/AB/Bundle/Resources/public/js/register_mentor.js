@@ -7,10 +7,14 @@ var $newLinkLi = $('<li></li>').append($addCourseLink);
   
 jQuery(document).ready(function() {
 	
-	addBlankChoice($("[name$='[courses][0][university]']"));
-	$("[name$='[courses][0][university]']").chosen(
-		{no_results_text: "Nerasta"}
-	);
+	// Apply chosen and empty choice to existing choice elements
+    $("[name$='][university]']").map(function(idx, select) {
+        var $select = $(select);
+        addBlankChoice($select);
+	    $select.chosen(
+		  {no_results_text: "Nerasta"}
+	    );
+    });
 
     // count the current form inputs we have (e.g. 2), use that as the new
     // index when inserting a new item (e.g. 2)
@@ -48,7 +52,7 @@ function addCourseForm(collectionHolder, $newLinkLi) {
 
     addCourseFormDeleteLink($newFormLi);
 
-    var $selectUniversity = $("#mentor_registration_mentor_courses_" + index + "_university");
+    var $selectUniversity = $("#fos_user_registration_form_courses_" + index + "_university");
     addBlankChoice($selectUniversity);
     $selectUniversity.chosen(
 		{no_results_text: "Nerasta"}
