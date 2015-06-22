@@ -404,11 +404,11 @@ body {
   margin: 5px 5px 0 0;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-fb {
-  background: url('../../Resources/public/images/facebook.png');
+  background: url('../Resources/public/images/facebook.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-lnkd {
-  background: url('../../Resources/public/images/linkedin.png');
+  background: url('../Resources/public/images/linkedin.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .message-button {
