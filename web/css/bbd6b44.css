@@ -204,7 +204,11 @@ legend {
   display: block;
   width: 80%;
 }
-#photo-block {
+.slides-block {
+  width: 100%;
+  max-width: 100%;
+}
+.slides-block button {
   margin: 10px;
 }
 a.slidesjs-previous {

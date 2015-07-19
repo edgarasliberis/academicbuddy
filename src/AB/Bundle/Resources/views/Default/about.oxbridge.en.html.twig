@@ -101,17 +101,21 @@
             <p>We only accept Oxbridge students and Alumni in the Oxbridge stage. All information, with the exception of e-mail and phone, will be publicly available on our website. Students will use the information to express their preferences for mentors.</p>
         </div>
 
-        <div class="col-md-12 l-float">
-            <h4>Moments from the opening event last year</h4>
-            <div id="photo-block">
-                <div id="slides">
-                    {% for i in 1..12 %}
-                        <img src={{ asset('bundles/ab/images/photos/%d.JPG'|format(i)) }} />
-                    {% endfor %}
-                    <a href=# class="slidesjs-previous slidesjs-navigation">{{ icon('chevron-left') }}</a>
-                    <a href=# class="slidesjs-next slidesjs-navigation">{{ icon('chevron-right') }}</a>
+        <div id="presentation" class="col-md-12 l-float">
+            <h4>Slides from Oxbridge stage opening event 2015</h4>
+            <div class="slides-block">
+                <div id="slides-oxbridge-15">
+                    <button type="button" class="btn btn-default">{{ icon('play-circle') }} Watch slides</button>
                 </div>
             </div>
+            <p>Download: <a href="{{ asset('bundles/ab/files/Academic-Buddy-pristatomasis-renginys-Oksbridzas-2015.pptx') }}" target="_blank">PPTX</a>. More information is available in the 'Notes' section.</p>
+            <h4>Slies from presentation about Cambridge at Panevezys J. Balcikonis gymnasium 2015</h4>
+            <div class="slides-block">
+                <div id="slides-jbg-15">
+                    <button type="button" class="btn btn-default">{{ icon('play-circle') }} Watch slides</button>
+                </div>
+            </div>
+            <p>Download: <a href="{{ asset('bundles/ab/files/cantab-talk.pdf') }}" target="_blank">PDF</a>.</p>
         </div>
 
         <div class="text-block col-md-6 col-xs-12 l-float">
@@ -151,17 +155,45 @@
     </div>
 {% endblock %}
 {% block javascripts %}
-    {% javascripts '@ABBundle/Resources/public/slides/jquery.slides.js' filter='?uglifyjs2' %}
+    {% javascripts '@ABBundle/Resources/public/slides/jquery.slides.min.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>
         $(function(){
-            $("#slides").slidesjs({
-                width: 670,
-                height: 450,
-                navigation: { active: false },
-                pagination: { active: false },
-                play: { auto: true }
+            $("#slides-oxbridge-15 > button").click(function() {
+                // A bit dirty, but would do for now
+                $("#slides-oxbridge-15").html(" \
+                    {% for i in 1..45 %}
+                        <img src={{ asset('bundles/ab/images/photos/events/opening-oxbridge-15/slides/Slide%d.PNG'|format(i)) }} /> \
+                    {% endfor %}
+                    <a href=# class=\"slidesjs-previous slidesjs-navigation\"><span class=\"glyphicon glyphicon-chevron-left\"></span></a> \
+                    <a href=# class=\"slidesjs-next slidesjs-navigation\"><span class=\"glyphicon glyphicon-chevron-right\"></span></a>");
+
+                $("#slides-oxbridge-15").slidesjs({
+                    width: 960,
+                    height: 540,
+                    navigation: false,
+                    pagination: false,
+                    play: { auto: true }
+                });
+            });
+
+            $("#slides-jbg-15 > button").click(function() {
+                // A bit dirty, but would do for now
+                $("#slides-jbg-15").html(" \
+                    {% for i in 1..27 %}
+                        <img src={{ asset('bundles/ab/images/photos/events/opening-oxbridge-15/cantab-slides/cantab-talk-%02d.png'|format(i)) }} /> \
+                    {% endfor %}
+                    <a href=# class=\"slidesjs-previous slidesjs-navigation\"><span class=\"glyphicon glyphicon-chevron-left\"></span></a> \
+                    <a href=# class=\"slidesjs-next slidesjs-navigation\"><span class=\"glyphicon glyphicon-chevron-right\"></span></a>");
+
+                $("#slides-jbg-15").slidesjs({
+                    width: 1200,
+                    height: 900,
+                    navigation: false,
+                    pagination: false,
+                    play: { auto: true }
+                });
             });
         });
     </script>
