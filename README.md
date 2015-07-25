@@ -1,4 +1,4 @@
-academicbrother2
+academicbuddy
 ================
 
 0) Prerequisites
@@ -16,11 +16,11 @@ academicbrother2
 
 1. Clone the repository:
 
-        $ git clone https://github.com/edgarasliberis/academicbrother2.git
+        $ git clone https://github.com/edgarasliberis/academicbuddy.git
 
 2. Install Composer:
 
-        $ cd academicbrother2
+        $ cd academicbuddy
         $ curl -sS https://getcomposer.org/installer | php
 
 3. Create a database and user to use with Symfony:
