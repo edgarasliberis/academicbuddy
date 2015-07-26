@@ -14,6 +14,12 @@ jQuery(document).ready(function() {
         return null;
     }
 
+    $('#inform-applicants').on('click', function() {
+        if(confirm("This will inform all non-activated pupils that their application has been unsuccessful. Continue?")) {
+            $.post(Routing.generate('user_inform_unsuccessful'));
+        }
+    });
+
     $('#export-csv').on('click', function() {
         var userType = userTypeFromFlags($("#mentors").is(".active"), $("#pupils").is(".active"));
         var status = statusFromFlags($("#enabled").is(".active"), $("#notenabled").is(".active"));

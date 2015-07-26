@@ -8,6 +8,7 @@
 
 {% block content %}
     <div class="panel-shadow">
+    	<h3>Vartotojų duomenys</h3>
     	<p>Pasirink kokių vartotojų el.paštų sąrašą nori matyti (galima pasirinkti kelias kategorijas):</p>
     	<div class="btn-group" data-toggle="buttons">
     		Kas? <br />
@@ -37,6 +38,11 @@
 		<br /> <br />
 		<p>Nukopijuok šitą sąrašą į 'bcc:' laiško laukelį:</p> 
 		<textarea id="list" rows="25"></textarea>
+
+		<h3>Projekto eigos laiškai</h3>
+		<button id="inform-applicants" type="button" class="btn btn-danger">
+			  <span class="glyphicon glyphicon-remove-sign"></span> Išsiųsti laišką neatrinktiems mokiniams
+		</button>
     </div>
 {% endblock %}
 

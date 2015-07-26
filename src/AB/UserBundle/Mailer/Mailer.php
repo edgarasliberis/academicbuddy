@@ -69,4 +69,10 @@ class Mailer extends BaseMailer
         $this->sendMessage($template, array('password' => $tempPassword, 'email' => $user->getEmail()),
                            $this->parameters['fromEmail'], $user->getEmail());
     }
+
+    public function sendApplicationUnsuccessfulMessage(UserInterface $user) {
+        assert($user instanceof Pupil);
+        $this->sendMessage('ABBundle:Email:pupil.registration.unsuccessful.html.twig', array(),
+            $this->parameters['fromEmail'], $user->getEmail());
+    }
 }

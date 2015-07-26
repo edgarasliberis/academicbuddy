@@ -88,24 +88,32 @@ pupil_list:
     options:
         expose: true
 
-settings:
-    path: /settings/{id}
-    defaults: { _controller: ABBundle:Profile:settings, id: null }
-
-delete:
-    path: /delete/{id}
-    defaults: { _controller: ABBundle:Profile:delete }
-
 message:
     path: /message/{mentorId}
     defaults: {_controller: ABBundle:Messaging:sendMessage}
 
+# User management routes
 user_export:
-    path: /export
+    path: /users/export
     defaults: {_controller: ABBundle:Management:userExport }
 
 user_data:
-    path: /export_data
+    path: /users/export/data
     defaults: {_controller: ABBundle:Management:userData }
     options:
         expose: true
+
+user_inform_unsuccessful:
+    path: /users/inform
+    defaults: {_controller: ABBundle:Management:informUnsuccessfulApplicants }
+    options:
+        expose: true
+    methods: [POST]
+
+settings:
+    path: /users/settings/{id}
+    defaults: { _controller: ABBundle:Profile:settings, id: null }
+
+delete:
+    path: /users/{id}/delete
+    defaults: { _controller: ABBundle:Profile:delete }
