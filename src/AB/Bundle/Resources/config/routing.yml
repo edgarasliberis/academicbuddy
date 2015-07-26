@@ -102,10 +102,10 @@ message:
 
 user_export:
     path: /export
-    defaults: {_controller: ABBundle:Default:userExport }
+    defaults: {_controller: ABBundle:Management:userExport }
 
 user_data:
     path: /export_data
-    defaults: {_controller: ABBundle:Default:userData }
+    defaults: {_controller: ABBundle:Management:userData }
     options:
         expose: true

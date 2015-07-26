@@ -1,31 +1,51 @@
 jQuery(document).ready(function() {
+
+    function userTypeFromFlags(mentors, pupils) {
+        if(mentors && pupils) return 'all';
+        if(mentors) return 'mentors';
+        if(pupils) return 'pupils';
+        return null;
+    }
+
+    function statusFromFlags(enabled, notEnabled) {
+        if(enabled && notEnabled) return 'all';
+        if(enabled) return 'enabled';
+        if(notEnabled) return 'disabled';
+        return null;
+    }
+
     $('#export-csv').on('click', function() {
-        var url = Routing.generate('user_data');
+        var userType = userTypeFromFlags($("#mentors").is(".active"), $("#pupils").is(".active"));
+        var status = statusFromFlags($("#enabled").is(".active"), $("#notenabled").is(".active"));
+        if(!userType || !status) return;
+
         var data = {
-            mentors    : $("#mentors").is(".active"),
-            pupils     : $("#pupils").is(".active"),
-            enabled    : $("#enabled").is(".active"),
-            notenabled : $("#notenabled").is(".active"),
-            type       : "csv"
+            usertype : userType,
+            status   : status,
+            type     : "csv"
         };
-        window.location = url + '?' + $.param(data);
+        window.location = Routing.generate('user_data') + '?' + $.param(data);
     });
 
     // Handle change of scope
     $('input').change(function(obj) {
         var label = $(obj.target.labels[0]);
-        label.toggleClass("active"); //jQuery triggers event first, then updates state...
-        var url = Routing.generate('user_data');
+        label.toggleClass("active"); //jQuery triggers event first, then updates the state...
+
+        var userType = userTypeFromFlags($("#mentors").is(".active"), $("#pupils").is(".active"));
+        var status = statusFromFlags($("#enabled").is(".active"), $("#notenabled").is(".active"));
+        
         var data = {
-            mentors    : $("#mentors").is(".active"),
-            pupils     : $("#pupils").is(".active"),
-            enabled    : $("#enabled").is(".active"),
-            notenabled : $("#notenabled").is(".active"),
-            type       : "email"
+            usertype : userType,
+            status   : status,
+            type     : "email"
         };
+
         $('#export-csv').prop('disabled', !($("#mentors").is(".active") ^ $("#pupils").is(".active")));
         label.toggleClass("active");
-        $.get(url, data).done(function(resp) {
+
+        if(!userType || !status) return;
+        $.get(Routing.generate('user_data'), data).done(function(resp) {
             $("#list").html(resp);
         });
     });
