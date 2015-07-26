@@ -27,6 +27,11 @@ class Pupil extends User
      */
     protected $about;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Group", inversedBy="pupils")
+     */
+    protected $group;
+
     /*
     	School information
     */
@@ -345,5 +350,16 @@ class Pupil extends User
     public function getCourseName()
     {
         return $this->courseName;
+    }
+
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    public function setGroup(\AB\Bundle\Entity\Group $group)
+    {
+        $this->group = $group;
+        return $this;
     }
 }

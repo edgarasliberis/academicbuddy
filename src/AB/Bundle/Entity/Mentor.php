@@ -27,6 +27,11 @@ class Mentor extends User
      */
     protected $about;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Group", mappedBy="mentor")
+     */
+    protected $mentorOf;
+
     /*
     	School information
     */
@@ -117,6 +122,30 @@ class Mentor extends User
     public function getAbout()
     {
         return $this->about;
+    }
+
+    /**
+     * Get mentoring group
+     */
+    public function getGroup() {
+        return $this->mentorOf;
+    }
+
+    /**
+     * Set mentoring group
+     */
+    public function setGroup(\AB\Bundle\Entity\Group $group) {
+        $this->mentorOf = $group;
+        return $this;
+    }
+
+    public function getMentorOf() {
+        return $this->mentorOf;
+    }
+
+    public function setMentorOf(\AB\Bundle\Entity\Group $group) {
+        $this->mentorOf = $group;
+        return $this;
     }
 
     /**
