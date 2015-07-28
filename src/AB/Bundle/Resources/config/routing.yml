@@ -117,3 +117,52 @@ settings:
 delete:
     path: /users/{id}/delete
     defaults: { _controller: ABBundle:Profile:delete }
+
+# Group management routes (RESTful API for client-side management JS app)
+groups_list:
+    path: /groups
+    defaults: {_controller: ABBundle:Group:listGroups }
+    options:
+        expose: true
+    methods: [GET]
+
+groups_create:
+    path: /groups
+    defaults: {_controller: ABBundle:Group:createGroup }
+    options:
+        expose: true
+    methods: [POST]
+
+groups_delete_all:
+    path: /groups
+    defaults: {_controller: ABBundle:Group:deleteAllGroups }
+    options:
+        expose: true
+    methods: [DELETE]
+
+groups_get:
+    path: /groups/{id}
+    defaults: {_controller: ABBundle:Group:getGroup }
+    options:
+        expose: true
+    methods: [GET]
+    requirements:
+        id: \d+
+
+groups_update:
+    path: /groups/{id}
+    defaults: {_controller: ABBundle:Group:updateGroup }
+    options:
+        expose: true
+    methods: [PUT]
+    requirements:
+        id: \d+
+
+groups_delete:
+    path: /groups/{id}
+    defaults: {_controller: ABBundle:Group:deleteGroup }
+    options:
+        expose: true
+    methods: [DELETE]
+    requirements:
+        id: \d+
