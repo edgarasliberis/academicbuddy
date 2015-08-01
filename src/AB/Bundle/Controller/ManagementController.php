@@ -9,14 +9,21 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\Security\Csrf\CsrfToken;
 
-class ManagementController extends Controller
+class ManagementController extends Controller implements TokenAuthenticatedController
 {
+    public function getCsrfId() { return "ManagementController"; }
+
     public function userExportAction() {
         if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException();
         }
-        return $this->render('ABBundle:Default:user.export.html.twig');
+        $response = $this->render('ABBundle:Default:user.export.html.twig');
+
+        $token = $this->get("security.csrf.token_manager")->getToken("userExport-page")->getValue();
+        $response->headers->set('X-CSRF-Token', $token);
+        return $response;
     }
 
     public function userDataAction(Request $request) {

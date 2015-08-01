@@ -166,3 +166,4 @@ groups_delete:
     methods: [DELETE]
     requirements:
         id: \d+
+
