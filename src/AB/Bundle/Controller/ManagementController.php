@@ -32,10 +32,10 @@ class ManagementController extends Controller implements TokenAuthenticatedContr
         }
 
         $userType = $request->query->get('usertype');
-        if(!in_array($userType, ['pupils', 'mentors', 'all'])) return null;
+        if(!in_array($userType, array('pupils', 'mentors', 'all'))) return null;
 
         $status = $request->query->get('status');
-        if(!in_array($status, ['enabled', 'disabled', 'all'])) return null;
+        if(!in_array($status, array('enabled', 'disabled', 'all'))) return null;
 
 
         // Get user data
