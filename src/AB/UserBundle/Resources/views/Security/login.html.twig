@@ -13,7 +13,7 @@
             <form action="{{ path("fos_user_security_check") }}" method="post">
                     <h2 class="form-signin-heading">Prisijungimas</h2>
                     {% if error %}
-                        <div class="alert alert-danger"><p>{{ error|trans }}</p>
+                        <div class="alert alert-danger"><p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
                             <a href="{{ path('fos_user_resetting_request') }}">Pamiršai slaptažodį?</a>
                         </div>
                     {% endif %}

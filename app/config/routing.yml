@@ -28,9 +28,13 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
 login_check:
     path:   /login_check
 logout:
     path:   /logout
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+fos_route_overrides:
+    resource: "@ABUserBundle/Resources/config/routing.yml"

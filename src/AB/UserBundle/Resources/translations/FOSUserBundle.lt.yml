@@ -11,9 +11,6 @@ group:
         created: Grupė buvo sukurta
         deleted: Grupė buvo ištrinta
 
-# Security
-"Bad credentials": Neteisingas naudotojas arba slaptažodis
-
 security:
     login:
         username: "El paštas:"
