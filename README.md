@@ -4,8 +4,8 @@ academicbuddy
 0) Prerequisites
 ----------------
 
-    >= PHP 5.4.11
-    MySQL
+    >= PHP 5.3.9
+    MySQL (mysql-client, mysql-server)
     php5-mysql
     php5-intl
     nodejs (with symlink to /usr/bin/node)
@@ -39,12 +39,8 @@ academicbuddy
 5. Check your PHP configuration with:
 
         $ php app/check.php
-
-6. To get rid of all warnings, on Debian Wheezy, I:
-
-    6.1. upgraded to PHP 5.5 via <http://dotdeb.org>
     
-    6.2. set the `date.timezone` setting in `/etc/php5/{apache2,cli}/php.ini`, in my case to `Europe/London`
+   To get rid of the timezone warning, set the `date.timezone` setting in `/etc/php5/{apache2,cli}/php.ini`, in my case to `Europe/London`
 
 2) Try it out!
 --------------
