@@ -173,3 +173,10 @@ groups_token:
     options:
         expose: true
     methods: [GET]
+
+groups_users:
+    path: /groups/users
+    defaults: {_controller: ABBundle:Group:listUsers }
+    options:
+        expose: true
+    methods: [GET]

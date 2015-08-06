@@ -14,6 +14,7 @@ use AB\Bundle\Entity\Group;
 use AB\Bundle\ApiEntity\ApiGroup;
 use AB\Bundle\ApiEntity\ApiUser;
 use AB\Bundle\ApiEntity\ApiGroupCollection;
+use AB\Bundle\ApiEntity\ApiUserCollection;
 use JMS\Serializer\SerializerBuilder;
 
 class GroupController extends TokenAuthenticatedController
@@ -29,8 +30,15 @@ class GroupController extends TokenAuthenticatedController
     }
 
     // Proper way would be to implement automatic entity serialisation 
-    // and deserialisation through JMS\Serializer events, 
+    // and deserialisation through JMS\Serializer events, without API entities
     // but let's not overkill with OOP here.
+    private static function findUserFromApi($em, ApiUser $apiUser, $type) {
+        $user = $em->find($type, $apiUser->id);
+        if(is_null($user)) 
+            throw new HttpException(Response::HTTP_BAD_REQUEST, "User with given ID does not exist.");
+        return $user;
+    }
+
 
     public function issueCsrfTokenAction(Request $request) {
         if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
@@ -93,7 +101,42 @@ class GroupController extends TokenAuthenticatedController
     }
 
     public function updateGroupAction(Request $request) {
-        throw new HttpException(404);
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        // if (0 !== strpos($request->getContentType(), 'application/json')) {
+        //     throw new HttpException(Response::HTTP_BAD_REQUEST);
+        // }
+
+        $apiGroup = $this->serializer->deserialize($request->getContent(),
+            'AB\Bundle\ApiEntity\ApiGroup', 'json');
+        $em = $this->getDoctrine()->getManager();
+
+        // Retrieve original etities
+        $group = $em->find('ABBundle:Group', $request->get('id'));
+        if(is_null($group))
+            throw new HttpException(Response::HTTP_BAD_REQUEST, "Group with given ID does not exist.");
+        $mentor = $this->findUserFromApi($em, $apiGroup->mentor, 'ABBundle:Mentor');
+        $secondaryMentor = $this->findUserFromApi($em, $apiGroup->secondaryMentor, 'ABBundle:Mentor');
+        $pupils = array_map(function($u) use ($em) { 
+                return static::findUserFromApi($em, $u, 'ABBundle:Pupil');
+            }, $apiGroup->pupils); 
+
+        // Entities successfully retrieved, update the group
+        // Not enforcing that pupils and mentors should be activated yet
+        // Also not enforcing functional dependencies, Doctrine should take care of this (not gracefully)
+        $group->removeAllPupils();
+        $em->flush();
+
+        $group->setMentor($mentor);
+        $group->setSecondaryMentor($mentor);
+        foreach ($pupils as $pupil) {
+            $group->addPupils($pupil);
+        }
+        $em->flush();
+
+        return new Response('', Response::HTTP_NO_CONTENT);
     }
 
     public function deleteGroupAction(Request $request) {
@@ -111,5 +154,18 @@ class GroupController extends TokenAuthenticatedController
         $em->flush();
 
         return new Response('', Response::HTTP_NO_CONTENT);
+    }
+
+    public function listUsersAction() {
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $pupils = $em->getRepository('ABBundle:Pupil')->findAll();
+        $mentors = $em->getRepository('ABBundle:Mentor')->findAll();
+
+        $apiUserCol = ApiUserCollection::fromPupilsMentorsArrays($pupils, $mentors);
+        return new Response($this->serializer->serialize($apiUserCol, 'json'));
     }
 }

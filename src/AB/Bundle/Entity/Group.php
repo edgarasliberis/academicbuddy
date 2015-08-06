@@ -72,6 +72,14 @@ class Group
     }
 
     /**
+     * Remove all pupils
+     */
+    public function removeAllPupils()
+    {
+        $this->pupils->clear();
+    }
+
+    /**
      * Get pupils
      *
      * @return \Doctrine\Common\Collections\Collection 
