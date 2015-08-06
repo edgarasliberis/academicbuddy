@@ -32,7 +32,8 @@ class GroupController extends TokenAuthenticatedController
     // Proper way would be to implement automatic entity serialisation 
     // and deserialisation through JMS\Serializer events, without API entities
     // but let's not overkill with OOP here.
-    private static function findUserFromApi($em, ApiUser $apiUser, $type) {
+    private static function findUserFromApi($em, ApiUser $apiUser = null, $type) {
+        if(is_null($apiUser)) return null;
         $user = $em->find($type, $apiUser->id);
         if(is_null($user)) 
             throw new HttpException(Response::HTTP_BAD_REQUEST, "User with given ID does not exist.");
@@ -97,7 +98,7 @@ class GroupController extends TokenAuthenticatedController
         if(is_null($group))
             throw new HttpException(Response::HTTP_NOT_FOUND);
 
-        return new Response($this->serializer->serialize($group, 'json'));
+        return new Response($this->serializer->serialize(ApiGroup::fromGroup($group), 'json'));
     }
 
     public function updateGroupAction(Request $request) {
@@ -111,6 +112,7 @@ class GroupController extends TokenAuthenticatedController
 
         $apiGroup = $this->serializer->deserialize($request->getContent(),
             'AB\Bundle\ApiEntity\ApiGroup', 'json');
+
         $em = $this->getDoctrine()->getManager();
 
         // Retrieve original etities
@@ -130,9 +132,9 @@ class GroupController extends TokenAuthenticatedController
         $em->flush();
 
         $group->setMentor($mentor);
-        $group->setSecondaryMentor($mentor);
+        $group->setSecondaryMentor($secondaryMentor);
         foreach ($pupils as $pupil) {
-            $group->addPupils($pupil);
+            $group->addPupil($pupil);
         }
         $em->flush();
 

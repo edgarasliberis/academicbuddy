@@ -54,21 +54,21 @@ class Group
      * @param \AB\Bundle\Entity\Pupil $pupils
      * @return University
      */
-    public function addPupil(\AB\Bundle\Entity\Pupil $pupils)
+    public function addPupils(\AB\Bundle\Entity\Pupil $pupil)
     {
-        $this->pupils[] = $pupils;
-    
+        $this->pupils[] = $pupil;
+        $pupil->setGroup($this);
         return $this;
     }
 
     /**
      * Remove pupils
      *
-     * @param \AB\Bundle\Entity\Pupil $pupils
+     * @param \AB\Bundle\Entity\Pupil $pupil
      */
-    public function removePupil(\AB\Bundle\Entity\Pupil $pupils)
+    public function removePupils(\AB\Bundle\Entity\Pupil $pupil)
     {
-        $this->pupils->removeElement($pupils);
+        $this->pupils->removeElement($pupil);
     }
 
     /**
