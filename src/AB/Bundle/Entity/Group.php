@@ -19,7 +19,7 @@ class Group
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Pupil", mappedBy="group")
+     * @ORM\OneToMany(targetEntity="Pupil", mappedBy="group", cascade={"persist","remove"})
      */
     protected $pupils;
 

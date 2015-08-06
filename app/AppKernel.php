@@ -22,7 +22,8 @@ class AppKernel extends Kernel
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new AB\Bundle\ABBundle(),
             new AB\UserBundle\ABUserBundle(),
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle()
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
