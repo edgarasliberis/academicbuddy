@@ -31,7 +31,7 @@ class CsrfListener
         }
 
         if ($controller[0] instanceof TokenAuthenticatedController) {
-            if(!in_array($event->getRequest()->getMethod(), ['POST', 'PUT', 'DELETE', 'PATCH'])) {
+            if(!in_array($event->getRequest()->getMethod(), array('POST', 'PUT', 'DELETE', 'PATCH'))) {
                 return;
             }
 
@@ -39,25 +39,12 @@ class CsrfListener
             $tokenId = $controller[0]->getCsrfId();
             $tokenValue = $event->getRequest()->headers->get('X-CSRF-Token');
 
-            if (!$tokenValue || !$csrfManager->isValidToken(new CsrfToken($tokenId, $tokenValue))) {
+            if (!$tokenValue || !$this->csrfManager->isTokenValid(new CsrfToken($tokenId, $tokenValue))) {
                 throw new AccessDeniedHttpException('Invalid CSRF token.');
             }
 
             $event->getRequest()->attributes->set('X-Passed-CSRF', $tokenId);
         }
-    }
-
-    public function onKernelResponse(FilterResponseEvent $event)
-    {
-        if (!$tokenId = $event->getRequest()->attributes->get('X-Passed-CSRF')) {
-            return;
-        }
-
-        $csrfManager = $controller[0]->get("security.csrf.token_manager");
-        $tokenValue = $csrfManager->getToken($tokenId)->getValue();
-
-        $response = $event->getResponse();
-        $response->headers->set('X-CSRF-Token', $tokenValue);
     }
 }
 

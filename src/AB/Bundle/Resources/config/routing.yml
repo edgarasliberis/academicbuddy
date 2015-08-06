@@ -167,3 +167,9 @@ groups_delete:
     requirements:
         id: \d+
 
+groups_token:
+    path: /groups/token
+    defaults: {_controller: ABBundle:Group:issueCsrfToken }
+    options:
+        expose: true
+    methods: [GET]

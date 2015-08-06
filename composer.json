@@ -27,7 +27,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "2.0.*@dev",
         "pugx/multi-user-bundle": "3.0.*@dev",
-        "friendsofsymfony/jsrouting-bundle": ">1.5"
+        "friendsofsymfony/jsrouting-bundle": ">1.5",
+        "jms/serializer": "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
@@ -103,4 +104,3 @@
         }
     }
 }
-
