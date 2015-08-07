@@ -1,0 +1,18 @@
+#register_form input[type=number]{
+	width: 100px;
+}
+
+#register_form input[type=text],
+#register_form input[type=email],
+#register_form select {   
+	width: 300px;
+}
+
+.chosen-search input[type=text] {
+	width: 100% !important;
+}
+
+.required:after {
+    color: red;
+    content: ' *';
+}

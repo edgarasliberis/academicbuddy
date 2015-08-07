@@ -1,0 +1,53 @@
+{% extends "ABBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets 'bundles/ab/css/user_export.less' filter="less,cssrewrite" %}
+    	<link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+    <div class="panel-shadow">
+    	<h3>Vartotojų duomenys</h3>
+    	<p>Pasirink kokių vartotojų el.paštų sąrašą nori matyti (galima pasirinkti kelias kategorijas):</p>
+    	<div class="btn-group" data-toggle="buttons">
+    		Kas? <br />
+			<label id="mentors" class="btn btn-primary">
+				<input type="checkbox"> Mentoriai
+			</label>
+			<label id="pupils" class="btn btn-primary">
+				<input type="checkbox"> Mokiniai
+			</label>
+		</div>
+		<div class="btn-group" data-toggle="buttons">
+			Kokie?<br />
+			<label id="enabled" class="btn btn-primary">
+				<input type="checkbox"> Aktyvuoti
+			</label>
+			<label id="notenabled" class="btn btn-primary">
+				<input type="checkbox"> Neaktyvuoti
+			</label>
+		</div>
+
+		<div class="btn-group">
+			<i>Veikia pasirinkus tik vieną kategoriją vartotojų (mentoriai ar mokiniai)</i> <br />
+			<button id="export-csv" type="button" class="btn btn-success">
+			  <span class="glyphicon glyphicon-download-alt"></span> Atsisiųsti CSV
+			</button>
+		</div>
+		<br /> <br />
+		<p>Nukopijuok šitą sąrašą į 'bcc:' laiško laukelį:</p> 
+		<textarea id="list" rows="25"></textarea>
+
+		<h3>Projekto eigos laiškai</h3>
+		<button id="inform-applicants" type="button" class="btn btn-danger">
+			  <span class="glyphicon glyphicon-remove-sign"></span> Išsiųsti laišką neatrinktiems mokiniams
+		</button>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@ABBundle/Resources/public/js/user_export.js' filter='?uglifyjs2' %}
+    	<script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

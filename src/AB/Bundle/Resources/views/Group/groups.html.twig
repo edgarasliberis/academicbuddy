@@ -1,0 +1,63 @@
+{% extends "ABBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    {% stylesheets 'bundles/ab/css/groups.css' filter="cssrewrite" %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+    <div class="clearfix">
+        <h2>Grupių sudarymas</h2> 
+        <div class="group-card-wrapper col-sm-4 col-md-3">
+        <div class="group-card panel-shadow">
+            <h3>Grupė #1</h3>
+            <div class="form-group">
+                <label for="select-mentor-1">Mentorius</label>
+                <select class="form-control" id="select-mentor-1">
+                    <option>Mentor 1</option>
+                    <option>Mentor 2</option>
+                    <option>Mentor 3</option>
+                    <option>Mentor 4</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="select-secondary-mentor-1">Pagalbinis mentorius</label>
+                <select class="form-control" id="select-secondary-mentor-1">
+                    <option>Mentor 1</option>
+                    <option>Mentor 2</option>
+                    <option>Mentor 3</option>
+                    <option>Mentor 4</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="select-pupils-1">Mokiniai</label>
+                <select class="form-control" id="select-pupils-1" multiple="multiple">
+                    <option>Pupil 1</option>
+                    <option>Pupil 2</option>
+                    <option>Pupil 3</option>
+                    <option>Pupil 4</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-success form-control">
+                    <span class="glyphicon glyphicon-ok"></span> Išsaugoti
+                </button>
+                <button type="button" class="btn btn-danger form-control">
+                    <span class="glyphicon glyphicon-remove"></span> Pašalinti
+                </button>
+            </div>
+        </div></div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    {% javascripts '@ABBundle/Resources/public/js/groups.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
