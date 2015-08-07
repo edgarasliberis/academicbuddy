@@ -17,7 +17,7 @@ class ManagementController extends Controller
         if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
             throw new AccessDeniedException();
         }
-        return $this->render('ABBundle:Default:user.export.html.twig');
+        return $this->render('ABBundle:Management:user.export.html.twig');
     }
 
     public function userDataAction(Request $request) {

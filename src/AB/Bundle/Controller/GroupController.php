@@ -170,4 +170,12 @@ class GroupController extends TokenAuthenticatedController
         $apiUserCol = ApiUserCollection::fromPupilsMentorsArrays($pupils, $mentors);
         return new Response($this->serializer->serialize($apiUserCol, 'json'));
     }
+
+    public function manageGroupsAction() {
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        return $this->render('ABBundle:Group:groups.html.twig');
+    }
 }

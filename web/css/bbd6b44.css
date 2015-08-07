@@ -272,6 +272,23 @@ ol.c {
   /* Internet Explorer 5.5+ */
 }
 
+.group-card {
+	padding: 15px;
+}
+
+.group-card-wrapper {
+	padding: 5px;
+}
+
+.group-card h3 {
+	margin-top: 0px;
+}
+
+/*.select2-results__option[aria-selected=true] {
+ 	display: none;
+}*/
+
+
 .thumbnail > img,
 .thumbnail a > img,
 .carousel-inner > .item > img,
@@ -408,11 +425,11 @@ body {
   margin: 5px 5px 0 0;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-fb {
-  background: url('../Resources/public/images/facebook.png');
+  background: url('../../Resources/public/images/facebook.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-lnkd {
-  background: url('../Resources/public/images/linkedin.png');
+  background: url('../../Resources/public/images/linkedin.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .message-button {

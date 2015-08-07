@@ -180,3 +180,7 @@ groups_users:
     options:
         expose: true
     methods: [GET]
+
+groups_manage:
+    path: /groups/manage
+    defaults: {_controller: ABBundle:Group:manageGroups}
