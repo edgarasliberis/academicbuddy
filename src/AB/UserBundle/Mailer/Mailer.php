@@ -4,6 +4,7 @@ namespace AB\UserBundle\Mailer;
 
 use AB\Bundle\Entity\Mentor;
 use AB\Bundle\Entity\Pupil;
+use AB\Bundle\ApiEntity\ApiGroup;
 use Symfony\Component\Routing\RouterInterface;
 use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Mailer\TwigSwiftMailer as BaseMailer;
@@ -74,5 +75,23 @@ class Mailer extends BaseMailer
         assert($user instanceof Pupil);
         $this->sendMessage('ABBundle:Email:pupil.registration.unsuccessful.html.twig', array(),
             $this->parameters['fromEmail'], $user->getEmail());
+    }
+
+    public function sendMeetYourGroupMessage(ApiGroup $group) {
+        $pupilNames = array_map(function($p) {
+                return $p->name;
+        }, $group->pupils);
+
+        $recipients = array_merge(array($group->mentor, $group->secondaryMentor), $group->pupils);
+        $recipientArray = array();
+        foreach ($recipients as $r) {
+            $recipientArray[$r->email] = $r->name;
+        }
+
+        $this->sendMessage('ABBundle:Email:meet.group.html.twig', array(
+                'mentor' => $group->mentor,
+                'secondaryMentor' => $group->secondaryMentor,
+                'pupils' => $pupilNames),
+            $this->parameters['fromEmail'], $recipientArray);
     }
 }
