@@ -178,4 +178,37 @@ class GroupController extends TokenAuthenticatedController
 
         return $this->render('ABBundle:Group:groups.html.twig');
     }
+
+    public function emailGroupsAction() {
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $groups = $em->getRepository('ABBundle:Group')->findAll();
+
+        $mailer = $this->container->get('ab_user.mailer');
+        foreach ($groups as $group) {
+            $apiGroup = ApiGroup::fromGroup($group);
+            $mailer->sendMeetYourGroupMessage($apiGroup);
+        }
+
+        return new Response('', Response::HTTP_NO_CONTENT);
+    }
+
+    public function informUnsuccessfulApplicantsAction() {
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('ABBundle:Group')->findByEnabled(0);
+
+        $mailer = $this->container->get('ab_user.mailer');
+        foreach ($users as $user) {
+            $mailer->sendApplicationUnsuccessfulMessage($user);
+        }
+
+        return new Response('', Response::HTTP_NO_CONTENT);
+    }
 }

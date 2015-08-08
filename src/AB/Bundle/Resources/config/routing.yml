@@ -103,13 +103,6 @@ user_data:
     options:
         expose: true
 
-user_inform_unsuccessful:
-    path: /users/inform
-    defaults: {_controller: ABBundle:Management:informUnsuccessfulApplicants }
-    options:
-        expose: true
-    methods: [POST]
-
 settings:
     path: /users/settings/{id}
     defaults: { _controller: ABBundle:Profile:settings, id: null }
@@ -184,3 +177,17 @@ groups_users:
 groups_manage:
     path: /groups/manage
     defaults: {_controller: ABBundle:Group:manageGroups}
+
+groups_email:
+    path: /groups/email
+    defaults: {_controller: ABBundle:Group:emailGroups}
+    options:
+        expose: true
+    methods: [POST]
+
+groups_inform_unsuccessful: # TODO: rename
+    path: /groups/inform
+    defaults: {_controller: ABBundle:Group:informUnsuccessfulApplicants }
+    options:
+        expose: true
+    methods: [POST]

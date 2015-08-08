@@ -83,8 +83,10 @@ class Mailer extends BaseMailer
         }, $group->pupils);
 
         $recipients = array_merge(array($group->mentor, $group->secondaryMentor), $group->pupils);
+        var_dump($recipients);
         $recipientArray = array();
         foreach ($recipients as $r) {
+            if(is_null($r)) continue;
             $recipientArray[$r->email] = $r->name;
         }
 

@@ -137,18 +137,4 @@ class ManagementController extends Controller
 
         fclose($handle);
     }
-
-    public function informUnsuccessfulApplicantsAction() {
-        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            throw new AccessDeniedException();
-        }
-
-        $users = $this->retrieveUserData("pupils", "disabled");
-
-        foreach ($users as $user) {
-            $this->container->get('ab_user.mailer')->sendApplicationUnsuccessfulMessage($user);
-        }
-
-        return new Response(); // 200 OK
-    }
 }

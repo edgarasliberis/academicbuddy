@@ -15,9 +15,9 @@ jQuery(document).ready(function() {
     }
 
     $('#inform-applicants').on('click', function() {
-        if(confirm("This will inform all non-activated pupils that their application has been unsuccessful. Continue?")) {
-            $.post(Routing.generate('user_inform_unsuccessful'));
-        }
+        // if(confirm("This will inform all non-activated pupils that their application has been unsuccessful. Continue?")) {
+        //     $.post(Routing.generate('groups_inform_unsuccessful'));
+        // }
     });
 
     $('#export-csv').on('click', function() {
