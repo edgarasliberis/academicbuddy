@@ -90,8 +90,6 @@ class Mailer extends BaseMailer
             $recipientArray[$r->email] = $r->name;
         }
 
-        var_dump($recipientArray);
-
         $this->sendMessage('ABBundle:Email:meet.group.html.twig', array(
                 'mentor' => $group->mentor,
                 'secondaryMentor' => $group->secondaryMentor,
