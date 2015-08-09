@@ -1,10 +1,10 @@
-{% block subject %}Academic Buddy: tavo registracija sėkminga!{% endblock %}
+{% block subject %}Academic Buddy: susipažinkite!{% endblock %}
 {% block body_html %}
 Sveiki,
 <br /><br />
 Dėkojame jums visiems už prisijungimą prie "Academic Buddy" projekto, o mentoriams - už išreikštą norą padėti Lietuvos moksleiviams stojant į Oksbridžą.
 <br /><br />
-Peržvelgėme visų moksleivių bei mentorių aprašymus, moksleivių mentorių pasirinkimus ir suskirstėme moksleivius bei mentorius į grupes. Mentoriau(-e) {{ mentor.name }} ir moksleiviai {{ pupils | join(', ') }}, susipažinkite - artimiausius kelis mėnesius, iki spalio 15-os UCAS pildymo galutinės datos, bendrausite kartu. Vieni kitų el. paštus rasite tarp šio laiško adresatų.
+Peržvelgėme visų moksleivių bei mentorių aprašymus, moksleivių mentorių pasirinkimus ir suskirstėme moksleivius bei mentorius į grupes. Mentoriau(-e) {{ mentor.name }} ir {% if pupils|length > 1 %} moksleiviai {% else %} moksleivi(-e) {% endif %}{{ pupils | join(', ') }}, susipažinkite - artimiausius kelis mėnesius, iki spalio 15-os UCAS pildymo galutinės datos, bendrausite kartu. Vieni kitų el. paštus rasite tarp šio laiško adresatų.
 <br /><br />
 Skatiname moksleivius pačius inicijuoti bendravimą. Neturime jokių patarimų ar pasiūlymų, kaip turėtumėte komunikuoti: bendravimo pobūdis priklauso nuo, visų pirma, mentoriaus(-ės), bei moksleivių galimybių. Tai gali būti bendravimas el. laiškais, reguliarūs ar ne Skype/Google Hangouts skambučiai ar gyvi susitikimai. Priklausomai nuo užimtumo ir aplinkybių, mentorius(-ė) gali bendrauti su visais moksleiviais vienu metu (pvz. bendruose Google Hangouts), arba su kiekvienu moksleiviu individualiai.
 <br /><br />
@@ -16,6 +16,6 @@ Iškilus bendro pobūdžio klausimams ar klausimams, į kuriuos mentorius(-ė) n
 <br /><br />
 Jei iškils neaiškumų, turėsite klausimų ar nusiskundimų, rašykite <a href="mailto:academic.buddy@gmail.com">academic.buddy@gmail.com</a>. Pasistengsime atsakyti kaip galėsime greičiau.
 <br /><br />
-Turiningo bendravimo ir rezultatyvios mentorystės,
+Turiningo bendravimo ir rezultatyvios mentorystės,<br />
 "Academic Buddy" komanda
 {% endblock %}
