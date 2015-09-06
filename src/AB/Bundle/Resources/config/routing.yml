@@ -185,7 +185,7 @@ groups_email:
         expose: true
     methods: [POST]
 
-groups_inform_unsuccessful: # TODO: rename
+groups_inform_unsuccessful:
     path: /groups/inform
     defaults: {_controller: ABBundle:Group:informUnsuccessfulApplicants }
     options:
