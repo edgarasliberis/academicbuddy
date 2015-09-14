@@ -23,19 +23,19 @@ class PupilRegistrationType extends BaseType
         $builder->add('schoolGrade', 'number');
 
         $builder->add('courseCategory');
-        /*$builder->add('universityRegion', 'choice', array (
+        $builder->add('universityRegion', 'choice', array (
             'choices' => array('England' => 'Anglija',
                 'London' => 'Londonas',
                 'Scotland' => 'Škotija',
                 'Other' => 'kitas/bet kuris'
             )
-        ));*/
-        $builder->add('universityRegion', 'choice', array (
+        ));
+        /*$builder->add('universityRegion', 'choice', array (
             'choices' => array('University of Cambridge' => 'Kembridžo universitetas',
                 'University of Oxford' => 'Oksfordo universitetas',
                 '(no choice)' => 'Dar neapsisprendžiau'
             )
-        ));
+        ));*/
         $builder->add('courseName');
 
         $builder->add('motivation', 'textarea', array(
