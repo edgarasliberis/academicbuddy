@@ -15,3 +15,5 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     nodejsmodules:     /usr/local/lib/node_modules
+    node_binary:       /usr/local/bin/node
+    uglify_binary:     /usr/local/bin/uglifyjs

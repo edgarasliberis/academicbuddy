@@ -2,10 +2,12 @@
 namespace AB\Bundle\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
-class Builder extends ContainerAware
+class Builder implements ContainerAwareInterface
 {
+    use \Symfony\Component\DependencyInjection\ContainerAwareTrait;
+    
     public function mainMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');

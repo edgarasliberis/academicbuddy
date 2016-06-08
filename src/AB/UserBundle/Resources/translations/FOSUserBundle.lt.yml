@@ -65,7 +65,7 @@ resetting:
     flash:
         success: Slaptažodis pakeistas sėkmingai
     email:
-        subject: Academic Buddy: Nustatyti slaptažodį
+        subject: "Academic Buddy: Nustatyti slaptažodį"
         message: |
             Sveiki %username%!
 

@@ -39,12 +39,12 @@ assetic:
     #java: /usr/bin/java
     filters:
         less:
-            node: /usr/bin/nodejs
+            node: %node_binary%
             node_paths: [ %nodejsmodules% ]
             apply_to: "\.less$"
         cssrewrite: ~
         uglifyjs2:
-            bin: /usr/local/bin/uglifyjs
+            bin: %uglify_binary%
             apply_to: "\.js$"
     # assets:
     #     bootstrap_css:
@@ -101,7 +101,7 @@ braincrafted_bootstrap:
     output_dir: 
     assets_dir: %kernel.root_dir%/../vendor/twbs/bootstrap
     jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.1.js
-    less_filter: less # "less", "lessphp" or "none"
+    css_preprocessor: less # "less", "lessphp" or "none"
     fonts_dir: %kernel.root_dir%/../web/fonts
     auto_configure:
         assetic: true
