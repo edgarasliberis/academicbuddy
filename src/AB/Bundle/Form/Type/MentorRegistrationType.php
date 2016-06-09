@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Validator\Constraints\True;
+use Symfony\Component\Validator\Constraints\IsTrue;
 
 class MentorRegistrationType extends BaseType
 {
@@ -39,8 +39,8 @@ class MentorRegistrationType extends BaseType
         ));
         $builder->add('terms', 'checkbox', array(
             'mapped' => false,
-            "constraints" => new True(array(
-                "message" => "Please accept the Terms and conditions in order to register")
+            "constraints" => new IsTrue(array(
+                "message" => "Please accept the Terms & Conditions in order to register.")
             ))
         );
         $builder->add('save', 'submit');
