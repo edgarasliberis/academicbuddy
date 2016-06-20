@@ -70,11 +70,11 @@ ApiComms.prototype.deleteGroup = function(id, onSuccess) {
 
 ApiComms.prototype.updateGroup = function(id, group, onSuccess) {
     $.ajax({
-        url: Routing.generate("groups_delete", { "id" : id }),
+        url: Routing.generate("groups_update", { "id" : id }),
         type: 'PUT',
         headers: { "X-CSRF-Token":  this.csrfToken },
         dataType: "json",
-        data: group,
+        data: JSON.stringify(group),
         success: function(data) {
             onSuccess(); // No response on success
         } 
@@ -84,15 +84,39 @@ ApiComms.prototype.updateGroup = function(id, group, onSuccess) {
 /** Main JS application **/
 var GroupApp = function() {
     var self = this;
-    this.comms = new ApiComms();
+    self.comms = new ApiComms();
+
+    self.singleton = {pupils:[]};
 
     // We assume users don't change during the grouping process
-    this.comms.listUsers(function (users) {
+    self.comms.listUsers(function (users) {
         self.pupils = users["pupils"];
         self.mentors = users["mentors"];
+        self.comms.listGroups(self.loadGroups.bind(self));
     });
+    
+    $("#new-group-btn").on('click', function(e) { self.addGroup.call(self); } );
+}
 
-    this.comms.listGroups(self.loadGroups.bind(self));
+GroupApp.prototype.addGroup = function() {
+    var self = this;
+    console.log("Adding a new group.");
+    self.comms.createGroup(function(id) {
+        self.displayGroup(id, self.singleton);
+    });
+}
+
+GroupApp.prototype.formGroupFromIds = function(mentorId, secMentorId, pupilIds) {
+    var self = this;
+    var locate = function(id, where) {
+        return $.grep(where, function(e){ return e.id === id; })[0];
+    }
+
+    return {
+        mentor: locate(mentorId, self.mentors),
+        secondaryMentor: locate(secMentorId, self.mentors),
+        pupils: pupilIds.map(function(id) { return locate(id, self.pupils); })
+    };
 }
 
 GroupApp.prototype.showError = function(msg) {
@@ -102,6 +126,9 @@ GroupApp.prototype.showError = function(msg) {
 GroupApp.prototype.loadGroups = function(groupObj) {
     var self = this;
     self.groups = groupObj.groups;
+    if($.isEmptyObject(self.groups)) {
+        return;
+    }
     Object.keys(groupObj.groups).forEach(function (id) {
         var group = groupObj.groups[id];
         console.info("Setting up card for group #" + id + " with mentor " + (group.mentor? group.mentor.email : "(unknown)"));
@@ -117,8 +144,13 @@ GroupApp.prototype.deleteAllGroups = function() {
     });
 }
 
-GroupApp.prototype.deleteGroup = function() {
-
+GroupApp.prototype.deleteGroup = function(id) {
+    var self = this;
+    self.comms.deleteGroup(id, function() {
+        console.info("Group " + id + " deleted.");
+        $("#group-card-"+id).remove();
+        // TODO: proper popup;
+    });
 }
 
 GroupApp.prototype.displayGroup = function(id, group) {
@@ -145,10 +177,10 @@ GroupApp.prototype.displayGroup = function(id, group) {
           </select> \
         </div> \
         <div class="form-group"> \
-          <button type="button" class="btn btn-success form-control"> \
+          <button type="button" class="btn btn-success form-control save-group"> \
             <span class="glyphicon glyphicon-ok"></span> Išsaugoti \
           </button> \
-          <button type="button" class="btn btn-danger form-control"> \
+          <button type="button" class="btn btn-danger form-control remove-group"> \
             <span class="glyphicon glyphicon-remove"></span> Pašalinti \
           </button> \
         </div> \
@@ -156,7 +188,7 @@ GroupApp.prototype.displayGroup = function(id, group) {
     </div>'.replace(/{id}/g, id);
     $("#groups-container").append(groupHtml);
 
-    // Set up select values
+    // Set up select values: TODO rewrite with select2 API
     var $mentorSelect = $("#select-mentor-" + id), $secMentorSelect = $("#select-secondary-mentor-" + id);
     self.mentors.forEach(function (mentor) {
         var optionStr = '<option {selected} data-id={id}>{name}</option>'
@@ -182,7 +214,27 @@ GroupApp.prototype.displayGroup = function(id, group) {
     $('#group-card-'+id+' select').select2();
 
     // Set up button callbacks
-    
+    $('#group-card-'+id+' .save-group').on('click', function(e) {
+        // TODO: do not enforce secondary mentor
+        var self = this;
+        console.info("Saving group "+id);
+        var mentorId = parseInt($("#select-mentor-"+id).select2('data')[0].element.getAttribute("data-id"));
+        var secMentorId = parseInt($("#select-secondary-mentor-"+id).select2('data')[0].element.getAttribute("data-id"));
+        var pupilIds = $("#select-pupils-"+id).select2('data').map(function(p) {
+            return parseInt(p.element.getAttribute("data-id"));
+        })
+        var group = self.formGroupFromIds(mentorId, secMentorId, pupilIds);
+        self.comms.updateGroup(id, group, function() {
+            console.info("Group "+id+" updated");
+            // TODO: alert
+        })
+    }.bind(self));
+    $('#group-card-'+id+' .remove-group').on('click', function(e) {
+        if(!confirm("Click OK to confirm deletion.")) { 
+            return;
+        }
+        this.deleteGroup.call(this, id);
+    }.bind(self));
 }
 
 var app = new GroupApp();

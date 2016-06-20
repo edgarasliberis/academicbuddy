@@ -105,7 +105,7 @@ class Group
         return $this->secondaryMentor;
     }
 
-    public function setSecondaryMentor(\AB\Bundle\Entity\Mentor $secondaryMentor)
+    public function setSecondaryMentor(\AB\Bundle\Entity\Mentor $secondaryMentor = null)
     {
         $this->secondaryMentor = $secondaryMentor;
         return $this;
