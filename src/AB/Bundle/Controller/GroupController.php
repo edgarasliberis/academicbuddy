@@ -134,7 +134,7 @@ class GroupController extends TokenAuthenticatedController
         $group->setMentor($mentor);
         $group->setSecondaryMentor($secondaryMentor);
         foreach ($pupils as $pupil) {
-            $group->addPupil($pupil);
+            $group->addPupils($pupil);
         }
         $em->flush();
 

@@ -114,7 +114,7 @@ GroupApp.prototype.formGroupFromIds = function(mentorId, secMentorId, pupilIds) 
 
     return {
         mentor: locate(mentorId, self.mentors),
-        secondaryMentor: locate(secMentorId, self.mentors),
+        secondary_mentor: locate(secMentorId, self.mentors),
         pupils: pupilIds.map(function(id) { return locate(id, self.pupils); })
     };
 }
@@ -190,21 +190,23 @@ GroupApp.prototype.displayGroup = function(id, group) {
 
     // Set up select values: TODO rewrite with select2 API
     var $mentorSelect = $("#select-mentor-" + id), $secMentorSelect = $("#select-secondary-mentor-" + id);
+    $mentorSelect.append('<option value="">(nėra)</option>');
+    $secMentorSelect.append('<option value="">(nėra)</option>');
     self.mentors.forEach(function (mentor) {
-        var optionStr = '<option {selected} data-id={id}>{name}</option>'
+        var optionStr = '<option {selected} value="{id}">{name}</option>'
             .replace(/{id}/g, mentor.id)
             .replace(/{name}/g, mentor.name);
         $mentorSelect.append(optionStr
             .replace(/{selected}/g, group.mentor !== undefined && mentor.id == group.mentor.id? "selected" : ""));
         $secMentorSelect.append(optionStr
-            .replace(/{selected}/g, group.secondaryMentor !== undefined && mentor.id == group.secondaryMentor.id? "selected" : ""));
+            .replace(/{selected}/g, group.secondary_mentor !== undefined && mentor.id == group.secondary_mentor.id? "selected" : ""));
         
     });
 
     var $pupilSelect = $("#select-pupils-" + id);
     var pupilIds = group.pupils.map(function(p) { return p.id; });
     self.pupils.forEach(function (pupil) {
-        var optionStr = '<option {selected} data-id={id}>{name}</option>'
+        var optionStr = '<option {selected} value="{id}">{name}</option>'
             .replace(/{id}/g, pupil.id)
             .replace(/{name}/g, pupil.name)
             .replace(/{selected}/g, pupilIds.indexOf(pupil.id) != -1? "selected" : "");
@@ -215,17 +217,16 @@ GroupApp.prototype.displayGroup = function(id, group) {
 
     // Set up button callbacks
     $('#group-card-'+id+' .save-group').on('click', function(e) {
-        // TODO: do not enforce secondary mentor
         var self = this;
         console.info("Saving group "+id);
-        var mentorId = parseInt($("#select-mentor-"+id).select2('data')[0].element.getAttribute("data-id"));
-        var secMentorId = parseInt($("#select-secondary-mentor-"+id).select2('data')[0].element.getAttribute("data-id"));
+        var mentorId = parseInt($("#select-mentor-"+id).select2('data')[0].id) || null;
+        var secMentorId = parseInt($("#select-secondary-mentor-"+id).select2('data')[0].id) || null;
         var pupilIds = $("#select-pupils-"+id).select2('data').map(function(p) {
-            return parseInt(p.element.getAttribute("data-id"));
+            return parseInt(p.id);
         })
         var group = self.formGroupFromIds(mentorId, secMentorId, pupilIds);
         self.comms.updateGroup(id, group, function() {
-            console.info("Group "+id+" updated");
+            console.info("Group " + id + " updated");
             // TODO: alert
         })
     }.bind(self));

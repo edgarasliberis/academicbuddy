@@ -74,6 +74,10 @@ body .content {
 .container-narrow > hr {
   margin: 30px 0;
 }
+/* Calendar */
+.calendar-current td {
+  font-weight: bold;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -290,11 +294,11 @@ body {
   margin: 5px 5px 0 0;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-fb {
-  background: url('../Resources/public/images/facebook.png');
+  background: url('../../Resources/public/images/facebook.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-lnkd {
-  background: url('../Resources/public/images/linkedin.png');
+  background: url('../../Resources/public/images/linkedin.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .message-button {

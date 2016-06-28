@@ -29,6 +29,7 @@ class Pupil extends User
 
     /**
      * @ORM\ManyToOne(targetEntity="Group", inversedBy="pupils")
+     * @ORM\JoinColumn(name="group_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $group;
 
@@ -357,7 +358,7 @@ class Pupil extends User
         return $this->group;
     }
 
-    public function setGroup(\AB\Bundle\Entity\Group $group)
+    public function setGroup(\AB\Bundle\Entity\Group $group = null)
     {
         $this->group = $group;
         return $this;

@@ -68,7 +68,9 @@ class Group
      */
     public function removePupils(\AB\Bundle\Entity\Pupil $pupil)
     {
+        $pupil->setGroup(null);
         $this->pupils->removeElement($pupil);
+
     }
 
     /**
@@ -76,6 +78,9 @@ class Group
      */
     public function removeAllPupils()
     {
+        foreach ($this->pupils as $pupil) {
+            $pupil->setGroup(null);
+        }
         $this->pupils->clear();
     }
 
@@ -94,7 +99,7 @@ class Group
         return $this->mentor;
     }
 
-    public function setMentor(\AB\Bundle\Entity\Mentor $mentor)
+    public function setMentor(\AB\Bundle\Entity\Mentor $mentor = null)
     {
         $this->mentor = $mentor;
         return $this;
