@@ -8,11 +8,27 @@
 {% endblock %}
 
 {% block content %}
-  <div id="groups-container" class="clearfix">
-    <h2>Grupių sudarymas</h2> 
-    <button id="new-group-btn" type="button" class="btn btn-default">
-      <span class="glyphicon glyphicon-plus"></span> Nauja grupė
-    </button>
+  <div class="clearfix">
+    <div id="groups-header" class="row">
+      <h2 class="col-sm-6">Grupių sudarymas</h2> 
+      <div class="group-control-buttons col-sm-6">
+        <button id="new-group-btn" type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-plus"></span> Nauja grupė
+        </button>
+      </div>
+    </div>
+    <div id="groups-container" class="clearfix">
+    </div>
+    <div id="groups-footer" class="row">
+      <div class="group-control-buttons col-sm-12">
+          <button id="send-group-mail-btn" type="button" class="btn btn-warning">
+            <span class="glyphicon glyphicon-envelope"></span> Išsiųsti laiškus grupėms
+          </button>
+          <button id="inform-unsucc-btn" type="button" class="btn btn-warning">
+            <span class="glyphicon glyphicon-envelope"></span> Išsiųsti laiškus neatrinktiems moksleiviams
+          </button>
+        </div>
+      </div>
   </div>
 {% endblock %}
 

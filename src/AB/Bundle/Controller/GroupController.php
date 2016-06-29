@@ -202,7 +202,7 @@ class GroupController extends TokenAuthenticatedController
         }
 
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('ABBundle:Group')->findByEnabled(0);
+        $users = $em->getRepository('ABBundle:Pupil')->findByEnabled(0);
 
         $mailer = $this->container->get('ab_user.mailer');
         foreach ($users as $user) {

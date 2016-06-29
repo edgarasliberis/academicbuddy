@@ -81,6 +81,28 @@ ApiComms.prototype.updateGroup = function(id, group, onSuccess) {
     });
 }
 
+ApiComms.prototype.emailGroups = function(onSuccess) {
+    $.ajax({
+        url: Routing.generate("groups_email"),
+        type: 'POST',
+        headers: { "X-CSRF-Token":  this.csrfToken },
+        success: function(data) {
+            onSuccess(); // No response on success
+        } 
+    });
+}
+
+ApiComms.prototype.emailUnsuccessfulApplicants = function(onSuccess) {
+    $.ajax({
+        url: Routing.generate("groups_inform_unsuccessful"),
+        type: 'POST',
+        headers: { "X-CSRF-Token":  this.csrfToken },
+        success: function(data) {
+            onSuccess(); // No response on success
+        } 
+    });
+}
+
 /** Main JS application **/
 var GroupApp = function() {
     var self = this;
@@ -96,6 +118,8 @@ var GroupApp = function() {
     });
     
     $("#new-group-btn").on('click', function(e) { self.addGroup.call(self); } );
+    $("#send-group-mail-btn").on('click', function(e) { self.sendGroupEmails.call(self); });
+    $("#inform-unsucc-btn").on('click', function(e) { self.informUnsuccessfulApplicants.call(self); });
 }
 
 GroupApp.prototype.addGroup = function() {
@@ -236,6 +260,25 @@ GroupApp.prototype.displayGroup = function(id, group) {
         }
         this.deleteGroup.call(this, id);
     }.bind(self));
+}
+
+GroupApp.prototype.sendGroupEmails = function() {
+    // TODO: check all mentors are set
+    var self = this;
+    if(!confirm("This will send an introductory email to each group. Continue?")) return;
+    self.comms.emailGroups(function() {
+        console.info("Group emails sent!");
+        // TODO: proper flash
+    });
+}
+
+GroupApp.prototype.informUnsuccessfulApplicants = function() {
+    var self = this;
+    if(!confirm("This will send an email to each non-activated pupil. Continue?")) return;
+    self.comms.emailUnsuccessfulApplicants(function() {
+        console.info("Emails to unsuccessful applicants sent!");
+        // TODO: proper flash
+    });
 }
 
 var app = new GroupApp();

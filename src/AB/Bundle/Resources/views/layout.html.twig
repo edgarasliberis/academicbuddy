@@ -35,6 +35,7 @@
                                         {% if is_granted("ROLE_ADMIN") %}
                                             <li><a href="{{ path('pupil_list') }}">{{ 'Moksleiviai'|trans }}</a></li>
                                             <li><a href="{{ path('user_export') }}">{{ 'El. paštai'|trans }}</a></li>
+                                            <li><a href="{{ path('groups_manage') }}">{{ 'Grupės'|trans }}</a></li>
                                         {% endif %}
                                         <li>
                                             <a href="{{ path('fos_user_security_logout') }}">
