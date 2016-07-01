@@ -187,6 +187,15 @@ class GroupController extends TokenAuthenticatedController
         $em = $this->getDoctrine()->getManager();
         $groups = $em->getRepository('ABBundle:Group')->findAll();
 
+        // Sanity check
+        foreach ($groups as $group) {
+            if(is_null($group->getMentor()))
+                return new Response('Mentor not set for group '.$group->getId(), Response::HTTP_BAD_REQUEST);
+            // TODO: fix pupil check
+            if(empty($group->getPupils()))
+                return new Reponse('Group '.$group->getId().' contains no pupils.', Response::HTTP_BAD_REQUEST);
+        }
+
         $mailer = $this->container->get('ab_user.mailer');
         foreach ($groups as $group) {
             $apiGroup = ApiGroup::fromGroup($group);

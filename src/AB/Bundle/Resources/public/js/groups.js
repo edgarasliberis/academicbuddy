@@ -144,7 +144,23 @@ GroupApp.prototype.formGroupFromIds = function(mentorId, secMentorId, pupilIds) 
 }
 
 GroupApp.prototype.showError = function(msg) {
-    console.error(msg);
+    this.showAlert("alert-danger", msg);
+}
+
+GroupApp.prototype.showSuccess = function(msg) {
+    this.showAlert("alert-success", msg);
+}
+
+GroupApp.prototype.showAlert = function(type, msg) {
+    var alertHtml = '\
+       <div id="group-status-alert" class="alert {type} alert-dismissible" role="alert"> \
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> \
+        {msg} \
+      </div>'
+      .replace(/{type}/g, type)
+      .replace(/{msg}/g, msg);
+    $("#group-status-alert").remove();
+    $("#alert-placeholder").append(alertHtml);
 }
 
 GroupApp.prototype.loadGroups = function(groupObj) {
@@ -171,9 +187,9 @@ GroupApp.prototype.deleteAllGroups = function() {
 GroupApp.prototype.deleteGroup = function(id) {
     var self = this;
     self.comms.deleteGroup(id, function() {
-        console.info("Group " + id + " deleted.");
+        console.info("Group #" + id + " deleted.");
         $("#group-card-"+id).remove();
-        // TODO: proper popup;
+        self.showSuccess("Group #" + id + " deleted.");
     });
 }
 
@@ -182,7 +198,7 @@ GroupApp.prototype.displayGroup = function(id, group) {
 
     // Add group html
     var groupHtml = '\
-    <div id="group-card-{id}" data-id="{id}" class="group-card-wrapper col-sm-4 col-md-3">
+    <div id="group-card-{id}" data-id="{id}" class="group-card-wrapper col-sm-4 col-md-3"> \
       <div class="group-card panel-shadow"> \
         <h3>Grupė #{id}</h3> \
         <div class="form-group"> \
@@ -251,7 +267,7 @@ GroupApp.prototype.displayGroup = function(id, group) {
         var group = self.formGroupFromIds(mentorId, secMentorId, pupilIds);
         self.comms.updateGroup(id, group, function() {
             console.info("Group " + id + " updated");
-            // TODO: alert
+            self.showSuccess("Group #" + id + " updated");
         })
     }.bind(self));
     $('#group-card-'+id+' .remove-group').on('click', function(e) {
@@ -268,7 +284,7 @@ GroupApp.prototype.sendGroupEmails = function() {
     if(!confirm("This will send an introductory email to each group. Continue?")) return;
     self.comms.emailGroups(function() {
         console.info("Group emails sent!");
-        // TODO: proper flash
+        self.showSuccess("Group emails sent! (Check 'Sent' folder just to be sure)");
     });
 }
 
@@ -277,11 +293,12 @@ GroupApp.prototype.informUnsuccessfulApplicants = function() {
     if(!confirm("This will send an email to each non-activated pupil. Continue?")) return;
     self.comms.emailUnsuccessfulApplicants(function() {
         console.info("Emails to unsuccessful applicants sent!");
-        // TODO: proper flash
+        self.showSuccess("Emails to unsuccessful applicants sent! (Check 'Sent' folder just to be sure)");
     });
 }
 
 var app = new GroupApp();
-$(document).ajaxError(function (err) {
-    app.showError(err); 
+$(document).ajaxError(function (err, xhr) {
+    console.log(err, xhr);
+    app.showError(xhr.responseText); 
 });
