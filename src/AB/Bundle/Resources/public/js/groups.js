@@ -196,11 +196,13 @@ GroupApp.prototype.deleteGroup = function(id) {
 GroupApp.prototype.displayGroup = function(id, group) {
     var self = this;
 
+    // TODO: somehow display dirty status / save all button?
+
     // Add group html
     var groupHtml = '\
     <div id="group-card-{id}" data-id="{id}" class="group-card-wrapper col-sm-4 col-md-3"> \
       <div class="group-card panel-shadow"> \
-        <h3>Grupė #{id}</h3> \
+        <h4>Grupė #{id}</h4> \
         <div class="form-group"> \
           <label for="select-mentor-{id}">Mentorius</label> \
           <select class="form-control" id="select-mentor-{id}"> \
@@ -279,7 +281,6 @@ GroupApp.prototype.displayGroup = function(id, group) {
 }
 
 GroupApp.prototype.sendGroupEmails = function() {
-    // TODO: check all mentors are set
     var self = this;
     if(!confirm("This will send an introductory email to each group. Continue?")) return;
     self.comms.emailGroups(function() {
