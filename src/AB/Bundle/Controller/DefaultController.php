@@ -30,6 +30,18 @@ class DefaultController extends Controller
         return $this->render('ABBundle:Default:about.uk.'.$locale.'.html.twig');
     }
 
+    public function aboutUsaAction(Request $request) 
+    {
+        $locale = $request->getLocale();
+        return $this->render('ABBundle:Default:about.usa.'.$locale.'.html.twig');
+    }
+
+    public function aboutAbAction(Request $request) 
+    {
+        $locale = $request->getLocale();
+        return $this->render('ABBundle:Default:about.ab.'.$locale.'.html.twig');
+    }
+
     public function supportAction(Request $request) 
     {
         $locale = $request->getLocale();

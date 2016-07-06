@@ -33,6 +33,9 @@ body .content {
 .navbar-brand img {
   height: 30px;
 }
+.navbar-nav .first {
+  font-weight: bold;
+}
 .lang-flag {
   height: 17px;
 }

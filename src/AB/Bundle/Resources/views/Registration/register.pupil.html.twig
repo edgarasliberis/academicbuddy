@@ -123,9 +123,6 @@
 {#
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts '@ABBundle/Resources/public/js/*' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}  
     {% javascripts '@ABBundle/Resources/public/chosen/chosen.jquery.min.js'
                    %}
         <script src="{{ asset_url }}" type="text/javascript"></script>

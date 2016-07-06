@@ -13,13 +13,26 @@ class Builder implements ContainerAwareInterface
         $menu = $factory->createItem('root');
 
         $menu->setChildrenAttribute('class', 'navbar-nav nav');
-		
-        $menu->addChild('Apie Oksbridžo etapą', array(
+
+        $menu->addChild('Apie projektą', array(
+            'route' => 'mentor_list'
+        ))->setExtra('translation_domain', 'messages')
+        ->setAttribute('dropdown', true);
+
+        $menu['Apie projektą']->addChild('Apie Oksbridžo etapą', array(
             'route' => 'about_oxbridge'
         ))->setExtra('translation_domain', 'messages');
 
-        $menu->addChild('Apie II etapą (JK)', array(
+        $menu['Apie projektą']->addChild('Apie II etapą (JK)', array(
             'route' => 'about_uk'
+        ))->setExtra('translation_domain', 'messages');
+
+        $menu['Apie projektą']->addChild('Apie JAV etapą', array(
+            'route' => 'about_usa'
+        ))->setExtra('translation_domain', 'messages');
+
+        $menu['Apie projektą']->addChild('Apie mus', array(
+            'route' => 'about_ab'
         ))->setExtra('translation_domain', 'messages');
 		
         $menu->addChild('Parama', array(

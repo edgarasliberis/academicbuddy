@@ -28,7 +28,7 @@ class Mentor extends User
     protected $about;
 
     /**
-     * @ORM\OneToOne(targetEntity="Group", mappedBy="mentor")
+     * @ORM\OneToMany(targetEntity="Group", mappedBy="mentor")
      */
     protected $mentorOf;
 

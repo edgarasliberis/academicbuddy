@@ -1,0 +1,65 @@
+{% extends "ABBundle::layout.html.twig" %}
+
+{% block title %}About Academic Buddy{% endblock %}
+{% block content %}
+    <div class="panel-shadow clearfix">
+        <div class="alert alert-danger" role="alert">This page is under preparation. Information below may be outdated.</div>
+
+        <div class="text-block col-md-6 col-xs-12 l-float">
+        <h3>About us</h3>
+        <p><i>Under preparation</i></p>
+        </div>
+
+        <div class="text-block col-md-6 col-xs-12 r-float">
+            <h3>History</h3>
+            <p>The project has been started in the summer of 2012 by an initiative within the Cambridge University Lithuanian Society (CULS), and has substantially expanded in the 2013 - 2014 academic year, when Oxford University Lithuanian Society joined the organising committee, and ties with the professional mentorship project ‘LT Big Brother’ were established. 2012 - 2013 saw over a 100 applications from Lithuanian students, and a similar amount of willing mentors.</p>
+            <p>In the process, 3 meetings amongst students and mentors, a preparation camp, and numerous mentor consultations via e-mail and in person, have happened. More than a third of the pupils applying to Oxbridge received offers. Many other participants have been accepted to UCL, Edinburgh, Warwick, St Andrews and other prestigious universities. A closing event in April, 2013 marked the end of a successful first year.</p>
+            <p>Continuing the project in 2013-2014 academic year, we achieved even better results. You can see our pupils’ offer statistics in the illustration below.</p>
+            <img class="col-sm-8" style="max-width: 100%" title="Statistics" src="{{ asset('bundles/ab/images/chart.png') }}" />
+            <p>In 2014, 88% of all students that participated in our survey have been invited to Oxbridge interviews, and 42% (compare to 33% in 2013, and the European Union average) have received offers.</p>
+            <p>In 2014 - 2015 academic year, ‘Academic Brother’ changed its name to ‘Academic Buddy’, and an executive committee independent of CULS and OULS was established. </p>
+            <p>We hope to use our experience in helping pupils to achieve their academic potential in 2015 - 2016 again. We always aim to include ex-participants and other Lithuanian students into the mentoring process, and reach pupils in a wide range of schools and districts within Lithuania.</p>
+        </div>
+
+        <div class="text-block col-md-6 col-xs-12 l-float">
+            <h3>About the project: goals and activities</h3>
+            <h5 class="centered">Goals</h5>
+            <ol class="c">
+                <li>to ensure that the brightest students in Lithuania would be given a fair chance to study in the best universities that reflect their academic potential,</li>
+                <li>to create a community of Lithuanian students abroad.</li>
+            </ol>
+            
+            <h5 class="centered">Activities</h5>
+            <ol class="d">
+                <li>spreading objective information about studies abroad;</li>
+                <li>personal and communal consultations of students regarding living, studying and applying to universities abroad;</li>
+                <li>meetings which introduce students to nuances of the application and interview processes, colleges, living expenses, etc.;</li>
+                <li>a camp for Oxbridge applicants which introduces students to interview techniques, helps them improve their <em>Personal Statements</em>, checks their knowledge with tests, and allows them to freely communicate with student mentors.</li>
+            </ol>
+        </div>
+
+        <div class="text-block col-md-6 col-xs-12 l-float">
+            <h3>Our Future</h3>
+            <p>The project will be happening for the 4th year in a row, so it has amassed experience and developed good practices. This year, we will aim to get more awareness from Lithuanian students, improve our performance, strengthen our links with Lithuanian societies in UK’s universities, and, hopefully, to expand to other countries.</p>
+        </div>
+
+        <div class="text-block col-md-6 col-xs-12 l-float">
+            <h4>Organisers</h4>
+            <div>
+                <a href="http://www.cu-ls.org" target="_blank">
+                    <img class="org-logo" src="{{ asset('bundles/ab/images/CULS-EN-version.jpg') }}" alt="Cambridge University Lithuanian Society" style="max-width: 230px" /></a>
+                <br />
+                <a href="http://www.ou-ls.org" target="_blank">
+                    <img class="org-logo" src="{{ asset('bundles/ab/images/OULS-logo-3.png') }}" alt="Oxford University Lithuanian Society" style="max-width: 220px" /></a>
+            </div>
+            <h4>Partners</h4>
+            <div>
+                <a href="http://www.ltbigbrother.com/apie-projekta/">
+                    <img class="org-logo" src="{{ asset('bundles/ab/images/logoLTBB.png') }}" alt="LT Big Brother" style="max-width: 230px" /></a>
+                <a href="http://vischool.lt/">
+                    <img class="org-logo" src="{{ asset('bundles/ab/images/vis-logo.png') }}" alt="Vilnius International School" style="max-width: 212px"></a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

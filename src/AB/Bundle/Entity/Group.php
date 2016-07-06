@@ -24,12 +24,14 @@ class Group
     protected $pupils;
 
     /**
-     * @ORM\OneToOne(targetEntity="Mentor", inversedBy="mentorOf")
+     * @ORM\ManyToOne(targetEntity="Mentor", inversedBy="mentorOf")
+     * @ORM\JoinColumn(name="mentor_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $mentor;
 
     /**
      * @ORM\ManyToOne(targetEntity="Mentor")
+     * @ORM\JoinColumn(name="secondaryMentor_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $secondaryMentor;
 

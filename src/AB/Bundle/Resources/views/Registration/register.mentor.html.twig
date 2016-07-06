@@ -149,7 +149,7 @@
 {# Include javascript #}
 {% block javascripts %}
 	{{ parent() }}
-	{% javascripts '@ABBundle/Resources/public/js/*' %}
+	{% javascripts '@ABBundle/Resources/public/js/register_mentor.js' %}
     	<script type="text/javascript" src="{{ asset_url }}"></script>
 	{% endjavascripts %}  
 	{% javascripts '@ABBundle/Resources/public/chosen/chosen.jquery.min.js' %}

@@ -1,4 +1,9 @@
+var isGroupManagementPage = function() {
+    return window.location.pathname.endsWith("groups/manage");
+}
+
 $(function() {
+    if(!isGroupManagementPage()) return;
     $('select').select2();
 });
 
@@ -115,6 +120,11 @@ var GroupApp = function() {
         self.pupils = users["pupils"];
         self.mentors = users["mentors"];
         self.comms.listGroups(self.loadGroups.bind(self));
+    });
+
+    $(document).ajaxError(function (err, xhr) {
+        console.log(err, xhr);
+        app.showError(xhr.responseText); 
     });
     
     $("#new-group-btn").on('click', function(e) { self.addGroup.call(self); } );
@@ -298,8 +308,5 @@ GroupApp.prototype.informUnsuccessfulApplicants = function() {
     });
 }
 
-var app = new GroupApp();
-$(document).ajaxError(function (err, xhr) {
-    console.log(err, xhr);
-    app.showError(xhr.responseText); 
-});
+if(isGroupManagementPage())
+    var app = new GroupApp();

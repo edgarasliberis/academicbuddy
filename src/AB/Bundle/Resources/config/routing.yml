@@ -59,6 +59,20 @@ about_uk:
     requirements:
         _locale: lt|en
 
+about_usa:
+    path: /{_locale}/about/usa
+    # path: /about/usa
+    defaults: {_controller: ABBundle:Default:aboutUsa }
+    requirements:
+        _locale: lt|en
+
+about_ab:
+    path: /{_locale}/about/ab
+    # path: /about/ab
+    defaults: {_controller: ABBundle:Default:aboutAb }
+    requirements:
+        _locale: lt|en
+
 support:
     path: /{_locale}/support
     # path: /support
