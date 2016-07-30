@@ -96,4 +96,14 @@ class Mailer extends BaseMailer
                 'pupils' => $pupilNames),
             $this->parameters['fromEmail'], $recipientArray);
     }
+
+    public function sendMentorInvitationMessage($mentorArray) {
+        $recipientArray = array();
+        $recipientArray[$mentorArray['email']] = $mentorArray['name'];
+
+        print_r($mentorArray);
+
+        $this->sendMessage('ABBundle:Email:mentor.invitation.html.twig', $mentorArray,
+            $this->parameters['fromEmail'], $recipientArray);
+    }
 }

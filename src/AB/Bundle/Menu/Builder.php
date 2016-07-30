@@ -14,30 +14,30 @@ class Builder implements ContainerAwareInterface
 
         $menu->setChildrenAttribute('class', 'navbar-nav nav');
 
-        $menu->addChild('Apie projektą', array(
+        $menu->addChild('Apie etapus', array(
             'route' => 'mentor_list'
         ))->setExtra('translation_domain', 'messages')
         ->setAttribute('dropdown', true);
 
-        $menu['Apie projektą']->addChild('Apie Oksbridžo etapą', array(
+        $menu['Apie etapus']->addChild('Oksbridžo etapas', array(
             'route' => 'about_oxbridge'
         ))->setExtra('translation_domain', 'messages');
 
-        $menu['Apie projektą']->addChild('Apie II etapą (JK)', array(
+        $menu['Apie etapus']->addChild('JK (II-asis) etapas', array(
             'route' => 'about_uk'
         ))->setExtra('translation_domain', 'messages');
 
-        $menu['Apie projektą']->addChild('Apie JAV etapą', array(
+        $menu['Apie etapus']->addChild('JAV etapas', array(
             'route' => 'about_usa'
         ))->setExtra('translation_domain', 'messages');
 
-        $menu['Apie projektą']->addChild('Apie mus', array(
+        $menu->addChild('Apie mus', array(
             'route' => 'about_ab'
         ))->setExtra('translation_domain', 'messages');
 		
-        $menu->addChild('Parama', array(
+        /*$menu->addChild('Parama', array(
             'route' => 'support'
-        ))->setExtra('translation_domain', 'messages');
+        ))->setExtra('translation_domain', 'messages');*/
         
         $menu->addChild('Mentoriai', array(
             'route' => 'mentor_list'
