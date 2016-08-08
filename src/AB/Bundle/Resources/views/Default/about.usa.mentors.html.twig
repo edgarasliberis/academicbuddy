@@ -1,0 +1,59 @@
+{% extends "ABBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+  {% stylesheets 'bundles/ab/css/mentor_list.less' filter="less,cssrewrite" %}
+  {#{% stylesheets '@ABBundle/Resources/public/css/mentor_list.less' filter="less" %}#}
+  <link rel="stylesheet" href="{{ asset_url }}" />
+  {% endstylesheets %}
+{% endblock %}
+
+{% block title %}JAV mentorių sąrašas{% endblock %}
+{% block content %}
+  <div class="mentor-list panel-shadow">
+    <h4>JAV mentorių sąrašas 2015-2016</h4>
+
+    {% for user in descriptions %}
+      <div class="mentor-overview">
+        <div class="mentor-avatar">
+          <img src="{{ asset('bundles/ab/images/icon-user-default.png') }}"/>
+        </div>
+        <div class="mentor-info">
+          <div class="mentor-name">
+              {{ user.name }}
+          </div>
+          <div class="mentor-summary">
+            <div class="overview">
+              <div class="summary-label">Universitetas:</div>
+              {{ user.university }}
+              <div class="summary-label">Studijų kryptis:</div>
+              {{ user.subject }}
+            </div>
+            <div class="extended" style="display: none">
+              <div class="summary-label">Mokykla: </div>
+                {{ user.school }}
+              <div><div class="summary-label">Prisistatymas: </div>
+                <p>{{ user.introduction }}</p>
+              </div>
+              <div><div class="summary-label">Popamokinės veiklos mokykloje: </div>
+                <p>{{ user.extracurriculars }}</p>
+              </div>
+              <div><div class="summary-label">Veiklos universitete: </div>
+                <p>{{ user.uniActivities }}</p>
+              </div>
+              <div class="summary-label">Rinkis mane, jei: </div>
+                <p>{{ user.whyme }}</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+{% block javascripts %}
+  {% javascripts '@ABBundle/Resources/public/js/mentor_list.js'
+  filter='?uglifyjs2'
+  %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+
+{% endblock %}

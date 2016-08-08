@@ -36,6 +36,14 @@ class DefaultController extends Controller
         return $this->render('ABBundle:Default:about.usa.'.$locale.'.html.twig');
     }
 
+    public function aboutUsaMentorsAction(Request $request) 
+    {
+        $em = $this->getDoctrine()->getManager();
+        $descriptions = $em->getRepository('ABBundle:MentorDescriptions')->findAll();
+        return $this->render('ABBundle:Default:about.usa.mentors.html.twig',
+            array('descriptions' => $descriptions));
+    }
+
     public function aboutAbAction(Request $request) 
     {
         $locale = $request->getLocale();

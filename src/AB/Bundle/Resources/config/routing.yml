@@ -66,6 +66,10 @@ about_usa:
     requirements:
         _locale: lt|en
 
+about_usa:
+    path: /about/usa/mentors
+    defaults: {_controller: ABBundle:Default:aboutUsaMentors }
+
 about_ab:
     path: /{_locale}/about/ab
     # path: /about/ab
