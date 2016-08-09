@@ -10,7 +10,7 @@
 {% block title %}JAV mentorių sąrašas{% endblock %}
 {% block content %}
   <div class="mentor-list panel-shadow">
-    <h4>JAV mentorių sąrašas 2015-2016</h4>
+    <h3>JAV mentorių sąrašas 2015-2016</h3>
 
     {% for user in descriptions %}
       <div class="mentor-overview">
@@ -34,18 +34,26 @@
               <div><div class="summary-label">Prisistatymas: </div>
                 <p>{{ user.introduction }}</p>
               </div>
+              {% if user.extracurriculars is not null %}
               <div><div class="summary-label">Popamokinės veiklos mokykloje: </div>
                 <p>{{ user.extracurriculars }}</p>
               </div>
+              {% endif %}
+              {% if user.uniActivities is not null %}
               <div><div class="summary-label">Veiklos universitete: </div>
                 <p>{{ user.uniActivities }}</p>
               </div>
-              <div class="summary-label">Rinkis mane, jei: </div>
-                <p>{{ user.whyme }}</p>
+              {% endif %}
+              {% if user.whyme is not null %}
+              <div><div class="summary-label">Rinkis mane, jei: </div>
+                <p><ul>{{ user.whyme | raw }}</ul></p>
               </div>
+              {% endif %}
           </div>
+          <div class="show show-more">Daugiau</div>
         </div>
       </div>
+    </div>  
     {% endfor %}
   </div>
 {% endblock %}

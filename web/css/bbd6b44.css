@@ -33,9 +33,6 @@ body .content {
 .navbar-brand img {
   height: 30px;
 }
-.navbar-nav .first {
-  font-weight: bold;
-}
 .lang-flag {
   height: 17px;
 }
@@ -188,7 +185,6 @@ ol.c {
 }
 .reg-button {
   margin: 5px 0px 7px 0px;
-  width: 240px;
 }
 .l-float {
   float: left;
@@ -306,11 +302,11 @@ body {
   margin: 5px 5px 0 0;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-fb {
-  background: url('../Resources/public/images/facebook.png');
+  background: url('../../Resources/public/images/facebook.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .social-lnkd {
-  background: url('../Resources/public/images/linkedin.png');
+  background: url('../../Resources/public/images/linkedin.png');
   background-size: 100%;
 }
 .mentor-list .mentor-overview .mentor-info .mentor-summary .extended .message-button {

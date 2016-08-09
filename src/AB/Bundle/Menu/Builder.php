@@ -14,21 +14,34 @@ class Builder implements ContainerAwareInterface
 
         $menu->setChildrenAttribute('class', 'navbar-nav nav');
 
-        $menu->addChild('Apie etapus', array(
-            'route' => 'mentor_list'
-        ))->setExtra('translation_domain', 'messages')
+        $menu->addChild('Stojimas į JK')->setExtra('translation_domain', 'messages')
         ->setAttribute('dropdown', true);
 
-        $menu['Apie etapus']->addChild('Oksbridžo etapas', array(
+        $menu['Stojimas į JK']->addChild('Oksbridžo etapas', array(
             'route' => 'about_oxbridge'
         ))->setExtra('translation_domain', 'messages');
 
-        $menu['Apie etapus']->addChild('JK (II-asis) etapas', array(
+        $menu['Stojimas į JK']->addChild('JK (II-asis) etapas', array(
             'route' => 'about_uk'
         ))->setExtra('translation_domain', 'messages');
 
-        $menu['Apie etapus']->addChild('JAV etapas', array(
+        $menu['Stojimas į JK']->addChild('Mentoriai', array(
+            'route' => 'mentor_list'
+        ))->setExtra('translation_domain', 'messages');
+
+        $menu->addChild('Stojimas į JAV')->setExtra('translation_domain', 'messages')
+        ->setAttribute('dropdown', true);
+
+        $menu['Stojimas į JAV']->addChild('Apie JAV etapą', array(
             'route' => 'about_usa'
+        ))->setExtra('translation_domain', 'messages');
+
+        $menu['Stojimas į JAV']->addChild('JAV mentoriai', array(
+            'route' => 'about_usa_mentors'
+        ))->setExtra('translation_domain', 'messages');
+
+        $menu['Stojimas į JAV']->addChild('Registracija', array(
+            'uri' => 'https://goo.gl/forms/thkpGrMSRJiHLdmZ2'
         ))->setExtra('translation_domain', 'messages');
 
         $menu->addChild('Apie mus', array(
@@ -38,10 +51,6 @@ class Builder implements ContainerAwareInterface
         /*$menu->addChild('Parama', array(
             'route' => 'support'
         ))->setExtra('translation_domain', 'messages');*/
-        
-        $menu->addChild('Mentoriai', array(
-            'route' => 'mentor_list'
-        ))->setExtra('translation_domain', 'messages');
 
         /*$securityContext = $this->container->get('security.context');
 

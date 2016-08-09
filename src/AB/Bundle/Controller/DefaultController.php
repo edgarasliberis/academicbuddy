@@ -39,7 +39,7 @@ class DefaultController extends Controller
     public function aboutUsaMentorsAction(Request $request) 
     {
         $em = $this->getDoctrine()->getManager();
-        $descriptions = $em->getRepository('ABBundle:MentorDescriptions')->findAll();
+        $descriptions = $em->getRepository('ABBundle:MentorDescription')->findAll();
         return $this->render('ABBundle:Default:about.usa.mentors.html.twig',
             array('descriptions' => $descriptions));
     }

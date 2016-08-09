@@ -50,5 +50,63 @@
 
 		<p>Any questions about the Academic Buddy US stage are welcomed on the <a href="https://www.facebook.com/AcademicBuddy">Academic Buddy Facebook page</a> or via e-mail: <a href="mailto:academicbuddyusa@gmail.com">academicbuddyusa@gmail.com</a></p>
 		</div>
-    </div>
+		<div id="presentation" class="col-md-12 l-float">
+			<h4>Slides from the opening event of the US stage 2016 m.</h4>
+			<div class="slides-block">
+				<div id="slides-us-16-application">
+		  		<button type="button" class="btn btn-default">{{ icon('play-circle') }} Application Process. Watch slides</button>
+				</div>
+			</div>
+			<div class="slides-block">
+				<div id="slides-us-16-finaid">
+		  		<button type="button" class="btn btn-default">{{ icon('play-circle') }} Financial Aid. Watch slides</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@ABBundle/Resources/public/slides/jquery.slides.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(function(){
+            $("#slides-us-16-application > button").click(function() {
+                // A bit dirty, but would do for now
+                $("#slides-us-16-application").html(" \
+                    {% for i in 1..22 %}
+                        <img src={{ asset('bundles/ab/images/photos/events/opening-us-16-application-process/Slide%d.PNG'|format(i)) }} /> \
+                    {% endfor %}
+                    <a href=# class=\"slidesjs-previous slidesjs-navigation\"><span class=\"glyphicon glyphicon-chevron-left\"></span></a> \
+                    <a href=# class=\"slidesjs-next slidesjs-navigation\"><span class=\"glyphicon glyphicon-chevron-right\"></span></a>");
+
+                $("#slides-us-16-application").slidesjs({
+                    width: 960,
+                    height: 540,
+                    navigation: false,
+                    pagination: false,
+                    play: { auto: true }
+                });
+            });
+
+            $("#slides-us-16-finaid > button").click(function() {
+                // A bit dirty, but would do for now
+                $("#slides-us-16-finaid").html(" \
+                    {% for i in 1..5 %}
+                        <img src={{ asset('bundles/ab/images/photos/events/opening-us-16-finaid/Slide%d.PNG'|format(i)) }} /> \
+                    {% endfor %}
+                    <a href=# class=\"slidesjs-previous slidesjs-navigation\"><span class=\"glyphicon glyphicon-chevron-left\"></span></a> \
+                    <a href=# class=\"slidesjs-next slidesjs-navigation\"><span class=\"glyphicon glyphicon-chevron-right\"></span></a>");
+
+                $("#slides-us-16-finaid").slidesjs({
+                    width: 960,
+                    height: 540,
+                    navigation: false,
+                    pagination: false,
+                    play: { auto: true }
+                });
+            });
+        });
+    </script>
 {% endblock %}
